@@ -1,149 +1,318 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Info() {
   const [scrollY, setScrollY] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [activeSkill, setActiveSkill] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Trigger entrance animation
+    setTimeout(() => setIsVisible(true), 100);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
+  // Placeholder data - replace with your actual information
   const skills = [
-    { name: "Machine Learning", level: 90 },
-    { name: "Data Visualization", level: 85 },
-    { name: "Python", level: 95 },
-    { name: "React", level: 80 },
-    { name: "Statistical Analysis", level: 88 },
-    { name: "Deep Learning", level: 82 },
+    {
+      name: "[YOUR SKILL 1]",
+      level: 90,
+      description: "Advanced proficiency in [describe your expertise]",
+    },
+    {
+      name: "[YOUR SKILL 2]",
+      level: 85,
+      description: "Strong experience with [describe your experience]",
+    },
+    {
+      name: "[YOUR SKILL 3]",
+      level: 95,
+      description: "Expert level knowledge in [describe your mastery]",
+    },
+    {
+      name: "[YOUR SKILL 4]",
+      level: 80,
+      description: "Solid foundation in [describe your capabilities]",
+    },
+    {
+      name: "[YOUR SKILL 5]",
+      level: 88,
+      description: "Comprehensive understanding of [describe your knowledge]",
+    },
+    {
+      name: "[YOUR SKILL 6]",
+      level: 82,
+      description: "Specialized experience in [describe your specialization]",
+    },
   ];
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative">
+  const socialLinks = [
+    { name: "[LINKEDIN]", href: "[YOUR_LINKEDIN_URL]", icon: "💼" },
+    { name: "[GITHUB]", href: "[YOUR_GITHUB_URL]", icon: "🔗" },
+    { name: "[PORTFOLIO]", href: "[YOUR_PORTFOLIO_URL]", icon: "🌐" },
+    { name: "[RESUME]", href: "[YOUR_RESUME_URL]", icon: "📄" },
+  ];
+
+  const experiences = [
+    {
+      role: "Software Engineer Intern",
+      company: "Ateneo Innovation Center",
+      period: "Feb 2025 - May 2025",
+      description: "[Brief description of your role and achievements]",
+    },
+  ];
+
+  // Dynamic background elements
+  const FloatingElements = () => (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      {[...Array(6)].map((_, i) => (
         <div
-          className="text-center transform transition-all duration-1000"
+          key={i}
+          className="absolute w-1 h-1 bg-white/10 rounded-full animate-pulse"
           style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-            opacity: Math.max(0, 1 - scrollY / 800),
+            left: `${20 + i * 15}%`,
+            top: `${30 + i * 10}%`,
+            transform: `translate(${mousePos.x * 0.01 * (i + 1)}px, ${
+              mousePos.y * 0.01 * (i + 1)
+            }px)`,
+            animationDelay: `${i * 0.5}s`,
+            transition: "transform 0.3s ease-out",
+          }}
+        />
+      ))}
+    </div>
+  );
+
+  // Glowing cursor effect
+  const GlowCursor = () => (
+    <div
+      className="fixed pointer-events-none z-50 w-8 h-8 rounded-full mix-blend-difference"
+      style={{
+        left: mousePos.x - 16,
+        top: mousePos.y - 16,
+        background:
+          "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
+        transition: "transform 0.1s ease-out",
+      }}
+    />
+  );
+
+  return (
+    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
+      <FloatingElements />
+      <GlowCursor />
+
+      {/* Hero Section with Parallax */}
+      <section
+        ref={heroRef}
+        className="min-h-screen flex items-center justify-center relative"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 via-transparent to-gray-800/10" />
+
+        <div
+          className={`text-center transform transition-all duration-2000 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+          }`}
+          style={{
+            transform: `translateY(${scrollY * 0.3}px)`,
           }}
         >
-          <h2 className="text-7xl md:text-9xl font-thin mb-8 leading-none">
-            <span className="block">About</span>
-            <span className="block text-gray-400">Me</span>
-          </h2>
-          <p className="text-gray-400 max-w-md mx-auto text-lg leading-relaxed">
-            Data Scientist & Machine Learning Engineer
-          </p>
+          <div className="mb-8 relative">
+            <h1 className="text-8xl md:text-[12rem] font-thin mb-4 leading-none tracking-wider">
+              <span className="inline-block hover:scale-105 transition-transform duration-500 cursor-default">
+                Bryan
+              </span>
+            </h1>
+            <h1 className="text-8xl md:text-[12rem] font-thin leading-none tracking-wider">
+              <span className="inline-block hover:scale-105 transition-transform duration-500 cursor-default text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">
+                Tiamzon
+              </span>
+            </h1>
+          </div>
+
+          <div className="space-y-4">
+            <p className="text-gray-400 text-xl md:text-2xl font-light tracking-wide">
+              Computer Science
+            </p>
+            <p className="text-gray-500 text-lg font-light">
+              Taguig City, Philippines
+            </p>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Skills & Philosophy Section */}
+      {/* About Section */}
+      <section className="min-h-screen py-24 px-8 relative">
+        <div className="max-w-5xl mx-auto border border-[#141414] rounded-xl p-8 backdrop-blur-sm bg-[#141414] transform-gpu transition-all duration-300 hover:rotate-2 hover:scale-[1.07]">
+          <div className="grid md:grid-cols-[60%_40%] gap-8 items-start">
+            <div className="space-y-8">
+              <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                About
+              </h2>
+              <div className="space-y-6 text-gray-300 leading-relaxed text-medium">
+                <p>
+                  Bryan is a Computer Science student based in KA, who is
+                  passionate about creating digital products and visual
+                  experiences with a human-centred approach. Outside of coding,
+                  you can find him reading books, going on solo rides,
+                  practicing hypertrophy training, or creating art.
+                </p>
+                <p>
+                  From a young age, he was captivated by art and design, finding
+                  inspiration in everything around him. The impact of great
+                  design profoundly moved him, often giving him a thrill of
+                  excitement.
+                </p>
+              </div>
+            </div>
+            <div className="relative h-full flex items-center pr-4">
+              <div className="overflow-hidden rounded-lg w-[90%] h-[320px]">
+                <img
+                  src="/IMG_5556.jpg"
+                  alt="Bryan"
+                  className="w-full h-full object-cover object-center rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Timeline */}
       <section className="min-h-screen py-32 px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20">
-            <div>
-              <h3 className="text-3xl font-thin mb-12">Capabilities</h3>
-              <div className="space-y-8">
-                {skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-gray-500 text-sm">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-px bg-gray-800 relative">
-                      <div
-                        className="h-px bg-white absolute left-0 top-0 transition-all duration-1000"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <h2 className="text-5xl font-thin mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            Journey
+          </h2>
 
-            <div>
-              <h3 className="text-3xl font-thin mb-12">Philosophy</h3>
-              <div className="space-y-8 text-gray-400 leading-relaxed">
-                <p>
-                  Data is not just numbers. It's the digital DNA of human
-                  behavior, the poetry of patterns, the silent symphony of
-                  statistics.
-                </p>
-                <p>
-                  I believe in the art of subtraction — removing noise to reveal
-                  signal, complexity to find simplicity, chaos to discover
-                  order.
-                </p>
-                <p>
-                  Every visualization tells a story. Every model holds a truth.
-                  Every algorithm dreams of understanding.
-                </p>
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent transform md:-translate-x-1/2" />
+
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className={`relative mb-16 ${
+                  index % 2 === 0 ? "md:pr-1/2" : "md:pl-1/2 md:text-right"
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-white rounded-full transform -translate-x-1/2 hover:scale-125 transition-transform duration-300" />
+
+                <div
+                  className={`ml-16 md:ml-0 ${
+                    index % 2 === 0 ? "md:mr-16" : "md:ml-16"
+                  }`}
+                >
+                  <div className="group p-6 rounded-lg border border-gray-800 hover:border-gray-600 bg-gray-900/30 hover:bg-gray-900/50 transition-all duration-300 backdrop-blur-sm">
+                    <h3 className="text-xl font-medium text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
+                      {exp.role}
+                    </h3>
+                    <p className="text-gray-400 mb-2">{exp.company}</p>
+                    <p className="text-sm text-gray-500 mb-4">{exp.period}</p>
+                    <p className="text-gray-300 leading-relaxed">
+                      {exp.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="min-h-screen flex items-center justify-center px-8">
-        <div className="text-center max-w-2xl">
-          <h3 className="text-5xl font-thin mb-12">Let's Create</h3>
-          <p className="text-gray-400 text-xl mb-16 leading-relaxed">
-            Have a story that needs telling? Data that needs understanding?
-            Let's turn complexity into clarity.
+      {/* Contact Section with Magnetic Effect */}
+      <section className="min-h-screen flex items-center justify-center px-8 relative">
+        <div className="text-center max-w-3xl">
+          <h2 className="text-6xl md:text-8xl font-thin mb-16 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">
+            Let's Connect
+          </h2>
+
+          <p className="text-gray-400 text-xl md:text-2xl mb-20 leading-relaxed font-light">
+            [YOUR CALL TO ACTION - Replace with your personal invitation to
+            connect]
           </p>
 
-          <div className="space-y-8">
-            <a
-              href="mailto:bryxph@gmail.com"
-              className="block text-2xl hover:text-gray-400 transition-colors duration-300 mb-8"
-            >
-              bryxph@gmail.com
-            </a>
+          {/* Email with hover effect */}
+          <a
+            href="mailto:[YOUR_EMAIL]"
+            className="inline-block text-3xl md:text-4xl font-light mb-16 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-white hover:to-gray-300 transition-all duration-500 transform hover:scale-105"
+          >
+            [YOUR_EMAIL@DOMAIN.COM]
+          </a>
 
-            <div className="flex justify-center space-x-12">
-              {[
-                {
-                  name: "LinkedIn",
-                  href: "https://www.linkedin.com/in/bryantiamzonph/",
-                },
-                { name: "GitHub", href: "https://github.com/officialbryx" },
-                {
-                  name: "Resume",
-                  href: "/TIAMZON_Resume-1.pdf",
-                },
-              ].map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center space-x-2 text-gray-400 hover:text-white transition-all duration-300"
-                >
-                  <span>{link.name}</span>
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-              ))}
-            </div>
+          {/* Social Links with Magnetic Hover */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
+            {socialLinks.map((link, index) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative p-6 border border-gray-800 rounded-lg hover:border-gray-600 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 bg-gray-900/20 hover:bg-gray-900/40"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
+                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {link.icon}
+                </div>
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-300 text-sm">
+                  {link.name}
+                </span>
+
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-white/5 to-gray-300/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-16 px-8 border-t border-gray-800">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-gray-500 text-sm">
+            © 2025 [YOUR NAME]. Crafted with passion and precision.
+          </p>
+        </div>
+      </footer>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 }

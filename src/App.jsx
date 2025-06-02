@@ -62,8 +62,8 @@ function App() {
             <span className="text-black font-bold text-sm">BT</span>
           </div>
           <div>
-            <h1 className="text-lg font-light">Bryan Tiamzon</h1>
-            <p className="text-gray-400 text-xs">Data Science</p>
+            <h1 className="text-lg font-large">Bryan Tiamzon</h1>
+            <p className="text-gray-400 text-s font-medium">Data Science</p>
           </div>
         </div>
       </header>
