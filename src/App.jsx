@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Work from "./pages/Work";
 import Info from "./pages/Info";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Simulate loading
@@ -24,18 +25,32 @@ function App() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-40 py-6">
-        <div className="flex space-x-8 bg-gray-900/50 backdrop-blur-sm px-8 py-3 rounded-full border border-gray-800">
-          <Link
-            to="/"
-            className="text-gray-400 hover:text-white transition-colors duration-300"
-          >
-            Info
-          </Link>
+        <div className="flex bg-zinc-900/90 backdrop-blur-md px-1 py-1 rounded-full border border-zinc-800/50 shadow-2xl">
           <Link
             to="/work"
-            className="text-gray-400 hover:text-white transition-colors duration-300"
+            className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
+              location.pathname === "/work"
+                ? "text-white bg-zinc-800 shadow-lg"
+                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+            }`}
           >
+            {location.pathname === "/work" && (
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
+            )}
             Work
+          </Link>
+          <Link
+            to="/"
+            className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
+              location.pathname === "/" || location.pathname === "/info"
+                ? "text-white bg-zinc-800 shadow-lg"
+                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+            }`}
+          >
+            {(location.pathname === "/" || location.pathname === "/info") && (
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
+            )}
+            Info
           </Link>
         </div>
       </nav>
@@ -56,7 +71,7 @@ function App() {
       {/* Main Content */}
       <main className="relative pt-32">
         <Routes>
-          <Route path="/" element={<Info />} />
+          <Route path="/info" element={<Info />} />
           <Route path="/work" element={<Work />} />
           <Route path="*" element={<Info />} />
         </Routes>
