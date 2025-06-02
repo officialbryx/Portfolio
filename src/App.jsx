@@ -141,7 +141,8 @@ function App() {
           </h2>
           <p className="text-gray-400 max-w-md mx-auto text-lg leading-relaxed">
             Computer Science
-            <br />I listen, translate, and illuminate.
+            <br />
+            lorem ipsum
           </p>
         </div>
 
