@@ -163,7 +163,7 @@ function Info() {
 
       {/* About Section */}
       <section className="min-h-screen py-24 px-8 relative">
-        <div className="max-w-5xl mx-auto border border-[#141414] rounded-xl p-8 backdrop-blur-sm bg-[#141414] transform-gpu transition-all duration-300 hover:rotate-2 hover:scale-[1.07]">
+        <div className="max-w-5xl mx-auto border border-gray-800 rounded-lg p-8 backdrop-blur-sm bg-gray-900/30 hover:bg-gray-900/50 transform-gpu transition-all duration-300 hover:border-gray-600">
           <div className="grid md:grid-cols-[60%_40%] gap-8 items-start">
             <div className="space-y-8">
               <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
@@ -202,7 +202,7 @@ function Info() {
       <section className="min-h-screen py-32 px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-thin mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
-            Journey
+            Work Experience
           </h2>
 
           <div className="relative">
@@ -225,14 +225,27 @@ function Info() {
                   }`}
                 >
                   <div className="group p-6 rounded-lg border border-gray-800 hover:border-gray-600 bg-gray-900/30 hover:bg-gray-900/50 transition-all duration-300 backdrop-blur-sm">
-                    <h3 className="text-xl font-medium text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
-                      {exp.role}
-                    </h3>
-                    <p className="text-gray-400 mb-2">{exp.company}</p>
-                    <p className="text-sm text-gray-500 mb-4">{exp.period}</p>
-                    <p className="text-gray-300 leading-relaxed">
-                      {exp.description}
-                    </p>
+                    <div className="flex flex-col md:flex-row gap-6 items-start">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-medium text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300">
+                          {exp.role}
+                        </h3>
+                        <p className="text-gray-400 mb-2">{exp.company}</p>
+                        <p className="text-sm text-gray-500 mb-4">
+                          {exp.period}
+                        </p>
+                        <p className="text-gray-300 leading-relaxed">
+                          {exp.description}
+                        </p>
+                      </div>
+                      <div className="w-full md:w-32 h-32 overflow-hidden rounded-lg">
+                        <img
+                          src="/aic.jpg"
+                          alt="Ateneo Innovation Center"
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -288,15 +301,6 @@ function Info() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-16 px-8 border-t border-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-500 text-sm">
-            © 2025 [YOUR NAME]. Crafted with passion and precision.
-          </p>
-        </div>
-      </footer>
 
       <style jsx>{`
         @keyframes fade-in {
