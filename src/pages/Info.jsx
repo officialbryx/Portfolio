@@ -162,13 +162,15 @@ function Info() {
       </section>
 
       {/* About Section */}
-      <section className="min-h-screen py-24 px-8 relative">
+      <section className="min-h-screen py-32 px-8 relative">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-5xl font-thin mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+            About
+          </h2>
+        </div>
         <div className="max-w-5xl mx-auto border border-gray-800 rounded-lg p-8 backdrop-blur-sm bg-gray-900/30 hover:bg-gray-900/50 transform-gpu transition-all duration-300 hover:border-gray-600">
           <div className="grid md:grid-cols-[60%_40%] gap-8 items-start">
             <div className="space-y-8">
-              <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                About
-              </h2>
               <div className="space-y-6 text-gray-300 leading-relaxed text-medium">
                 <p>
                   Bryan is a Computer Science student based in KA, who is
@@ -186,7 +188,7 @@ function Info() {
               </div>
             </div>
             <div className="relative h-full flex items-center pr-4">
-              <div className="overflow-hidden rounded-lg w-[90%] h-[320px]">
+              <div className="overflow-hidden rounded-lg w-[90%] h-[250px]">
                 <img
                   src="/IMG_5556.jpg"
                   alt="Bryan"
@@ -201,7 +203,7 @@ function Info() {
       {/* Experience Timeline */}
       <section className="min-h-screen py-32 px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-thin mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+          <h2 className="text-5xl font-thin mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
             Work Experience
           </h2>
 
