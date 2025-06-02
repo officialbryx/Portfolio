@@ -35,38 +35,39 @@ function App() {
 
   const projects = [
     {
-      title: "Neural Pathways",
-      category: "Machine Learning",
-      year: "2024",
+      title: "HireFlow",
+      category: "AI, LLM, Machine Learning",
+      year: "2025",
       description:
-        "Exploring the intersection of consciousness and computation",
-      tech: ["Python", "TensorFlow", "React"],
+        "An advanced Applicant Tracking System (ATS) that leverages machine learning algorithms (JobBERT and XGBoost) to revolutionize the recruitment process. This intelligent system automates resume screening, candidate ranking, and shortlisting, enabling organizations to make data-driven hiring decisions efficiently.",
+      tech: ["Python", "Deepseek", "React", "TensorFlow"],
       gradient: "from-blue-600/20 to-purple-600/20",
     },
     {
-      title: "Quantum Echoes",
-      category: "Data Visualization",
-      year: "2024",
-      description:
-        "Making the invisible visible through interactive narratives",
-      tech: ["D3.js", "WebGL", "Node.js"],
-      gradient: "from-emerald-600/20 to-teal-600/20",
-    },
-    {
-      title: "Digital Whispers",
-      category: "Web Experience",
-      year: "2023",
+      title: "UnlockX - Family Reunification Platform",
+      category: "lorem ipsum",
+      year: "2025",
       description: "Crafting stories that unfold through user interaction",
       tech: ["Next.js", "Three.js", "Framer Motion"],
       gradient: "from-orange-600/20 to-red-600/20",
     },
     {
-      title: "Silent Algorithms",
-      category: "Research",
-      year: "2023",
+      title: "Ward",
+      category: "lorem ipsum",
+      year: "2025",
       description: "Understanding patterns in the spaces between data",
       tech: ["R", "Python", "Observable"],
       gradient: "from-indigo-600/20 to-blue-600/20",
+    },
+    {
+      title:
+        "Point of Sales with Inventory System for Moon Hey Hotpot and Grill",
+      category: "lorem ipsum",
+      year: "2024",
+      description:
+        "The Point of Sales (POS) with Inventory System is a software solution designed to improve a company's restaurant operations such as managing inventory and processing orders. The software is specifically built to meet the company's needs with several essential modules tailored to support its operations. ",
+      tech: ["D3.js", "WebGL", "Node.js"],
+      gradient: "from-emerald-600/20 to-teal-600/20",
     },
   ];
 
@@ -135,11 +136,11 @@ function App() {
           }}
         >
           <h2 className="text-7xl md:text-9xl font-thin mb-8 leading-none">
-            <span className="block">Stories</span>
-            <span className="block text-gray-400">in Data</span>
+            <span className="block">Bryan</span>
+            <span className="block text-gray-400">Tiamzon</span>
           </h2>
           <p className="text-gray-400 max-w-md mx-auto text-lg leading-relaxed">
-            Every dataset whispers its secrets.
+            Computer Science
             <br />I listen, translate, and illuminate.
           </p>
         </div>
@@ -331,7 +332,7 @@ function App() {
       {/* Footer */}
       <footer className="py-12 px-8 border-t border-gray-800">
         <div className="max-w-6xl mx-auto flex justify-between items-center text-gray-500 text-sm">
-          <p>© 2024 Bryan Tiamzon</p>
+          <p>© 2025 Bryan Tiamzon</p>
           <p>Crafted with intention</p>
         </div>
       </footer>
