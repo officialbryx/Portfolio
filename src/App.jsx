@@ -20,15 +20,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-black overflow-x-hidden relative">
-      {/* Loading Screen */}
-      <div
-        className={`fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-1000 ${
-          isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <div className="w-1 h-32 bg-black animate-pulse"></div>
-      </div>
-
       {/* Navigation */}
       {showNav && (
         <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40 py-6">
