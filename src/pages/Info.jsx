@@ -10,14 +10,7 @@ function Info() {
   const [isTyping, setIsTyping] = useState(true);
   const heroRef = useRef(null);
 
-  const roles = [
-    "Full Stack Developer",
-    "System Architect",
-    "Code Craftsman",
-    "Problem Solver",
-    "Terminal Warrior",
-    "Logic Engineer",
-  ];
+  const roles = ["Full Stack Developer", "Data Scientist"];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
@@ -166,7 +159,7 @@ function Info() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white font-mono relative overflow-hidden">
+    <div className="min-h-screen bg-zinc-900 text-white font-mono relative overflow-hidden">
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -180,25 +173,6 @@ function Info() {
             transform: `translateY(${scrollY * 0.2}px)`,
           }}
         >
-          {/* ASCII Art Header */}
-          <div className="mb-8 text-xs md:text-sm font-mono text-white/40 whitespace-pre-line">
-            {`╔════════════════════════════════════════════════════════════════════════════════════════╗
-║                                    SYSTEM INITIALIZED                                    ║
-║                                 [DEVELOPER MODE: ACTIVE]                                 ║
-╚════════════════════════════════════════════════════════════════════════════════════════╝`}
-          </div>
-
-          {/* Terminal Prompt */}
-          <div className="mb-8 text-left text-sm md:text-base font-mono text-white/60 max-w-2xl mx-auto">
-            <div className="mb-2">
-              <span className="text-white">user@portfolio</span>
-              <span className="text-gray-400">:</span>
-              <span className="text-blue-400">~</span>
-              <span className="text-gray-400">$ </span>
-              <span className="text-white">whoami</span>
-            </div>
-          </div>
-
           {/* Name Display */}
           <div className="mb-8 relative">
             <h1 className="text-6xl md:text-8xl font-bold mb-4 leading-none tracking-wider relative">
@@ -477,30 +451,16 @@ function Info() {
       {/* Contact Section */}
       <section className="min-h-screen flex items-center justify-center px-8 relative z-10">
         <div className="text-center max-w-4xl">
-          <div className="mb-12 font-mono text-sm text-white/60">
-            <div className="border border-white/20 rounded-t bg-black/50 backdrop-blur-sm p-4">
-              <div className="flex items-center justify-between">
-                <span>bryan@terminal:~/contact$ ./connect.sh</span>
-                <span>[INITIALIZING_CONNECTION...]</span>
-              </div>
-            </div>
-          </div>
-
           <div className="border border-white/20 rounded-b bg-black/50 backdrop-blur-sm p-12">
-            <div className="text-6xl md:text-8xl font-bold font-mono mb-8 text-white">
-              {"{'>'} CONNECT"}
-            </div>
-
             <p className="text-lg md:text-xl mb-12 font-mono text-white/80 leading-relaxed max-w-2xl mx-auto">
-              Ready to build something extraordinary? Let's architect solutions
-              that push the boundaries of technology.
+              Contact me
             </p>
 
             <a
-              href="mailto:bryan.tiamzon@example.com"
-              className="inline-block text-2xl md:text-3xl font-mono font-bold mb-12 transition-all duration-500 transform hover:scale-110 px-8 py-4 border-2 border-white bg-black text-white hover:bg-white hover:text-black"
+              href="mailto:bryxph@gmail.com"
+              className="inline-block text-2xl md:text-3xl font-mono font-bold mb-12 transition-all duration-500 transform hover:scale-110 px-8 py-4 border-2 border-white bg-zinc-950 text-white hover:bg-white hover:text-zinc-950"
             >
-              bryan.tiamzon@example.com
+              bryxph@gmail.com
             </a>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">

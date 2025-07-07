@@ -13,10 +13,10 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-zinc-900 text-white overflow-x-hidden relative">
       {/* Loading Screen */}
       <div
-        className={`fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-1000 ${
+        className={`fixed inset-0 bg-zinc-900 z-50 flex items-center justify-center transition-opacity duration-1000 ${
           isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >

@@ -98,7 +98,7 @@ function Work() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-mono">
+    <div className="min-h-screen bg-zinc-900 text-white font-mono">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center pt-16 px-8">
         <div
@@ -143,24 +143,6 @@ function Work() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* ASCII Art Title */}
-          <div className="text-center mb-8">
-            <pre className="text-white text-xs md:text-sm leading-tight">
-              {`
-    ███▄ ▄███▓▓██   ██▓    ██▓███   ▒█████   ██▀███  ▄▄▄█████▓  █████▒▒█████   ██▓     ██▓ ▒█████  
-   ▓██▒▀█▀ ██▒ ▒██  ██▒   ▓██░  ██▒▒██▒  ██▒▓██ ▒ ██▒▓  ██▒ ▓▒▓██   ▒▒██▒  ██▒▓██▒    ▓██▒▒██▒  ██▒
-   ▓██    ▓██░  ▒██ ██░   ▓██░ ██▓▒▒██░  ██▒▓██ ░▄█ ▒▒ ▓██░ ▒░▒████ ░▒██░  ██▒▒██░    ▒██▒▒██░  ██▒
-   ▒██    ▒██   ░ ▐██▓░   ▒██▄█▓▒ ▒▒██   ██░▒██▀▀█▄  ░ ▓██▓ ░ ░▓█▒  ░▒██   ██░▒██░    ░██░▒██   ██░
-   ▒██▒   ░██▒  ░ ██▒▓░   ▒██▒ ░  ░░ ████▓▒░░██▓ ▒██▒  ▒██▒ ░ ░▒█░   ░ ████▓▒░░██████▒░██░░ ████▓▒░
-   ░ ▒░   ░  ░   ██▒▒▒    ▒▓▒░ ░  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░  ▒ ░░    ▒ ░   ░ ▒░▒░▒░ ░ ▒░▓  ░░▓  ░ ▒░▒░▒░ 
-   ░  ░      ░ ▓██ ░▒░    ░▒ ░       ░ ▒ ▒░   ░▒ ░ ▒░    ░     ░       ░ ▒ ▒░ ░ ░ ▒  ░ ▒ ░  ░ ▒ ▒░ 
-   ░      ░    ▒ ▒ ░░     ░░       ░ ░ ░ ▒    ░░   ░   ░       ░ ░   ░ ░ ░ ▒    ░ ░    ▒ ░░ ░ ░ ▒  
-          ░    ░ ░                    ░ ░     ░                       ░ ░      ░  ░ ░      ░ ░     
-               ░ ░                                                                                  
-`}
-            </pre>
           </div>
 
           {/* Stats */}
@@ -220,7 +202,7 @@ function Work() {
                 <div className="flex flex-col lg:flex-row gap-8">
                   {/* Project Terminal */}
                   <div className="flex-1">
-                    <div className="bg-black border border-gray-700 rounded-lg overflow-hidden">
+                    <div className="bg-zinc-950 border border-gray-700 rounded-lg overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
                         <div className="flex items-center space-x-2">
                           <div className="w-2 h-2 bg-red-500 rounded-full"></div>
