@@ -8,7 +8,7 @@ function Landing() {
   useEffect(() => {
     const resetInterval = setInterval(() => {
       setKey((prev) => prev + 1);
-    }, 8500);
+    }, 7500);
 
     const handleKeyPress = (e) => {
       if (e.key === "Enter") {
