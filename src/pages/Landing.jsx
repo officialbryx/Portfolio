@@ -8,7 +8,7 @@ function Landing() {
   useEffect(() => {
     const resetInterval = setInterval(() => {
       setKey((prev) => prev + 1);
-    }, 20000);
+    }, 8500);
 
     const handleKeyPress = (e) => {
       if (e.key === "Enter") {
@@ -52,7 +52,7 @@ function Landing() {
           style={{
             strokeDasharray: "5800",
             strokeDashoffset: "5800",
-            animation: "hello-draw 7s ease forwards",
+            animation: "hello-draw 8s ease forwards",
           }}
         >
           <path
@@ -90,8 +90,14 @@ function Landing() {
           0% {
             stroke-dashoffset: 5800;
           }
-          40% {
+          25% {
             stroke-dashoffset: 5800;
+          }
+          70% {
+            stroke-dashoffset: 0;
+          }
+          85% {
+            stroke-dashoffset: 0;
           }
           100% {
             stroke-dashoffset: 0;
