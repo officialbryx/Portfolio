@@ -159,7 +159,7 @@ function Info() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white font-mono relative overflow-hidden">
+    <div className="min-h-screen bg-black text-white font-mono relative overflow-hidden">
       {/* Hero Section */}
       <section
         ref={heroRef}

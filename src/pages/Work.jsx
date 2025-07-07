@@ -98,7 +98,7 @@ function Work() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white font-mono">
+    <div className="min-h-screen bg-black text-white font-mono">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center pt-16 px-8">
         <div
