@@ -42,6 +42,71 @@ function Landing() {
         )`,
       }}
     >
+      {/* Apple-style menu bar */}
+      <div className="absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10">
+        <div className="flex items-center space-x-4">
+          {/* Empty left side */}
+        </div>
+        <div className="flex items-center space-x-4 text-white/80">
+          {/* Wifi icon */}
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fillRule="evenodd"
+              d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.076 13.308-5.076 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.24 0 1 1 0 01-1.415-1.415 5 5 0 017.07 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+              clipRule="evenodd"
+            />
+          </svg>
+
+          {/* Battery percentage and icon close together */}
+          <div className="flex items-center space-x-1">
+            <span>22%</span>
+            <svg className="w-6 h-4" fill="currentColor" viewBox="0 0 24 16">
+              <rect
+                x="1"
+                y="4"
+                width="18"
+                height="8"
+                rx="2"
+                stroke="currentColor"
+                strokeWidth="1"
+                fill="none"
+              />
+              <rect
+                x="2"
+                y="5"
+                width="4.4"
+                height="6"
+                rx="1"
+                fill="currentColor"
+              />
+              <rect
+                x="20"
+                y="6"
+                width="2"
+                height="4"
+                rx="1"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+
+          <span>
+            {new Date()
+              .toLocaleDateString("en-US", {
+                weekday: "short",
+                month: "short",
+                day: "numeric",
+              })
+              .replace(",", "")}
+          </span>
+          <span>
+            {new Date().toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "2-digit",
+            })}
+          </span>
+        </div>
+      </div>
       <div
         key={key}
         className="flex items-center justify-center w-full max-w-[800px] mx-8"
@@ -64,25 +129,23 @@ function Landing() {
       </div>
 
       {/* Get Started button positioned at bottom */}
-      <div className="absolute bottom-8 flex flex-col items-center space-y-2">
-        <div
-          onClick={handleGetStarted}
-          className="group cursor-pointer w-10 h-10 rounded-full bg-gray-500/5 flex items-center justify-center transition-all duration-300 hover:bg-gray-500/10"
-        >
-          <div className="w-6 h-6 rounded-full border border-white flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-3 h-3 text-white"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </div>
+      <div className="absolute bottom-8 flex flex-col items-center space-y-3">
+        {/* Profile image */}
+        <div className="w-15 h-15 rounded-full overflow-hidden">
+          <img
+            src="/tiamzondp.JPG"
+            alt="Bryan Tiamzon"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "50% 5%" }}
+          />
         </div>
-        <span className="text-white/90 text-s font-light">Get Started</span>
+
+        <div onClick={handleGetStarted} className="cursor-pointer">
+          <span className="text-white font-bold text-lg">Bryan Tiamzon</span>
+        </div>
+        <span className="text-white/90 text-s font-light">
+          Press ENTER to Get Started
+        </span>
       </div>
 
       <style jsx>{`
