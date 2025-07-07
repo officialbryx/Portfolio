@@ -99,21 +99,6 @@ function Work() {
 
   return (
     <div className="min-h-screen bg-black text-white font-mono">
-      {/* Terminal Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-800">
-        <div className="flex items-center justify-between px-6 py-3">
-          <div className="flex items-center space-x-4">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            </div>
-            <span className="text-gray-400 text-sm">~/projects/portfolio</span>
-          </div>
-          <div className="text-gray-400 text-sm">{formatTime(currentTime)}</div>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center pt-16 px-8">
         <div

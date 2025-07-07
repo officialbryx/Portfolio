@@ -167,25 +167,6 @@ function Info() {
 
   return (
     <div className="min-h-screen bg-black text-white font-mono relative overflow-hidden">
-      {/* Terminal Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/20 backdrop-blur-sm">
-        <div className="flex items-center justify-between px-6 py-3">
-          <div className="flex items-center space-x-4">
-            <div className="flex space-x-2">
-              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-800 rounded-full"></div>
-            </div>
-            <span className="text-white/60 text-sm">
-              bryan@terminal:~/portfolio$ cat about.md
-            </span>
-          </div>
-          <div className="text-white/60 text-sm font-mono">
-            [{currentTime.toLocaleTimeString("en-US", { hour12: false })}]
-          </div>
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section
         ref={heroRef}
