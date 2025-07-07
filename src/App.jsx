@@ -19,30 +19,30 @@ function App() {
     location.pathname === "/info" || location.pathname === "/work";
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <div className="min-h-screen bg-white text-black overflow-x-hidden relative">
       {/* Loading Screen */}
       <div
-        className={`fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-1000 ${
+        className={`fixed inset-0 bg-white z-50 flex items-center justify-center transition-opacity duration-1000 ${
           isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
-        <div className="w-1 h-32 bg-white animate-pulse"></div>
+        <div className="w-1 h-32 bg-black animate-pulse"></div>
       </div>
 
       {/* Navigation */}
       {showNav && (
         <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40 py-6">
-          <div className="flex bg-zinc-900/90 backdrop-blur-md px-1 py-1 rounded-full border border-zinc-800/50 shadow-2xl">
+          <div className="flex bg-zinc-100/90 backdrop-blur-md px-1 py-1 rounded-full border border-zinc-200/50 shadow-2xl">
             <Link
               to="/work"
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
                 location.pathname === "/work"
-                  ? "text-white bg-zinc-800 shadow-lg"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                  ? "text-black bg-zinc-200 shadow-lg"
+                  : "text-zinc-600 hover:text-black hover:bg-zinc-200/50"
               }`}
             >
               {location.pathname === "/work" && (
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-black rounded-full shadow-lg shadow-black/50"></div>
               )}
               <BsBriefcase className="text-xl" />
             </Link>
@@ -50,12 +50,12 @@ function App() {
               to="/info"
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
                 location.pathname === "/info"
-                  ? "text-white bg-zinc-800 shadow-lg"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                  ? "text-black bg-zinc-200 shadow-lg"
+                  : "text-zinc-600 hover:text-black hover:bg-zinc-200/50"
               }`}
             >
               {location.pathname === "/info" && (
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-black rounded-full shadow-lg shadow-black/50"></div>
               )}
               <BsInfoCircle className="text-xl" />
             </Link>
@@ -67,12 +67,12 @@ function App() {
       {showNav && (
         <header className="fixed top-0 left-0 z-40 p-8">
           <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-400 rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-sm">BT</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-black to-gray-600 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">BT</span>
             </div>
             <div>
-              <h1 className="text-lg font-large">Bryan Tiamzon</h1>
-              <p className="text-gray-400 text-s font-medium">Data Science</p>
+              <h1 className="text-lg font-large text-black">Bryan Tiamzon</h1>
+              <p className="text-gray-600 text-s font-medium">Data Science</p>
             </div>
           </div>
         </header>
