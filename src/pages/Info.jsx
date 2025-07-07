@@ -9,157 +9,53 @@ function Info() {
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const heroRef = useRef(null);
-  const canvasRef = useRef(null);
 
   const roles = [
     "Full Stack Developer",
-    "UI/UX Designer",
+    "System Architect",
+    "Code Craftsman",
     "Problem Solver",
-    "Creative Thinker",
+    "Terminal Warrior",
+    "Logic Engineer",
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
-  // Catppuccin Mocha Colors
-  const colors = {
-    base: "#1e1e2e",
-    mantle: "#181825",
-    crust: "#11111b",
-    text: "#cdd6f4",
-    subtext0: "#a6adc8",
-    subtext1: "#bac2de",
-    surface0: "#313244",
-    surface1: "#45475a",
-    surface2: "#585b70",
-    overlay0: "#6c7086",
-    overlay1: "#7f849c",
-    overlay2: "#9399b2",
-    blue: "#89b4fa",
-    lavender: "#b4befe",
-    sapphire: "#74c7ec",
-    sky: "#89dceb",
-    teal: "#94e2d5",
-    green: "#a6e3a1",
-    yellow: "#f9e2af",
-    peach: "#fab387",
-    maroon: "#eba0ac",
-    red: "#f38ba8",
-    mauve: "#cba6f7",
-    pink: "#f5c2e7",
-    flamingo: "#f2cdcd",
-    rosewater: "#f5e0dc",
-  };
-
-  // Animated background particles
+  // Background effect
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles = [];
-    const particleCount = 50;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-        color: [colors.blue, colors.mauve, colors.pink, colors.sky][
-          Math.floor(Math.random() * 4)
-        ],
-        opacity: Math.random() * 0.5 + 0.1,
-      });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle, i) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-        // Mouse interaction
-        const dx = mousePos.x - particle.x;
-        const dy = mousePos.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 100) {
-          particle.x -= dx * 0.01;
-          particle.y -= dy * 0.01;
-        }
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle =
-          particle.color +
-          Math.floor(particle.opacity * 255)
-            .toString(16)
-            .padStart(2, "0");
-        ctx.fill();
-
-        // Connect nearby particles
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx2 = particles[j].x - particle.x;
-          const dy2 = particles[j].y - particle.y;
-          const distance2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-
-          if (distance2 < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = colors.blue + "20";
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
+    // Simple background effect setup
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Window resize handling if needed
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [mousePos]);
 
-  // Typewriter effect
+  // Typewriter effect with glitch
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
     let i = 0;
+    let isDeleting = false;
 
-    const typeInterval = setInterval(() => {
-      if (i < currentRole.length) {
-        setTypedText(currentRole.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typeInterval);
-        setTimeout(() => {
-          const deleteInterval = setInterval(() => {
-            if (i > 0) {
-              setTypedText(currentRole.slice(0, i - 1));
-              i--;
-            } else {
-              clearInterval(deleteInterval);
-              setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-            }
-          }, 50);
-        }, 2000);
-      }
-    }, 100);
+    const typeInterval = setInterval(
+      () => {
+        if (!isDeleting && i < currentRole.length) {
+          setTypedText(currentRole.slice(0, i + 1));
+          i++;
+        } else if (!isDeleting && i === currentRole.length) {
+          setTimeout(() => {
+            isDeleting = true;
+          }, 2000);
+        } else if (isDeleting && i > 0) {
+          setTypedText(currentRole.slice(0, i - 1));
+          i--;
+        } else {
+          isDeleting = false;
+          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      },
+      isDeleting ? 50 : 100
+    );
 
     return () => clearInterval(typeInterval);
   }, [currentRoleIndex]);
@@ -170,7 +66,6 @@ function Info() {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
-    // Update time every second
     const timeInterval = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -193,65 +88,69 @@ function Info() {
       level: 90,
       description:
         "Advanced proficiency in modern React development with hooks, context, and Next.js framework",
-      color: colors.blue,
+      category: "Frontend",
     },
     {
       name: "TypeScript",
       level: 85,
       description:
         "Strong experience with type-safe JavaScript development and large-scale applications",
-      color: colors.sapphire,
-    },
-    {
-      name: "UI/UX Design",
-      level: 95,
-      description:
-        "Expert level knowledge in user interface design, prototyping, and user experience research",
-      color: colors.mauve,
+      category: "Language",
     },
     {
       name: "Node.js & APIs",
-      level: 80,
+      level: 88,
       description:
-        "Solid foundation in backend development, REST APIs, and database integration",
-      color: colors.green,
+        "Comprehensive backend development, REST APIs, and microservices architecture",
+      category: "Backend",
     },
     {
       name: "Python & AI",
-      level: 88,
-      description:
-        "Comprehensive understanding of Python development and machine learning fundamentals",
-      color: colors.yellow,
-    },
-    {
-      name: "Cloud & DevOps",
       level: 82,
       description:
-        "Specialized experience in AWS, Docker, and CI/CD pipeline development",
-      color: colors.peach,
+        "Advanced Python programming with machine learning and data science capabilities",
+      category: "Language",
+    },
+    {
+      name: "DevOps & Cloud",
+      level: 75,
+      description: "Docker, Kubernetes, AWS, and CI/CD pipeline implementation",
+      category: "Infrastructure",
+    },
+    {
+      name: "Database Design",
+      level: 80,
+      description:
+        "PostgreSQL, MongoDB, Redis, and database optimization strategies",
+      category: "Database",
     },
   ];
 
   const socialLinks = [
     {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/bryantiamzon",
-      icon: "💼",
-      color: colors.blue,
-    },
-    {
       name: "GitHub",
       href: "https://github.com/bryantiamzon",
-      icon: "🔗",
-      color: colors.mauve,
+      icon: "⌘",
+      cmd: "git clone portfolio.git",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com/in/bryantiamzon",
+      icon: "⚡",
+      cmd: "connect --professional",
     },
     {
       name: "Portfolio",
       href: "https://bryantiamzon.dev",
-      icon: "🌐",
-      color: colors.teal,
+      icon: "◉",
+      cmd: "curl -X GET /portfolio",
     },
-    { name: "Resume", href: "/resume.pdf", icon: "📄", color: colors.peach },
+    {
+      name: "Resume",
+      href: "/resume.pdf",
+      icon: "⚙",
+      cmd: "cat resume.pdf",
+    },
   ];
 
   const experiences = [
@@ -260,520 +159,332 @@ function Info() {
       company: "Ateneo Innovation Center",
       period: "Feb 2025 - May 2025",
       description:
-        "Developing innovative web applications using React and Node.js, collaborating with cross-functional teams to deliver user-centered solutions for academic and research projects.",
-      tech: ["React", "Node.js", "MongoDB", "Figma"],
+        "Architecting scalable web applications using React and Node.js, implementing microservices architecture, and optimizing database queries for high-performance systems.",
+      tech: ["React", "Node.js", "MongoDB", "Docker", "AWS"],
+      status: "Active",
     },
   ];
 
-  // Interactive floating elements
-  const FloatingElements = () => (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {[...Array(8)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute w-2 h-2 rounded-full animate-pulse"
-          style={{
-            left: `${15 + i * 12}%`,
-            top: `${25 + i * 8}%`,
-            backgroundColor: [
-              colors.blue,
-              colors.mauve,
-              colors.pink,
-              colors.sky,
-              colors.teal,
-              colors.green,
-              colors.yellow,
-              colors.peach,
-            ][i],
-            transform: `translate(${mousePos.x * 0.02 * (i + 1)}px, ${
-              mousePos.y * 0.02 * (i + 1)
-            }px)`,
-            animationDelay: `${i * 0.3}s`,
-            transition: "transform 0.4s ease-out",
-            opacity: 0.6,
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Enhanced glowing cursor
-  const GlowCursor = () => (
-    <div
-      className="fixed pointer-events-none z-50 w-12 h-12 rounded-full mix-blend-screen"
-      style={{
-        left: mousePos.x - 24,
-        top: mousePos.y - 24,
-        background: `radial-gradient(circle, ${colors.mauve}80 0%, ${colors.blue}40 50%, transparent 100%)`,
-        transition: "transform 0.1s ease-out",
-        filter: "blur(2px)",
-      }}
-    />
-  );
-
   return (
-    <div
-      className="min-h-screen relative overflow-x-hidden"
-      style={{ backgroundColor: colors.base, color: colors.text }}
-    >
-      {/* Animated background canvas */}
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          background: `linear-gradient(135deg, ${colors.base} 0%, ${colors.mantle} 50%, ${colors.crust} 100%)`,
-        }}
-      />
+    <div className="min-h-screen bg-black text-white font-mono relative overflow-hidden">
+      {/* Terminal Header */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/20 backdrop-blur-sm">
+        <div className="flex items-center justify-between px-6 py-3">
+          <div className="flex items-center space-x-4">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
+              <div className="w-3 h-3 bg-gray-800 rounded-full"></div>
+            </div>
+            <span className="text-white/60 text-sm">
+              bryan@terminal:~/portfolio$ cat about.md
+            </span>
+          </div>
+          <div className="text-white/60 text-sm font-mono">
+            [{currentTime.toLocaleTimeString("en-US", { hour12: false })}]
+          </div>
+        </div>
+      </div>
 
-      <FloatingElements />
-      <GlowCursor />
-
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <section
         ref={heroRef}
-        className="min-h-screen flex items-center justify-center relative z-10"
+        className="min-h-screen flex items-center justify-center relative z-10 pt-16"
       >
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: `radial-gradient(circle at 30% 40%, ${colors.mauve}20 0%, transparent 50%), radial-gradient(circle at 80% 20%, ${colors.blue}15 0%, transparent 50%), radial-gradient(circle at 40% 80%, ${colors.teal}10 0%, transparent 50%)`,
-          }}
-        />
-
         <div
           className={`text-center transform transition-all duration-2000 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
           style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
+            transform: `translateY(${scrollY * 0.2}px)`,
           }}
         >
-          {/* Time and location */}
-          <div
-            className="mb-8 text-sm font-mono opacity-60"
-            style={{ color: colors.subtext0 }}
-          >
-            <span>
-              {currentTime.toLocaleTimeString("en-US", {
-                timeZone: "Asia/Manila",
-                hour12: false,
-              })}{" "}
-              • Taguig City, PH
-            </span>
+          {/* ASCII Art Header */}
+          <div className="mb-8 text-xs md:text-sm font-mono text-white/40 whitespace-pre-line">
+            {`╔════════════════════════════════════════════════════════════════════════════════════════╗
+║                                    SYSTEM INITIALIZED                                    ║
+║                                 [DEVELOPER MODE: ACTIVE]                                 ║
+╚════════════════════════════════════════════════════════════════════════════════════════╝`}
           </div>
 
-          <div className="mb-12 relative">
-            <h1 className="text-7xl md:text-[10rem] font-bold mb-4 leading-none tracking-wider relative">
-              <span
-                className="inline-block hover:scale-110 transition-all duration-700 cursor-default relative"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.text} 0%, ${colors.blue} 50%, ${colors.mauve} 100%)`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  filter: "drop-shadow(0 0 20px rgba(137, 180, 250, 0.3))",
-                }}
-              >
-                Bryan
-              </span>
-            </h1>
-            <h1 className="text-7xl md:text-[10rem] font-bold leading-none tracking-wider">
-              <span
-                className="inline-block hover:scale-110 transition-all duration-700 cursor-default"
-                style={{
-                  background: `linear-gradient(135deg, ${colors.mauve} 0%, ${colors.pink} 50%, ${colors.rosewater} 100%)`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  filter: "drop-shadow(0 0 20px rgba(203, 166, 247, 0.3))",
-                }}
-              >
-                Tiamzon
-              </span>
-            </h1>
-          </div>
-
-          {/* Animated role typewriter */}
-          <div className="mb-8 h-16 flex items-center justify-center">
-            <span
-              className="text-2xl md:text-3xl font-light tracking-wide"
-              style={{ color: colors.subtext1 }}
-            >
-              {typedText}
-              <span className="animate-pulse" style={{ color: colors.mauve }}>
-                |
-              </span>
-            </span>
-          </div>
-
-          <div className="space-y-4 mb-16">
-            <p
-              className="text-xl md:text-2xl font-light tracking-wide"
-              style={{ color: colors.subtext0 }}
-            >
-              Computer Science Student
-            </p>
-            <div
-              className="flex items-center justify-center gap-4 text-lg"
-              style={{ color: colors.overlay1 }}
-            >
-              <span>🎓 Passionate Learner</span>
-              <span>•</span>
-              <span>💻 Code Enthusiast</span>
-              <span>•</span>
-              <span>🎨 Design Lover</span>
+          {/* Terminal Prompt */}
+          <div className="mb-8 text-left text-sm md:text-base font-mono text-white/60 max-w-2xl mx-auto">
+            <div className="mb-2">
+              <span className="text-white">user@portfolio</span>
+              <span className="text-gray-400">:</span>
+              <span className="text-blue-400">~</span>
+              <span className="text-gray-400">$ </span>
+              <span className="text-white">whoami</span>
             </div>
           </div>
 
-          {/* Interactive CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            <button
-              className="group px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-2 backdrop-blur-sm"
-              style={{
-                backgroundColor: colors.mauve + "20",
-                borderColor: colors.mauve,
-                color: colors.text,
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = colors.mauve;
-                e.target.style.color = colors.base;
-                e.target.style.boxShadow = `0 10px 30px ${colors.mauve}40`;
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = colors.mauve + "20";
-                e.target.style.color = colors.text;
-                e.target.style.boxShadow = "none";
-              }}
-            >
+          {/* Name Display */}
+          <div className="mb-8 relative">
+            <h1 className="text-6xl md:text-8xl font-bold mb-4 leading-none tracking-wider relative">
+              <span className="inline-block hover:scale-110 transition-all duration-700 cursor-default text-white hover:text-white filter hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                BRYAN
+              </span>
+            </h1>
+            <h1 className="text-6xl md:text-8xl font-bold leading-none tracking-wider">
+              <span className="inline-block hover:scale-110 transition-all duration-700 cursor-default text-white hover:text-white filter hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                TIAMZON
+              </span>
+            </h1>
+          </div>
+
+          {/* Typewriter Role */}
+          <div className="mb-8 h-12 flex items-center justify-center">
+            <span className="text-xl md:text-2xl font-mono text-white/80">
+              {">"} {typedText}
+              <span className="animate-pulse text-white">_</span>
+            </span>
+          </div>
+
+          {/* Status Line */}
+          <div className="mb-12 text-center">
+            <div className="inline-block border border-white/20 rounded px-4 py-2 bg-black/50 backdrop-blur-sm">
+              <div className="flex items-center gap-4 text-sm font-mono">
+                <span className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  STATUS: ONLINE
+                </span>
+                <span className="text-white/40">|</span>
+                <span>MODE: DEVELOPER</span>
+                <span className="text-white/40">|</span>
+                <span>LOCATION: TAGUIG_CITY</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            <button className="group px-8 py-4 bg-white text-black font-mono font-bold transition-all duration-300 transform hover:scale-105 hover:bg-gray-200 border-2 border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
               <span className="flex items-center gap-2">
-                View My Work
+                ./view_projects.sh
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
-                  →
+                  {">"}
                 </span>
               </span>
             </button>
 
-            <button
-              className="group px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border-2 backdrop-blur-sm"
-              style={{
-                backgroundColor: "transparent",
-                borderColor: colors.blue,
-                color: colors.blue,
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = colors.blue + "20";
-                e.target.style.boxShadow = `0 10px 30px ${colors.blue}30`;
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "transparent";
-                e.target.style.boxShadow = "none";
-              }}
-            >
-              <span className="flex items-center gap-2">📧 Get In Touch</span>
+            <button className="group px-8 py-4 bg-transparent text-white font-mono font-bold transition-all duration-300 transform hover:scale-105 border-2 border-white hover:bg-white hover:text-black">
+              <span className="flex items-center gap-2">contact --init</span>
             </button>
           </div>
 
-          {/* Enhanced scroll indicator */}
+          {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
             <div className="flex flex-col items-center gap-2 animate-bounce">
-              <span
-                className="text-xs font-mono opacity-60"
-                style={{ color: colors.subtext0 }}
-              >
-                Scroll to explore
+              <span className="text-xs font-mono text-white/60">
+                [SCROLL_TO_EXPLORE]
               </span>
-              <div
-                className="w-6 h-10 border-2 rounded-full flex justify-center relative overflow-hidden"
-                style={{ borderColor: colors.mauve + "60" }}
-              >
-                <div
-                  className="w-1 h-3 rounded-full mt-2 animate-pulse"
-                  style={{ backgroundColor: colors.mauve }}
-                />
+              <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center relative">
+                <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced About Section */}
+      {/* About Section */}
       <section className="min-h-screen py-32 px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <h2
-            className="text-6xl font-bold mb-20 text-center drop-shadow-lg"
-            style={{
-              background: `linear-gradient(135deg, ${colors.text} 0%, ${colors.blue} 50%, ${colors.mauve} 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            About Me
-          </h2>
-        </div>
-        <div
-          className="max-w-5xl mx-auto rounded-2xl p-8 backdrop-blur-xl transform-gpu transition-all duration-500 hover:scale-[1.02] border"
-          style={{
-            backgroundColor: colors.surface0 + "40",
-            borderColor: colors.surface2,
-            boxShadow: `0 25px 50px ${colors.crust}80`,
-          }}
-        >
-          <div className="grid md:grid-cols-[60%_40%] gap-12 items-center">
-            <div className="space-y-8">
-              <div
-                className="space-y-6 leading-relaxed text-lg"
-                style={{ color: colors.subtext1 }}
-              >
-                <p className="text-xl leading-relaxed">
-                  Bryan is a passionate Computer Science student based in Metro
-                  Manila, who thrives on creating
-                  <span
-                    className="font-semibold mx-2"
-                    style={{ color: colors.mauve }}
-                  >
-                    digital experiences
-                  </span>
-                  that bridge technology and human needs. When not coding,
-                  you'll find him exploring books, going on solo adventures,
-                  staying fit through hypertrophy training, or expressing
-                  creativity through art.
-                </p>
-                <p>
-                  From childhood, art and design have been his compass. The
-                  transformative power of exceptional design continues to
-                  inspire him, often sparking that familiar thrill of creative
-                  excitement that drives his work today.
-                </p>
-                <div className="flex flex-wrap gap-3 pt-4">
-                  {[
-                    "Creative Problem Solving",
-                    "Human-Centered Design",
-                    "Full-Stack Development",
-                    "UI/UX Research",
-                  ].map((interest, i) => (
-                    <span
-                      key={i}
-                      className="px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border"
-                      style={{
-                        backgroundColor: colors.surface1 + "60",
-                        borderColor: colors.surface2,
-                        color: colors.subtext1,
-                      }}
-                    >
-                      {interest}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="relative h-full flex items-center justify-center">
-              <div
-                className="relative rounded-2xl overflow-hidden w-72 h-80 transform hover:scale-105 transition-all duration-500 border-4"
-                style={{
-                  borderColor: colors.mauve + "60",
-                  boxShadow: `0 20px 40px ${colors.mauve}20`,
-                }}
-              >
-                <div
-                  className="absolute inset-0 rounded-2xl"
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.mauve}20 0%, ${colors.blue}20 100%)`,
-                  }}
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
-                  alt="Bryan Tiamzon"
-                  className="w-full h-full object-cover relative z-10"
-                />
+        <div className="max-w-6xl mx-auto">
+          {/* Terminal Header */}
+          <div className="mb-12 font-mono text-sm text-white/60">
+            <div className="border border-white/20 rounded-t bg-black/50 backdrop-blur-sm p-4">
+              <div className="flex items-center justify-between">
+                <span>bryan@terminal:~/about$ cat profile.txt</span>
+                <span>[EXECUTING...]</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Enhanced Skills Section */}
-      <section className="py-32 px-8 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <h2
-            className="text-6xl font-bold mb-20 text-center"
-            style={{
-              background: `linear-gradient(135deg, ${colors.text} 0%, ${colors.blue} 50%, ${colors.mauve} 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Skills & Expertise
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.name}
-                className="group relative p-6 rounded-2xl backdrop-blur-xl transition-all duration-500 hover:scale-105 border cursor-pointer"
-                style={{
-                  backgroundColor: colors.surface0 + "30",
-                  borderColor:
-                    activeSkill === index ? skill.color : colors.surface2,
-                  boxShadow:
-                    activeSkill === index
-                      ? `0 20px 40px ${skill.color}30`
-                      : `0 10px 20px ${colors.crust}40`,
-                }}
-                onMouseEnter={() => setActiveSkill(index)}
-                onMouseLeave={() => setActiveSkill(null)}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3
-                    className="text-xl font-semibold"
-                    style={{ color: colors.text }}
-                  >
-                    {skill.name}
-                  </h3>
-                  <span
-                    className="text-sm font-mono"
-                    style={{ color: skill.color }}
-                  >
-                    {skill.level}%
-                  </span>
+          <div className="border border-white/20 rounded-b bg-black/50 backdrop-blur-sm p-8">
+            <div className="grid md:grid-cols-[60%_40%] gap-12 items-center">
+              <div className="space-y-6">
+                <div className="font-mono text-sm text-white/60 mb-4">
+                  <span className="text-green-400">INFO:</span> Loading
+                  developer profile...
                 </div>
 
-                <div className="mb-4">
-                  <div
-                    className="h-2 rounded-full overflow-hidden"
-                    style={{ backgroundColor: colors.surface2 }}
-                  >
-                    <div
-                      className="h-full rounded-full transition-all duration-1000 ease-out"
-                      style={{
-                        width: activeSkill === index ? `${skill.level}%` : "0%",
-                        backgroundColor: skill.color,
-                        boxShadow: `0 0 10px ${skill.color}60`,
-                      }}
-                    />
+                <div className="space-y-4 text-white/90 font-mono text-sm leading-relaxed">
+                  <p>
+                    <span className="text-white/60">{">"}</span> Bryan is a
+                    passionate Computer Science student specializing in{" "}
+                    <span className="text-white font-bold">
+                      full-stack development
+                    </span>{" "}
+                    and
+                    <span className="text-white font-bold">
+                      system architecture
+                    </span>
+                    .
+                  </p>
+
+                  <p>
+                    <span className="text-white/60">{">"}</span> When not
+                    crafting code, you'll find him diving into technical
+                    documentation, exploring new frameworks, optimizing
+                    algorithms, or contributing to open-source projects.
+                  </p>
+
+                  <p>
+                    <span className="text-white/60">{">"}</span> His passion for
+                    clean code and efficient solutions drives him to constantly
+                    push the boundaries of what's possible in software
+                    development.
+                  </p>
+                </div>
+
+                <div className="mt-6">
+                  <div className="text-white/60 text-sm mb-3 font-mono">
+                    CORE_COMPETENCIES:
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      "System Design",
+                      "Algorithm Optimization",
+                      "Database Architecture",
+                      "API Development",
+                    ].map((skill, i) => (
+                      <div
+                        key={i}
+                        className="text-xs font-mono border border-white/20 px-3 py-1 bg-black/50"
+                      >
+                        {skill}
+                      </div>
+                    ))}
                   </div>
                 </div>
-
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: colors.subtext0 }}
-                >
-                  {skill.description}
-                </p>
-
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background: `linear-gradient(135deg, ${skill.color}10 0%, transparent 100%)`,
-                  }}
-                />
               </div>
-            ))}
+
+              <div className="relative">
+                <div className="border border-white/20 p-4 bg-black/50 backdrop-blur-sm">
+                  <div className="text-xs font-mono text-white/60 mb-2">
+                    PROFILE_IMAGE.JPG
+                  </div>
+                  <img
+                    src="/bryantiamzon.JPG"
+                    alt="Bryan Tiamzon"
+                    className="w-full aspect-[3/4] object-cover rounded border border-white/10 hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="text-xs font-mono text-white/40 mt-2">
+                    Resolution: 300x300 | Status: ACTIVE
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Experience Timeline */}
-      <section className="min-h-screen py-32 px-8 relative z-10">
+      {/* Skills Section */}
+      <section className="py-32 px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 font-mono text-sm text-white/60">
+            <div className="border border-white/20 rounded-t bg-black/50 backdrop-blur-sm p-4">
+              <div className="flex items-center justify-between">
+                <span>bryan@terminal:~/skills$ ls -la</span>
+                <span>[LISTING_SKILLS...]</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border border-white/20 rounded-b bg-black/50 backdrop-blur-sm p-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skills.map((skill, index) => (
+                <div
+                  key={skill.name}
+                  className="group border border-white/10 p-6 bg-black/30 hover:bg-black/50 hover:border-white/20 transition-all duration-300"
+                  onMouseEnter={() => setActiveSkill(index)}
+                  onMouseLeave={() => setActiveSkill(null)}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-mono text-sm text-white/60">
+                      {skill.category}
+                    </div>
+                    <div className="text-xs font-mono text-white/40">
+                      [{skill.level}%]
+                    </div>
+                  </div>
+
+                  <h3 className="text-white font-mono font-bold mb-3">
+                    {skill.name}
+                  </h3>
+
+                  <div className="mb-4">
+                    <div className="h-1 bg-white/20 rounded overflow-hidden">
+                      <div
+                        className="h-full bg-white transition-all duration-1000 ease-out"
+                        style={{
+                          width:
+                            activeSkill === index ? `${skill.level}%` : "0%",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <p className="text-xs font-mono text-white/60 leading-relaxed">
+                    {skill.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="py-32 px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h2
-            className="text-6xl font-bold mb-20 text-center"
-            style={{
-              background: `linear-gradient(135deg, ${colors.text} 0%, ${colors.blue} 50%, ${colors.mauve} 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Experience
-          </h2>
+          <div className="mb-12 font-mono text-sm text-white/60">
+            <div className="border border-white/20 rounded-t bg-black/50 backdrop-blur-sm p-4">
+              <div className="flex items-center justify-between">
+                <span>bryan@terminal:~/experience$ git log --oneline</span>
+                <span>[LOADING_HISTORY...]</span>
+              </div>
+            </div>
+          </div>
 
-          <div className="relative">
-            <div
-              className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 rounded-full transform md:-translate-x-1/2"
-              style={{
-                background: `linear-gradient(to bottom, transparent, ${colors.mauve}, transparent)`,
-              }}
-            />
-
+          <div className="border border-white/20 rounded-b bg-black/50 backdrop-blur-sm p-8">
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`relative mb-16 ${
-                  index % 2 === 0 ? "md:pr-1/2" : "md:pl-1/2 md:text-right"
-                }`}
+                className="border-l-2 border-white/20 pl-8 pb-8 relative"
               >
-                <div
-                  className="absolute left-8 md:left-1/2 w-6 h-6 rounded-full transform -translate-x-1/2 hover:scale-125 transition-all duration-300 border-4"
-                  style={{
-                    backgroundColor: colors.mauve,
-                    borderColor: colors.base,
-                    boxShadow: `0 0 20px ${colors.mauve}60`,
-                  }}
-                />
+                <div className="absolute left-0 top-0 w-4 h-4 bg-white rounded-full transform -translate-x-[9px] animate-pulse"></div>
 
-                <div
-                  className={`ml-16 md:ml-0 ${
-                    index % 2 === 0 ? "md:mr-16" : "md:ml-16"
-                  }`}
-                >
-                  <div
-                    className="group p-8 rounded-2xl transition-all duration-500 backdrop-blur-xl hover:scale-105 border"
-                    style={{
-                      backgroundColor: colors.surface0 + "40",
-                      borderColor: colors.surface2,
-                      boxShadow: `0 20px 40px ${colors.crust}60`,
-                    }}
-                  >
-                    <div className="flex flex-col md:flex-row gap-8 items-start">
-                      <div className="flex-1 space-y-4">
-                        <h3
-                          className="text-2xl font-bold group-hover:scale-105 transition-transform duration-300"
-                          style={{ color: colors.text }}
-                        >
-                          {exp.role}
-                        </h3>
-                        <p
-                          className="text-lg font-medium"
-                          style={{ color: colors.blue }}
-                        >
-                          {exp.company}
-                        </p>
-                        <p
-                          className="text-sm font-mono"
-                          style={{ color: colors.subtext0 }}
-                        >
-                          {exp.period}
-                        </p>
-                        <p
-                          className="leading-relaxed"
-                          style={{ color: colors.subtext1 }}
-                        >
-                          {exp.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 pt-2">
-                          {exp.tech.map((tech, i) => (
-                            <span
-                              key={i}
-                              className="px-3 py-1 rounded-full text-xs font-medium border"
-                              style={{
-                                backgroundColor: colors.surface1 + "60",
-                                borderColor: colors.surface2,
-                                color: colors.subtext1,
-                              }}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div
-                        className="w-full md:w-32 h-32 overflow-hidden rounded-xl border-2"
-                        style={{ borderColor: colors.surface2 }}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <span className="text-xs font-mono text-white/40">
+                      commit {Math.random().toString(36).substr(2, 7)}
+                    </span>
+                    <span className="text-xs font-mono text-green-400 px-2 py-1 border border-green-400/20 bg-green-400/10">
+                      {exp.status}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-mono font-bold text-white">
+                    {exp.role}
+                  </h3>
+                  <p className="text-white/80 font-mono">{exp.company}</p>
+                  <p className="text-sm font-mono text-white/60">
+                    {exp.period}
+                  </p>
+
+                  <p className="text-sm font-mono text-white/80 leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {exp.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-1 text-xs font-mono border border-white/20 bg-black/50 text-white/80"
                       >
-                        <img
-                          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&h=200&fit=crop"
-                          alt="Ateneo Innovation Center"
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                    </div>
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -782,199 +493,138 @@ function Info() {
         </div>
       </section>
 
-      {/* Enhanced Contact Section */}
+      {/* Contact Section */}
       <section className="min-h-screen flex items-center justify-center px-8 relative z-10">
         <div className="text-center max-w-4xl">
-          <h2
-            className="text-7xl md:text-9xl font-bold mb-16"
-            style={{
-              background: `linear-gradient(135deg, ${colors.text} 0%, ${colors.mauve} 50%, ${colors.pink} 100%)`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              filter: "drop-shadow(0 0 30px rgba(203, 166, 247, 0.3))",
-            }}
-          >
-            Let's Create
-          </h2>
-
-          <p
-            className="text-xl md:text-2xl mb-20 leading-relaxed font-light max-w-2xl mx-auto"
-            style={{ color: colors.subtext1 }}
-          >
-            Ready to bring your ideas to life? Let's collaborate and build
-            something amazing together. I'm always excited to work on innovative
-            projects and meaningful solutions.
-          </p>
-
-          <a
-            href="mailto:bryan.tiamzon@example.com"
-            className="inline-block text-3xl md:text-4xl font-light mb-16 transition-all duration-500 transform hover:scale-110 px-8 py-4 rounded-2xl backdrop-blur-xl border-2"
-            style={{
-              color: colors.text,
-              borderColor: colors.mauve + "60",
-              backgroundColor: colors.surface0 + "30",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = colors.mauve + "20";
-              e.target.style.borderColor = colors.mauve;
-              e.target.style.boxShadow = `0 20px 40px ${colors.mauve}40`;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = colors.surface0 + "30";
-              e.target.style.borderColor = colors.mauve + "60";
-              e.target.style.boxShadow = "none";
-            }}
-          >
-            bryan.tiamzon@example.com
-          </a>
-
-          {/* Enhanced Social Links */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {socialLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative p-8 rounded-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-4 backdrop-blur-xl border-2"
-                style={{
-                  backgroundColor: colors.surface0 + "30",
-                  borderColor: colors.surface2,
-                  animationDelay: `${index * 150}ms`,
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = link.color + "20";
-                  e.target.style.borderColor = link.color;
-                  e.target.style.boxShadow = `0 25px 50px ${link.color}40`;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = colors.surface0 + "30";
-                  e.target.style.borderColor = colors.surface2;
-                  e.target.style.boxShadow = "none";
-                }}
-              >
-                <div className="text-4xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
-                  {link.icon}
-                </div>
-                <span
-                  className="text-sm font-medium transition-all duration-300"
-                  style={{ color: colors.subtext1 }}
-                >
-                  {link.name}
-                </span>
-
-                {/* Animated border */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: `linear-gradient(135deg, ${link.color}15 0%, transparent 100%)`,
-                  }}
-                />
-              </a>
-            ))}
+          <div className="mb-12 font-mono text-sm text-white/60">
+            <div className="border border-white/20 rounded-t bg-black/50 backdrop-blur-sm p-4">
+              <div className="flex items-center justify-between">
+                <span>bryan@terminal:~/contact$ ./connect.sh</span>
+                <span>[INITIALIZING_CONNECTION...]</span>
+              </div>
+            </div>
           </div>
 
-          {/* Fun footer */}
-          <div
-            className="mt-20 pt-12 border-t"
-            style={{ borderColor: colors.surface2 }}
-          >
-            <p
-              className="text-sm font-mono opacity-60"
-              style={{ color: colors.subtext0 }}
-            >
-              Made with 💜 using React • Catppuccin Mocha Theme •{" "}
-              {new Date().getFullYear()}
+          <div className="border border-white/20 rounded-b bg-black/50 backdrop-blur-sm p-12">
+            <div className="text-6xl md:text-8xl font-bold font-mono mb-8 text-white">
+              {"{'>'} CONNECT"}
+            </div>
+
+            <p className="text-lg md:text-xl mb-12 font-mono text-white/80 leading-relaxed max-w-2xl mx-auto">
+              Ready to build something extraordinary? Let's architect solutions
+              that push the boundaries of technology.
             </p>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <div
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ backgroundColor: colors.green }}
-              />
-              <span className="text-xs" style={{ color: colors.subtext0 }}>
-                Currently available for new opportunities
-              </span>
+
+            <a
+              href="mailto:bryan.tiamzon@example.com"
+              className="inline-block text-2xl md:text-3xl font-mono font-bold mb-12 transition-all duration-500 transform hover:scale-110 px-8 py-4 border-2 border-white bg-black text-white hover:bg-white hover:text-black"
+            >
+              bryan.tiamzon@example.com
+            </a>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-6 border border-white/20 bg-black/30 hover:bg-black/50 hover:border-white/40 transition-all duration-300 transform hover:scale-105"
+                >
+                  <div className="text-3xl mb-3 font-mono text-white group-hover:animate-pulse">
+                    {link.icon}
+                  </div>
+                  <div className="text-sm font-mono text-white/80 mb-2">
+                    {link.name}
+                  </div>
+                  <div className="text-xs font-mono text-white/40">
+                    {link.cmd}
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-16 pt-8 border-t border-white/20">
+              <p className="text-xs font-mono text-white/40">
+                © 2025 Bryan Tiamzon • Built with React • Powered by Terminal
+                Aesthetics
+              </p>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs font-mono text-white/60">
+                  System Status: ONLINE • Available for new projects
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Custom styles */}
+      {/* Custom Styles */}
       <style jsx>{`
-        @keyframes float {
+        @keyframes blink {
           0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        @keyframes glow {
-          0%,
-          100% {
-            opacity: 0.5;
-          }
           50% {
             opacity: 1;
           }
-        }
-
-        @keyframes rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
+          51%,
+          100% {
+            opacity: 0;
           }
         }
 
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
+        @keyframes glitch {
+          0%,
+          100% {
+            transform: translate(0);
+          }
+          20% {
+            transform: translate(-2px, 2px);
+          }
+          40% {
+            transform: translate(-2px, -2px);
+          }
+          60% {
+            transform: translate(2px, 2px);
+          }
+          80% {
+            transform: translate(2px, -2px);
+          }
         }
 
-        .animate-glow {
-          animation: glow 2s ease-in-out infinite;
+        .animate-glitch {
+          animation: glitch 0.3s linear infinite;
         }
 
-        .animate-rotate {
-          animation: rotate 20s linear infinite;
-        }
-
-        /* Smooth scrolling */
         html {
           scroll-behavior: smooth;
         }
 
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
           width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-          background: ${colors.surface0};
+          background: #000;
         }
 
         ::-webkit-scrollbar-thumb {
-          background: ${colors.mauve};
-          border-radius: 4px;
+          background: #fff;
+          border-radius: 0;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: ${colors.blue};
+          background: #ccc;
         }
 
-        /* Selection color */
         ::selection {
-          background: ${colors.mauve}40;
-          color: ${colors.text};
+          background: #fff;
+          color: #000;
         }
 
-        /* Focus styles */
         button:focus,
         a:focus {
-          outline: 2px solid ${colors.mauve};
+          outline: 2px solid #fff;
           outline-offset: 2px;
         }
       `}</style>

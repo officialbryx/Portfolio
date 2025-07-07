@@ -3,562 +3,378 @@ import { useEffect, useState } from "react";
 function Work() {
   const [scrollY, setScrollY] = useState(0);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
+
+    // Update time every second
+    const timeInterval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    // Typing animation
+    const text = "portfolio.init()";
+    let index = 0;
+    const typingInterval = setInterval(() => {
+      if (index < text.length) {
+        setTypedText(text.substring(0, index + 1));
+        index++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 150);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
+      clearInterval(timeInterval);
+      clearInterval(typingInterval);
     };
   }, []);
 
   const projects = [
     {
       title: "HireFlow",
-      category: "AI, LLM, Machine Learning",
+      category: "AI • ML • NLP",
       year: "2025",
       description:
-        "An advanced Applicant Tracking System (ATS) that leverages machine learning algorithms (JobBERT and XGBoost) to revolutionize the recruitment process. This intelligent system automates resume screening, candidate ranking, and shortlisting, enabling organizations to make data-driven hiring decisions efficiently.",
-      tech: ["Python", "Deepseek", "React", "TensorFlow"],
-      gradient: "from-blue-400 via-teal-400 to-green-400",
-      bgColor: "bg-blue-600/10",
-      accentColor: "text-blue-400",
-      icon: "🤖",
+        "Advanced ATS leveraging JobBERT and XGBoost algorithms for intelligent resume screening and candidate ranking. Automates recruitment pipeline with ML-driven decision making.",
+      tech: ["Python", "TensorFlow", "React", "Deepseek", "XGBoost", "BERT"],
+      lines: "2,847",
+      commits: "127",
+      status: "active",
     },
     {
-      title: "UnlockX - Family Reunification Platform",
-      category: "Computer Vision, Security, Face Recognition",
+      title: "UnlockX",
+      category: "Computer Vision • Security",
       year: "2025",
       description:
-        "A sophisticated facial recognition security system built for family reunification and access control. The application uses advanced computer vision algorithms (InsightFace) to detect, analyze and match faces in real-time. It features family registration, face-based authentication, unknown face tracking, and a comprehensive family status monitoring system.",
-      tech: [
-        "Python",
-        "PyQt5",
-        "OpenCV",
-        "InsightFace",
-        "NumPy",
-        "Face Recognition",
-        "Threading",
-      ],
-      gradient: "from-red-400 via-pink-400 to-purple-400",
-      bgColor: "bg-red-600/10",
-      accentColor: "text-red-400",
-      icon: "👥",
+        "Facial recognition system using InsightFace algorithms for family reunification. Real-time face detection, authentication, and access control with advanced CV pipelines.",
+      tech: ["Python", "OpenCV", "InsightFace", "PyQt5", "NumPy", "Threading"],
+      lines: "1,923",
+      commits: "89",
+      status: "stable",
     },
     {
       title: "Ward",
-      category: "AI, Computer Vision, Face Recognition",
+      category: "AI • Computer Vision",
       year: "2025",
       description:
-        "An advanced face detection and recognition system that captures and analyzes video feeds in real-time. The system uses deep learning models for face detection, ArcFace for face recognition, and includes features like highlight recording based on visibility changes. It supports both live camera feeds and screen capture.",
-      tech: [
-        "Python",
-        "OpenCV",
-        "InsightFace",
-        "NumPy",
-        "PIL (Python Imaging Library)",
-      ],
-      gradient: "from-purple-400 via-indigo-400 to-blue-400",
-      bgColor: "bg-purple-600/10",
-      accentColor: "text-purple-400",
-      icon: "👁️",
+        "Real-time face detection and recognition system with ArcFace integration. Features live video analysis, highlight recording, and visibility change detection.",
+      tech: ["Python", "OpenCV", "InsightFace", "PIL", "NumPy", "Threading"],
+      lines: "1,456",
+      commits: "67",
+      status: "beta",
     },
     {
-      title: "Moon Hey Hotpot POS & Inventory System",
-      category: "Restaurant Management, Point of Sale, Inventory Management",
+      title: "Moon Hey Hotpot POS",
+      category: "Desktop App • Database",
       year: "2024",
       description:
-        "The Point of Sales (POS) with Inventory System is a software solution designed to improve a company's restaurant operations such as managing inventory and processing orders. The software is specifically built to meet the company's needs with several essential modules tailored to support its operations.",
-      tech: ["Python", "PyQt5", "MySQL", "pandas", "matplotlib"],
-      gradient: "from-green-400 via-emerald-400 to-teal-400",
-      bgColor: "bg-green-600/10",
-      accentColor: "text-green-400",
-      icon: "🍲",
+        "Full-stack POS system with inventory management. Built with PyQt5 for restaurant operations, featuring order processing and analytics dashboard.",
+      tech: ["Python", "PyQt5", "MySQL", "pandas", "matplotlib", "SQL"],
+      lines: "3,201",
+      commits: "156",
+      status: "deployed",
     },
   ];
 
-  const floatingElements = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 4,
-    duration: Math.random() * 10 + 15,
-  }));
+  const statusColors = {
+    active: "text-green-400",
+    stable: "text-blue-400",
+    beta: "text-yellow-400",
+    deployed: "text-purple-400",
+  };
+
+  const formatTime = (date) => {
+    return date.toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 relative overflow-hidden">
-      {/* Floating Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        {floatingElements.map((element) => (
-          <div
-            key={element.id}
-            className="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 animate-pulse"
-            style={{
-              width: `${element.size}px`,
-              height: `${element.size}px`,
-              left: `${element.x}%`,
-              top: `${element.y}%`,
-              animationDelay: `${element.delay}s`,
-              animationDuration: `${element.duration}s`,
-            }}
-          />
-        ))}
+    <div className="min-h-screen bg-black text-white font-mono">
+      {/* Terminal Header */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-800">
+        <div className="flex items-center justify-between px-6 py-3">
+          <div className="flex items-center space-x-4">
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="text-gray-400 text-sm">~/projects/portfolio</span>
+          </div>
+          <div className="text-gray-400 text-sm">{formatTime(currentTime)}</div>
+        </div>
       </div>
 
-      {/* Mouse Follower */}
-      <div
-        className="fixed w-96 h-96 pointer-events-none z-0 opacity-30"
-        style={{
-          left: mousePosition.x - 192,
-          top: mousePosition.y - 192,
-          background: `radial-gradient(circle, rgba(147, 197, 253, 0.1) 0%, rgba(167, 139, 250, 0.05) 50%, transparent 70%)`,
-          transition: "left 0.1s ease-out, top 0.1s ease-out",
-        }}
-      />
-
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative z-10 overflow-hidden">
-        {/* Interactive Grid Background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="grid grid-cols-12 grid-rows-8 h-full w-full gap-4 p-8">
-            {Array.from({ length: 96 }, (_, i) => (
-              <div
-                key={i}
-                className="border border-blue-400/20 rounded hover:bg-blue-400/10 hover:border-blue-400/40 transition-all duration-500 cursor-pointer"
-                style={{
-                  animationDelay: `${i * 0.02}s`,
-                  animation: `fadeInScale 2s ease-in-out ${i * 0.02}s both`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
+      <section className="min-h-screen flex items-center justify-center pt-16 px-8">
         <div
-          className="text-center transform transition-all duration-1000 relative z-20"
+          className="max-w-4xl mx-auto"
           style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
+            transform: `translateY(${scrollY * 0.1}px)`,
             opacity: Math.max(0, 1 - scrollY / 1000),
           }}
         >
-          {/* Main Title with Interactive Effects */}
-          <div className="relative mb-12">
-            <h2 className="text-7xl md:text-9xl font-thin leading-none relative cursor-default">
-              <span
-                className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent hover:from-pink-400 hover:via-blue-400 hover:to-purple-400 transition-all duration-1000 transform hover:scale-105"
-                onMouseEnter={(e) => {
-                  e.target.style.textShadow =
-                    "0 0 30px rgba(147, 197, 253, 0.5)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textShadow = "none";
-                }}
-              >
-                My
-              </span>
-              <span
-                className="block text-gray-300 hover:bg-gradient-to-r hover:from-green-400 hover:via-teal-400 hover:to-blue-400 hover:bg-clip-text hover:text-transparent transition-all duration-700 transform hover:scale-105"
-                onMouseEnter={(e) => {
-                  e.target.style.textShadow =
-                    "0 0 30px rgba(52, 211, 153, 0.5)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textShadow = "none";
-                }}
-              >
-                Work
-              </span>
-            </h2>
-
-            {/* Floating Code Symbols */}
-            <div className="absolute inset-0 pointer-events-none">
-              {["<", ">", "{", "}", "(", ")", ";", "="].map((symbol, i) => (
-                <span
-                  key={i}
-                  className="absolute text-blue-400/30 text-2xl font-mono animate-pulse"
-                  style={{
-                    left: `${10 + i * 12}%`,
-                    top: `${20 + (i % 3) * 30}%`,
-                    animationDelay: `${i * 0.5}s`,
-                    animationDuration: `${2 + i * 0.3}s`,
-                  }}
-                >
-                  {symbol}
-                </span>
-              ))}
+          {/* Terminal Window */}
+          <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden mb-8">
+            <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              </div>
+              <span className="text-xs text-gray-400">bash</span>
             </div>
-
-            {/* Orbiting Decorative Elements */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="relative w-96 h-96">
-                  {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className="absolute inset-0 border border-blue-400/30 rounded-full animate-spin"
-                      style={{
-                        animationDuration: `${20 + i * 10}s`,
-                        animationDirection: i % 2 === 0 ? "normal" : "reverse",
-                        transform: `scale(${0.3 + i * 0.2})`,
-                      }}
-                    >
-                      <div
-                        className={`absolute w-3 h-3 bg-gradient-to-r ${
-                          i === 0
-                            ? "from-blue-400 to-purple-400"
-                            : i === 1
-                            ? "from-green-400 to-teal-400"
-                            : "from-pink-400 to-red-400"
-                        } rounded-full`}
-                      />
-                    </div>
-                  ))}
+            <div className="p-6">
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <span className="text-green-400">$</span>
+                  <span className="text-white">
+                    cd /home/developer/projects
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-green-400">$</span>
+                  <span className="text-white">ls -la</span>
+                </div>
+                <div className="text-gray-400 text-sm ml-4">
+                  <div>drwxr-xr-x 4 dev dev 4096 Jan 15 2025 hireflow/</div>
+                  <div>drwxr-xr-x 3 dev dev 4096 Jan 12 2025 unlockx/</div>
+                  <div>drwxr-xr-x 2 dev dev 4096 Jan 10 2025 ward/</div>
+                  <div>drwxr-xr-x 5 dev dev 4096 Dec 20 2024 pos-system/</div>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-green-400">$</span>
+                  <span className="text-white">{typedText}</span>
+                  <span className="animate-pulse">|</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Interactive Description */}
-          <div className="max-w-2xl mx-auto mb-12">
-            <p className="text-gray-400 text-xl leading-relaxed">
-              A collection of projects that reflect my passion for{" "}
-              <span
-                className="text-blue-400 font-medium cursor-pointer hover:text-blue-300 transition-colors duration-300 relative group"
-                onMouseEnter={(e) => {
-                  e.target.style.textShadow =
-                    "0 0 10px rgba(59, 130, 246, 0.8)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textShadow = "none";
-                }}
-              >
-                technology
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              </span>{" "}
-              and{" "}
-              <span
-                className="text-purple-400 font-medium cursor-pointer hover:text-purple-300 transition-colors duration-300 relative group"
-                onMouseEnter={(e) => {
-                  e.target.style.textShadow =
-                    "0 0 10px rgba(147, 51, 234, 0.8)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textShadow = "none";
-                }}
-              >
-                innovation
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-purple-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              </span>
-            </p>
+          {/* ASCII Art Title */}
+          <div className="text-center mb-8">
+            <pre className="text-white text-xs md:text-sm leading-tight">
+              {`
+    ███▄ ▄███▓▓██   ██▓    ██▓███   ▒█████   ██▀███  ▄▄▄█████▓  █████▒▒█████   ██▓     ██▓ ▒█████  
+   ▓██▒▀█▀ ██▒ ▒██  ██▒   ▓██░  ██▒▒██▒  ██▒▓██ ▒ ██▒▓  ██▒ ▓▒▓██   ▒▒██▒  ██▒▓██▒    ▓██▒▒██▒  ██▒
+   ▓██    ▓██░  ▒██ ██░   ▓██░ ██▓▒▒██░  ██▒▓██ ░▄█ ▒▒ ▓██░ ▒░▒████ ░▒██░  ██▒▒██░    ▒██▒▒██░  ██▒
+   ▒██    ▒██   ░ ▐██▓░   ▒██▄█▓▒ ▒▒██   ██░▒██▀▀█▄  ░ ▓██▓ ░ ░▓█▒  ░▒██   ██░▒██░    ░██░▒██   ██░
+   ▒██▒   ░██▒  ░ ██▒▓░   ▒██▒ ░  ░░ ████▓▒░░██▓ ▒██▒  ▒██▒ ░ ░▒█░   ░ ████▓▒░░██████▒░██░░ ████▓▒░
+   ░ ▒░   ░  ░   ██▒▒▒    ▒▓▒░ ░  ░░ ▒░▒░▒░ ░ ▒▓ ░▒▓░  ▒ ░░    ▒ ░   ░ ▒░▒░▒░ ░ ▒░▓  ░░▓  ░ ▒░▒░▒░ 
+   ░  ░      ░ ▓██ ░▒░    ░▒ ░       ░ ▒ ▒░   ░▒ ░ ▒░    ░     ░       ░ ▒ ▒░ ░ ░ ▒  ░ ▒ ░  ░ ▒ ▒░ 
+   ░      ░    ▒ ▒ ░░     ░░       ░ ░ ░ ▒    ░░   ░   ░       ░ ░   ░ ░ ░ ▒    ░ ░    ▒ ░░ ░ ░ ▒  
+          ░    ░ ░                    ░ ░     ░                       ░ ░      ░  ░ ░      ░ ░     
+               ░ ░                                                                                  
+`}
+            </pre>
           </div>
 
-          {/* Interactive Stats */}
-          <div className="flex justify-center space-x-12 mb-16">
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
-              {
-                number: "4+",
-                label: "Projects",
-                icon: "🚀",
-                color: "text-blue-400",
-              },
-              {
-                number: "10+",
-                label: "Technologies",
-                icon: "⚡",
-                color: "text-purple-400",
-              },
-              {
-                number: "2+",
-                label: "Years",
-                icon: "🎯",
-                color: "text-green-400",
-              },
+              { label: "Projects", value: "4+", symbol: ">" },
+              { label: "Languages", value: "10+", symbol: "{}" },
+              { label: "Commits", value: "400+", symbol: "#" },
+              { label: "Lines", value: "10k+", symbol: "//" },
             ].map((stat, i) => (
               <div
                 key={i}
-                className="text-center cursor-pointer group transform hover:scale-110 transition-all duration-300"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.filter =
-                    "drop-shadow(0 0 20px rgba(59, 130, 246, 0.3))";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.filter = "none";
-                }}
+                className="text-center border border-gray-700 rounded p-4 hover:border-gray-500 transition-colors"
               >
-                <div
-                  className="text-3xl mb-2 animate-bounce"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                >
-                  {stat.icon}
-                </div>
-                <div
-                  className={`text-3xl font-bold ${stat.color} group-hover:text-white transition-colors duration-300`}
-                >
-                  {stat.number}
-                </div>
-                <div className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-                  {stat.label}
-                </div>
+                <div className="text-2xl mb-1">{stat.symbol}</div>
+                <div className="text-xl font-bold text-white">{stat.value}</div>
+                <div className="text-sm text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
 
-          {/* Enhanced Scroll Indicator */}
-          <div className="flex flex-col items-center space-y-4">
-            <div className="animate-bounce">
-              <div className="w-8 h-12 border-2 border-gray-600 rounded-full flex justify-center relative overflow-hidden group cursor-pointer hover:border-blue-400 transition-colors duration-300">
-                <div className="w-1.5 h-4 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mt-2 animate-pulse group-hover:from-green-400 group-hover:to-teal-400 transition-all duration-300" />
+          {/* Scroll Indicator */}
+          <div className="text-center">
+            <div className="animate-bounce mb-2">
+              <div className="mx-auto w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
               </div>
             </div>
-            <p className="text-gray-500 text-sm animate-pulse">
-              Scroll to explore
+            <p className="text-sm text-gray-400">
+              // scroll down to see projects
             </p>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes fadeInScale {
-            0% {
-              opacity: 0;
-              transform: scale(0.8);
-            }
-            100% {
-              opacity: 1;
-              transform: scale(1);
-            }
-          }
-        `}</style>
       </section>
 
       {/* Projects Section */}
-      <section className="min-h-screen py-32 px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-32">
-            <h3 className="text-5xl font-thin mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+      <section className="py-20 px-8 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-4">
+              <span className="text-gray-500">// </span>
               Featured Projects
-            </h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full" />
+            </h2>
+            <div className="text-gray-400 text-sm">
+              $ git log --oneline --graph --all
+            </div>
           </div>
 
-          <div className="space-y-40">
+          <div className="space-y-12">
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`flex flex-col lg:flex-row items-center gap-20 ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                } group`}
+                className="border border-gray-800 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 bg-gray-900/50"
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                {/* Project Visual */}
-                <div className="flex-1 relative z-10">
-                  <div
-                    className={`aspect-video bg-gradient-to-br ${project.gradient} rounded-3xl relative overflow-hidden cursor-pointer transform transition-all duration-700 group-hover:scale-105 group-hover:rotate-1 shadow-2xl ${project.bgColor} group-hover:shadow-4xl`}
-                    style={{
-                      boxShadow:
-                        hoveredProject === index
-                          ? `0 25px 50px -12px ${
-                              project.accentColor.includes("blue")
-                                ? "rgba(59, 130, 246, 0.3)"
-                                : project.accentColor.includes("red")
-                                ? "rgba(239, 68, 68, 0.3)"
-                                : project.accentColor.includes("purple")
-                                ? "rgba(147, 51, 234, 0.3)"
-                                : "rgba(34, 197, 94, 0.3)"
-                            }`
-                          : "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                    }}
-                  >
-                    {/* Animated Background Pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    </div>
-
-                    <div className="absolute inset-0 bg-gray-900/70 group-hover:bg-gray-900/50 transition-all duration-500" />
-
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center transform transition-all duration-500 group-hover:scale-110">
-                        <div className="text-6xl mb-4 animate-bounce">
-                          {project.icon}
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Project Terminal */}
+                  <div className="flex-1">
+                    <div className="bg-black border border-gray-700 rounded-lg overflow-hidden">
+                      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                          <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                         </div>
-                        <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:border-white/60 group-hover:bg-white/10 transition-all duration-300">
-                          <svg
-                            className="w-8 h-8 transform group-hover:rotate-45 transition-transform duration-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                        </div>
-                        <p className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
-                          Explore Project
-                        </p>
+                        <span className="text-xs text-gray-400">
+                          {project.title.toLowerCase()}.py
+                        </span>
                       </div>
-                    </div>
-
-                    {/* Corner Decorations */}
-                    <div className="absolute top-4 right-4 w-3 h-3 bg-white/40 rounded-full" />
-                    <div className="absolute bottom-4 left-4 w-2 h-2 bg-white/30 rounded-full" />
-                  </div>
-
-                  {/* Enhanced Tech Display */}
-                  {hoveredProject === index && (
-                    <div className="absolute -inset-8 pointer-events-none">
-                      {/* Tech Stack Orbit */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="relative w-80 h-80">
-                          {project.tech.slice(0, 6).map((tech, techIndex) => {
-                            const angle = techIndex * 60 * (Math.PI / 180);
-                            const radius = 120;
-                            const x = Math.cos(angle) * radius;
-                            const y = Math.sin(angle) * radius;
-
-                            return (
-                              <div
-                                key={tech}
-                                className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500`}
-                                style={{
-                                  left: `calc(50% + ${x}px)`,
-                                  top: `calc(50% + ${y}px)`,
-                                  animationDelay: `${techIndex * 0.1}s`,
-                                }}
-                              >
-                                <div
-                                  className={`px-4 py-2 ${
-                                    project.bgColor
-                                  } border-2 ${project.accentColor.replace(
-                                    "text-",
-                                    "border-"
-                                  )} rounded-full text-sm ${
-                                    project.accentColor
-                                  } backdrop-blur-md shadow-lg transform hover:scale-110 transition-all duration-300 font-medium`}
-                                >
-                                  {tech}
-                                  <div
-                                    className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-20 rounded-full animate-pulse`}
-                                  />
-                                </div>
-                              </div>
-                            );
-                          })}
-
-                          {/* Central Tech Count */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div
-                              className={`w-16 h-16 ${
-                                project.bgColor
-                              } border-2 ${project.accentColor.replace(
-                                "text-",
-                                "border-"
-                              )} rounded-full flex items-center justify-center backdrop-blur-md`}
-                            >
-                              <span
-                                className={`text-xl font-bold ${project.accentColor}`}
-                              >
-                                {project.tech.length}
-                              </span>
-                            </div>
+                      <div className="p-4 h-64 overflow-hidden">
+                        <div className="space-y-1 text-sm">
+                          <div className="text-gray-500"># {project.title}</div>
+                          <div className="text-gray-500">
+                            # {project.description.substring(0, 60)}...
                           </div>
-                        </div>
-                      </div>
-
-                      {/* Tech Stack Panel */}
-                      <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-96">
-                        <div
-                          className={`${
-                            project.bgColor
-                          } backdrop-blur-md rounded-2xl p-6 border ${project.accentColor.replace(
-                            "text-",
-                            "border-"
-                          )} shadow-2xl`}
-                        >
-                          <h5
-                            className={`text-lg font-medium ${project.accentColor} mb-4 text-center`}
-                          >
-                            Tech Stack
-                          </h5>
-                          <div className="grid grid-cols-3 gap-3">
-                            {project.tech.map((tech, techIndex) => (
-                              <div
-                                key={tech}
-                                className="text-center p-2 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-all duration-300 transform hover:scale-105"
-                                style={{
-                                  animationDelay: `${techIndex * 0.05}s`,
-                                }}
-                              >
-                                <div className="text-xs text-gray-300 font-mono">
-                                  {tech}
-                                </div>
-                              </div>
-                            ))}
+                          <div className="text-gray-500">
+                            # Status: {project.status}
+                          </div>
+                          <div className="mt-4">
+                            <span className="text-purple-400">import</span>{" "}
+                            <span className="text-white">numpy</span>{" "}
+                            <span className="text-purple-400">as</span>{" "}
+                            <span className="text-white">np</span>
+                          </div>
+                          <div>
+                            <span className="text-purple-400">from</span>{" "}
+                            <span className="text-white">sklearn</span>{" "}
+                            <span className="text-purple-400">import</span>{" "}
+                            <span className="text-white">model_selection</span>
+                          </div>
+                          <div className="mt-2">
+                            <span className="text-purple-400">class</span>{" "}
+                            <span className="text-yellow-400">
+                              {project.title.replace(/\s+/g, "")}
+                            </span>
+                            <span className="text-white">:</span>
+                          </div>
+                          <div className="ml-4">
+                            <span className="text-purple-400">def</span>{" "}
+                            <span className="text-blue-400">__init__</span>
+                            <span className="text-white">(self):</span>
+                          </div>
+                          <div className="ml-8">
+                            <span className="text-white">self.status = </span>
+                            <span className="text-green-400">
+                              "{project.status}"
+                            </span>
+                          </div>
+                          <div className="ml-8">
+                            <span className="text-white">self.lines = </span>
+                            <span className="text-orange-400">
+                              {project.lines}
+                            </span>
+                          </div>
+                          <div className="ml-4 mt-2">
+                            <span className="text-purple-400">def</span>{" "}
+                            <span className="text-blue-400">execute</span>
+                            <span className="text-white">(self):</span>
+                          </div>
+                          <div className="ml-8">
+                            <span className="text-purple-400">return</span>{" "}
+                            <span className="text-green-400">
+                              "Project initialized successfully"
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
-                  )}
-                </div>
-
-                {/* Project Info */}
-                <div className="flex-1 space-y-8 relative">
-                  <div className="flex items-center space-x-4 text-sm">
-                    <span className={`${project.accentColor} font-medium`}>
-                      {project.category}
-                    </span>
-                    <span className="text-gray-500">•</span>
-                    <span className="text-gray-400 font-mono">
-                      {project.year}
-                    </span>
                   </div>
 
-                  <h4
-                    className={`text-5xl font-thin ${project.accentColor} group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500`}
-                  >
-                    {project.title}
-                  </h4>
+                  {/* Project Info */}
+                  <div className="flex-1 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-1">
+                          {project.title}
+                        </h3>
+                        <div className="flex items-center space-x-2 text-sm text-gray-400">
+                          <span>{project.category}</span>
+                          <span>•</span>
+                          <span>{project.year}</span>
+                          <span>•</span>
+                          <span className={statusColors[project.status]}>
+                            ● {project.status}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
 
-                  <p className="text-gray-300 text-lg leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                    {project.description}
-                  </p>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-3">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={tech}
-                        className="px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-full text-sm text-gray-300 hover:border-blue-400/50 hover:text-blue-400 hover:bg-blue-400/5 transition-all duration-300 cursor-default transform hover:scale-105 backdrop-blur-sm"
-                        style={{
-                          animationDelay: `${techIndex * 0.1}s`,
-                          transition: `all 0.3s ease ${techIndex * 0.05}s`,
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div className="text-center border border-gray-700 rounded p-2">
+                        <div className="text-green-400 font-bold">
+                          {project.lines}
+                        </div>
+                        <div className="text-gray-400">Lines</div>
+                      </div>
+                      <div className="text-center border border-gray-700 rounded p-2">
+                        <div className="text-blue-400 font-bold">
+                          {project.commits}
+                        </div>
+                        <div className="text-gray-400">Commits</div>
+                      </div>
+                      <div className="text-center border border-gray-700 rounded p-2">
+                        <div className="text-purple-400 font-bold">
+                          {project.tech.length}
+                        </div>
+                        <div className="text-gray-400">Tech</div>
+                      </div>
+                    </div>
 
-                  {/* Progress Bar Animation */}
-                  <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full bg-gradient-to-r ${
-                        project.gradient
-                      } rounded-full transform transition-all duration-1000 ${
-                        hoveredProject === index ? "w-full" : "w-0"
-                      }`}
-                    />
+                    <div className="space-y-2">
+                      <div className="text-sm text-gray-400 mb-2">
+                        $ npm list --depth=0
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 bg-gray-800 border border-gray-700 rounded text-sm text-gray-300 hover:border-gray-500 transition-colors font-mono"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="w-full bg-gray-800 rounded-full h-1">
+                      <div
+                        className={`h-1 bg-white rounded-full transition-all duration-500 ${
+                          hoveredProject === index ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -567,15 +383,20 @@ function Work() {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <section className="py-20 px-8 relative z-10">
+      {/* Footer */}
+      <section className="py-16 px-8 border-t border-gray-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h4 className="text-3xl font-thin mb-6 text-gray-300">
-            Ready to build something amazing together?
-          </h4>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-medium hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Let's Connect
-          </button>
+          <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 mb-8">
+            <div className="text-sm text-gray-400 mb-2">
+              $ echo "Ready to collaborate?"
+            </div>
+            <h3 className="text-xl font-bold text-white mb-4">
+              Let's build something amazing together
+            </h3>
+            <button className="px-6 py-3 bg-white text-black rounded font-mono hover:bg-gray-200 transition-colors">
+              ./connect.sh
+            </button>
+          </div>
         </div>
       </section>
     </div>
