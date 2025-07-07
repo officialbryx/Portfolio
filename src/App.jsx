@@ -76,14 +76,6 @@ function App() {
           <Route path="*" element={<Info />} />
         </Routes>
       </main>
-
-      {/* Footer */}
-      <footer className="py-12 px-8 border-t border-gray-800">
-        <div className="max-w-6xl mx-auto flex justify-between items-center text-gray-500 text-sm">
-          <p>© 2025 Bryan Tiamzon</p>
-          <p>Crafted with intention</p>
-        </div>
-      </footer>
     </div>
   );
 }
