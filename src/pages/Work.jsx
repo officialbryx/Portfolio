@@ -367,23 +367,6 @@ function Work() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <section className="py-16 px-8 border-t border-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 mb-8">
-            <div className="text-sm text-gray-400 mb-2">
-              $ echo "Ready to collaborate?"
-            </div>
-            <h3 className="text-xl font-bold text-white mb-4">
-              Let's build something amazing together
-            </h3>
-            <button className="px-6 py-3 bg-white text-black rounded font-mono hover:bg-gray-200 transition-colors">
-              ./connect.sh
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

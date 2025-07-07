@@ -524,19 +524,6 @@ function Info() {
                 </a>
               ))}
             </div>
-
-            <div className="mt-16 pt-8 border-t border-white/20">
-              <p className="text-xs font-mono text-white/40">
-                © 2025 Bryan Tiamzon • Built with React • Powered by Terminal
-                Aesthetics
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-4">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-xs font-mono text-white/60">
-                  System Status: ONLINE • Available for new projects
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
