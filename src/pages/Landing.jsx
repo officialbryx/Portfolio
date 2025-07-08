@@ -3,18 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 function Landing() {
   const [key, setKey] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const resetInterval = setInterval(() => {
       setKey((prev) => prev + 1);
     }, 7500);
-
-    const handleKeyPress = (e) => {
-      if (e.key === "Enter") {
-        navigate("/info");
-      }
-    };
 
     window.addEventListener("keypress", handleKeyPress);
     return () => {
@@ -24,12 +19,26 @@ function Landing() {
   }, [navigate]);
 
   const handleGetStarted = () => {
-    navigate("/info");
+    setIsTransitioning(true);
+    setTimeout(() => {
+      navigate("/info");
+    }, 800); // Delay to allow transition animation
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        navigate("/info");
+      }, 800); // Delay to allow transition animation
+    }
   };
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-center relative"
+      className={`min-h-screen w-full flex flex-col items-center justify-center relative transition-all duration-700 ease-out ${
+        isTransitioning ? "scale-110 opacity-0" : "scale-100 opacity-100"
+      }`}
       style={{
         background: `linear-gradient(
           to bottom,
@@ -42,6 +51,17 @@ function Landing() {
         )`,
       }}
     >
+      {/* Overlay for transition effect */}
+      <div
+        className={`absolute inset-0 bg-white transition-opacity duration-700 ease-out ${
+          isTransitioning ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,1) 100%)",
+        }}
+      />
+
       {/* Apple-style menu bar */}
       <div className="absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10">
         <div className="flex items-center space-x-4">
