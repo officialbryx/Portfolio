@@ -96,7 +96,13 @@ function Work() {
     });
   };
   return (
-    <div className="min-h-screen bg-white text-black font-mono">
+    <div
+      className="min-h-screen bg-white text-[#1d1d1f] font-mono"
+      style={{
+        fontFamily:
+          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      }}
+    >
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center pt-16 px-8">
         <div
@@ -120,13 +126,13 @@ function Work() {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <span className="text-green-600">$</span>
-                  <span className="text-gray-800">
+                  <span className="text-[#1d1d1f]">
                     cd /home/developer/projects
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="text-green-600">$</span>
-                  <span className="text-gray-800">ls -la</span>
+                  <span className="text-[#1d1d1f]">ls -la</span>
                 </div>
                 <div className="text-gray-600 text-sm ml-4">
                   <div>drwxr-xr-x 4 dev dev 4096 Jan 15 2025 hireflow/</div>
@@ -136,8 +142,8 @@ function Work() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <span className="text-green-600">$</span>
-                  <span className="text-gray-800">{typedText}</span>
-                  <span className="animate-pulse text-black">|</span>
+                  <span className="text-[#1d1d1f]">{typedText}</span>
+                  <span className="animate-pulse text-[#1d1d1f]">|</span>
                 </div>
               </div>
             </div>
@@ -171,7 +177,7 @@ function Work() {
                 className="text-center border border-gray-200 rounded p-4 hover:border-gray-300 transition-colors bg-gray-50"
               >
                 <div className="text-2xl mb-1 text-gray-600">{stat.symbol}</div>
-                <div className="text-xl font-bold text-gray-800">
+                <div className="text-xl font-bold text-[#1d1d1f]">
                   {stat.value}
                 </div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
@@ -196,7 +202,7 @@ function Work() {
       <section className="py-20 px-8 border-t border-gray-200">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            <h2 className="text-3xl font-semibold mb-4 text-[#1d1d1f] tracking-[-0.015em]">
               <span className="text-gray-400">// </span>
               Featured Projects
             </h2>
@@ -238,15 +244,15 @@ function Work() {
                           </div>
                           <div className="mt-4">
                             <span className="text-purple-600">import</span>{" "}
-                            <span className="text-gray-800">numpy</span>{" "}
+                            <span className="text-[#1d1d1f]">numpy</span>{" "}
                             <span className="text-purple-600">as</span>{" "}
-                            <span className="text-gray-800">np</span>
+                            <span className="text-[#1d1d1f]">np</span>
                           </div>
                           <div>
                             <span className="text-purple-600">from</span>{" "}
-                            <span className="text-gray-800">sklearn</span>{" "}
+                            <span className="text-[#1d1d1f]">sklearn</span>{" "}
                             <span className="text-purple-600">import</span>{" "}
-                            <span className="text-gray-800">
+                            <span className="text-[#1d1d1f]">
                               model_selection
                             </span>
                           </div>
@@ -255,15 +261,15 @@ function Work() {
                             <span className="text-yellow-600">
                               {project.title.replace(/\s+/g, "")}
                             </span>
-                            <span className="text-gray-800">:</span>
+                            <span className="text-[#1d1d1f]">:</span>
                           </div>
                           <div className="ml-4">
                             <span className="text-purple-600">def</span>{" "}
                             <span className="text-blue-400">__init__</span>
-                            <span className="text-gray-800">(self):</span>
+                            <span className="text-[#1d1d1f]">(self):</span>
                           </div>
                           <div className="ml-8">
-                            <span className="text-gray-800">
+                            <span className="text-[#1d1d1f]">
                               self.status ={" "}
                             </span>{" "}
                             <span className="text-green-600">
@@ -271,7 +277,9 @@ function Work() {
                             </span>
                           </div>
                           <div className="ml-8">
-                            <span className="text-gray-800">self.lines = </span>
+                            <span className="text-[#1d1d1f]">
+                              self.lines ={" "}
+                            </span>
                             <span className="text-orange-600">
                               {project.lines}
                             </span>
@@ -279,7 +287,7 @@ function Work() {
                           <div className="ml-4 mt-2">
                             <span className="text-purple-600">def</span>{" "}
                             <span className="text-blue-600">execute</span>
-                            <span className="text-gray-800">(self):</span>
+                            <span className="text-[#1d1d1f]">(self):</span>
                           </div>
                           <div className="ml-8">
                             <span className="text-purple-600">return</span>{" "}
@@ -296,7 +304,7 @@ function Work() {
                   <div className="flex-1 space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-1">
+                        <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-1 tracking-[-0.015em]">
                           {project.title}
                         </h3>
                         <div className="flex items-center space-x-2 text-sm text-gray-600">
@@ -341,7 +349,7 @@ function Work() {
                         {project.tech.map((tech, techIndex) => (
                           <span
                             key={tech}
-                            className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-sm text-gray-800 hover:border-gray-500 transition-colors font-mono"
+                            className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-sm text-[#1d1d1f] hover:border-gray-500 transition-colors font-mono"
                           >
                             {tech}
                           </span>

@@ -5,9 +5,6 @@ function Info() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeSkill, setActiveSkill] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [typedText, setTypedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
   const heroRef = useRef(null);
 
   const roles = ["Full Stack Developer", "Data Scientist"];
@@ -18,7 +15,6 @@ function Info() {
     const interval = setInterval(() => {
       setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -29,7 +25,7 @@ function Info() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mouse move effect for parallax
+  // Mouse move effect
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -38,75 +34,87 @@ function Info() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const skills = [
     {
       name: "React & Next.js",
       level: 90,
       description:
-        "Advanced proficiency in modern React development with hooks, context, and Next.js framework",
+        "Building modern web applications with cutting-edge React ecosystem",
       category: "Frontend",
+      color: "from-blue-400 to-blue-600",
+      icon: "⚛️",
     },
     {
       name: "TypeScript",
       level: 85,
-      description:
-        "Strong experience with type-safe JavaScript development and large-scale applications",
+      description: "Type-safe development for scalable applications",
       category: "Language",
+      color: "from-blue-500 to-indigo-600",
+      icon: "📘",
     },
     {
       name: "Node.js & APIs",
       level: 88,
-      description:
-        "Comprehensive backend development, REST APIs, and microservices architecture",
+      description: "Server-side JavaScript and RESTful API development",
       category: "Backend",
+      color: "from-green-400 to-green-600",
+      icon: "🟢",
     },
     {
       name: "Python & AI",
       level: 82,
-      description:
-        "Advanced Python programming with machine learning and data science capabilities",
-      category: "Language",
+      description: "Machine learning and data science with Python",
+      category: "AI/ML",
+      color: "from-yellow-400 to-orange-500",
+      icon: "🐍",
     },
     {
       name: "DevOps & Cloud",
       level: 75,
-      description: "Docker, Kubernetes, AWS, and CI/CD pipeline implementation",
+      description: "AWS, Docker, and modern deployment strategies",
       category: "Infrastructure",
+      color: "from-purple-400 to-purple-600",
+      icon: "☁️",
     },
     {
       name: "Database Design",
       level: 80,
-      description:
-        "PostgreSQL, MongoDB, Redis, and database optimization strategies",
+      description: "Efficient data modeling and optimization",
       category: "Database",
+      color: "from-red-400 to-red-600",
+      icon: "🗄️",
     },
   ];
 
   const socialLinks = [
-    {
-      name: "GitHub",
-      href: "https://github.com/bryantiamzon",
-      icon: "⌘",
-      cmd: "git clone portfolio.git",
-    },
+    { name: "GitHub", href: "https://github.com/bryantiamzon", icon: "👨‍💻" },
     {
       name: "LinkedIn",
       href: "https://linkedin.com/in/bryantiamzon",
-      icon: "⚡",
-      cmd: "connect --professional",
+      icon: "💼",
     },
-    {
-      name: "Portfolio",
-      href: "https://bryantiamzon.dev",
-      icon: "◉",
-      cmd: "curl -X GET /portfolio",
-    },
-    {
-      name: "Resume",
-      href: "/resume.pdf",
-      icon: "⚙",
-      cmd: "cat resume.pdf",
-    },
+    { name: "Portfolio", href: "https://bryantiamzon.dev", icon: "🌐" },
+    { name: "Resume", href: "/resume.pdf", icon: "📄" },
   ];
 
   const experiences = [
@@ -115,119 +123,186 @@ function Info() {
       company: "Ateneo Innovation Center",
       period: "Feb 2025 - May 2025",
       description:
-        "Architecting scalable web applications using React and Node.js, implementing microservices architecture, and optimizing database queries for high-performance systems.",
+        "Building scalable web applications and implementing modern development practices",
       tech: ["React", "Node.js", "MongoDB", "Docker", "AWS"],
       status: "Active",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 py-20 px-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Hero Section */}
-        <section className="mb-20" ref={heroRef}>
-          <h1 className="text-4xl font-bold mb-6">
-            <span className="text-gray-800">Hello, I'm</span>{" "}
-            <span className="text-black">Bryan Tiamzon</span>
+    <div
+      className="min-h-screen bg-white"
+      style={{
+        fontFamily:
+          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      }}
+    >
+      {/* Hero Section */}
+      <section
+        className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 pt-20"
+        ref={heroRef}
+      >
+        <div className="text-center max-w-4xl mx-auto px-6 fade-in">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-semibold text-[#1d1d1f] mb-6 tracking-[-0.015em] leading-none">
+            <span
+              className="block"
+              style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+            >
+              Bryan Tiamzon
+            </span>
           </h1>
-          <p className="text-gray-600 text-lg mb-8">
-            {roles[currentRoleIndex]}
-            <span className="animate-blink ml-1">|</span>
+
+          <div className="text-2xl md:text-3xl text-gray-600 mb-4 font-light">
+            <span className="transition-all duration-1000">
+              {roles[currentRoleIndex]}
+            </span>
+          </div>
+
+          <p className="text-xl text-gray-500 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+            Crafting exceptional digital experiences with modern technology and
+            thoughtful design
           </p>
 
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 hover:scale-105">
+              View My Work
+            </button>
+            <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
+              Get In Touch
+            </button>
+          </div>
+
           {/* Social Links */}
-          <div className="space-y-4">
-            {socialLinks.map((link) => (
+          <div className="flex justify-center space-x-8">
+            {socialLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-4 text-gray-600 hover:text-black transition-colors group"
+                className="group flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <span className="text-xl w-8">{link.icon}</span>
-                <span className="font-mono text-sm">{link.cmd}</span>
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  ⟶
+                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {link.icon}
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-[#1d1d1f] transition-colors">
+                  {link.name}
                 </span>
               </a>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Skills Section */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8 text-gray-800">
-            <span className="text-gray-400">// </span>
-            Technical Skills
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skills.map((skill) => (
+      {/* Skills Section */}
+      <section id="skills" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 fade-in">
+            <h2 className="text-4xl md:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-[-0.015em]">
+              Technical Skills
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Technologies I use to bring ideas to life
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-300 bg-gray-50"
+                className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200 hover:-translate-y-2 fade-in"
                 onMouseEnter={() => setActiveSkill(skill.name)}
                 onMouseLeave={() => setActiveSkill(null)}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {skill.name}
-                  </h3>
-                  <span className="text-sm text-gray-500">
-                    {skill.category}
-                  </span>
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {skill.icon}
                 </div>
-                <p className="text-gray-600 text-sm mb-4">
+
+                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">
+                  {skill.name}
+                </h3>
+
+                <span className="inline-block text-sm text-gray-500 mb-4 px-3 py-1 bg-gray-100 rounded-full">
+                  {skill.category}
+                </span>
+
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {skill.description}
                 </p>
-                <div className="relative h-2 bg-gray-200 rounded-full overflow-hidden">
-                  <div
-                    className="absolute top-0 left-0 h-full bg-gray-800 transition-all duration-500"
-                    style={{
-                      width:
-                        activeSkill === skill.name ? `${skill.level}%` : "0%",
-                    }}
-                  ></div>
+
+                {/* Progress Bar */}
+                <div className="relative">
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
+                      style={{
+                        width:
+                          activeSkill === skill.name ? `${skill.level}%` : "0%",
+                      }}
+                    />
+                  </div>
+                  <div className="text-right mt-2">
+                    <span className="text-sm font-medium text-gray-500">
+                      {activeSkill === skill.name ? `${skill.level}%` : ""}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Experience Section */}
-        <section>
-          <h2 className="text-2xl font-bold mb-8 text-gray-800">
-            <span className="text-gray-400">// </span>
-            Experience
-          </h2>
+      {/* Experience Section */}
+      <section id="experience" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 fade-in">
+            <h2 className="text-4xl md:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-[-0.015em]">
+              Experience
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              My professional journey in tech
+            </p>
+          </div>
+
           <div className="space-y-8">
-            {experiences.map((exp) => (
+            {experiences.map((exp, index) => (
               <div
                 key={exp.role}
-                className="border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-300 bg-gray-50"
+                className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200 fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
+                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6">
+                  <div className="mb-4 lg:mb-0">
+                    <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-2">
                       {exp.role}
                     </h3>
-                    <p className="text-gray-600">{exp.company}</p>
+                    <p className="text-xl text-gray-600 mb-2">{exp.company}</p>
+                    <p className="text-gray-500">{exp.period}</p>
                   </div>
-                  <div className="text-right">
-                    <span className="text-gray-500 text-sm">{exp.period}</span>
-                    {exp.status === "Active" && (
-                      <span className="ml-2 inline-block px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+
+                  {exp.status === "Active" && (
+                    <div className="flex items-center">
+                      <div className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                      <span className="text-sm font-medium text-green-600">
                         Active
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
-                <p className="text-gray-600 mb-4">{exp.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {exp.tech.map((tech) => (
+
+                <p className="text-gray-700 mb-6 leading-relaxed text-lg">
+                  {exp.description}
+                </p>
+
+                <div className="flex flex-wrap gap-3">
+                  {exp.tech.map((tech, techIndex) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-full"
+                      className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
                     >
                       {tech}
                     </span>
@@ -236,8 +311,24 @@ function Info() {
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      <style jsx>{`
+        .fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.animate-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
     </div>
   );
 }
