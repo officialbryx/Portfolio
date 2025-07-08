@@ -31,12 +31,12 @@ function App() {
               to="/info"
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
                 location.pathname === "/info"
-                  ? "text-black bg-zinc-200 shadow-lg"
-                  : "text-zinc-600 hover:text-black hover:bg-zinc-200/50"
+                  ? "text-white bg-zinc-800 shadow-lg"
+                  : "text-zinc-600 hover:text-white hover:bg-zinc-800/50"
               }`}
             >
               {location.pathname === "/info" && (
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-black rounded-full shadow-lg shadow-black/50"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
               )}
               <BsInfoCircle className="text-xl" />
             </Link>
@@ -44,12 +44,12 @@ function App() {
               to="/work"
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
                 location.pathname === "/work"
-                  ? "text-black bg-zinc-200 shadow-lg"
-                  : "text-zinc-600 hover:text-black hover:bg-zinc-200/50"
+                  ? "text-white bg-zinc-800 shadow-lg"
+                  : "text-zinc-600 hover:text-white hover:bg-zinc-800/50"
               }`}
             >
               {location.pathname === "/work" && (
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-black rounded-full shadow-lg shadow-black/50"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
               )}
               <BsBriefcase className="text-xl" />
             </Link>
@@ -57,12 +57,12 @@ function App() {
               to="/contact"
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 rounded-full relative ${
                 location.pathname === "/contact"
-                  ? "text-black bg-zinc-200 shadow-lg"
-                  : "text-zinc-600 hover:text-black hover:bg-zinc-200/50"
+                  ? "text-white bg-zinc-800 shadow-lg"
+                  : "text-zinc-600 hover:text-white hover:bg-zinc-800/50"
               }`}
             >
               {location.pathname === "/contact" && (
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-black rounded-full shadow-lg shadow-black/50"></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full shadow-lg shadow-white/50"></div>
               )}
               <BsEnvelope className="text-xl" />
             </Link>

@@ -71,7 +71,7 @@ function Landing() {
 
       {/* Apple-style menu bar */}
       <div
-        className={`absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10 transition-all duration-700 ease-out ${
+        className={`absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10 transition-all duration-700 ease-out select-none ${
           showUI ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
         }`}
       >
@@ -166,7 +166,10 @@ function Landing() {
         }`}
       >
         {/* Profile image */}
-        <div className="w-15 h-15 rounded-full overflow-hidden">
+        <div
+          onClick={handleGetStarted}
+          className="w-15 h-15 rounded-full overflow-hidden cursor-pointer"
+        >
           <img
             src="/tiamzondp.JPG"
             alt="Bryan Tiamzon"
@@ -178,7 +181,7 @@ function Landing() {
         <div onClick={handleGetStarted} className="cursor-pointer">
           <span className="text-white font-bold text-lg">Bryan Tiamzon</span>
         </div>
-        <span className="text-white/90 text-s font-light">
+        <span className="text-white/90 text-s font-light select-none">
           Press ENTER to Get Started
         </span>
       </div>

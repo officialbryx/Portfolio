@@ -18,10 +18,12 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [focusedField, setFocusedField] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
-  const myEmail = "bryxp@gmail.com"; // Replace with your actual email
-  const linkedInUrl = "https://linkedin.com/in/bryxp"; // Replace with your LinkedIn URL
-  const resumeUrl = "/TIAMZON_Resume-1.pdf"; // This points to your resume in the public folder
+  const myEmail = "bryxph@gmail.com";
+  const linkedInUrl = "https://www.linkedin.com/in/bryantiamzonph";
+  const resumeUrl = "/TIAMZON_Resume-1.pdf";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +37,6 @@ function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create mailto link with form data
     const subject = encodeURIComponent(
       formData.subject || "Contact from Portfolio"
     );
@@ -43,13 +44,11 @@ function Contact() {
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
 
-    // Open default email client
     window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
 
     setIsSubmitting(false);
     setSubmitStatus("success");
 
-    // Reset form after 3 seconds
     setTimeout(() => {
       setFormData({ name: "", email: "", subject: "", message: "" });
       setSubmitStatus(null);
@@ -68,20 +67,12 @@ function Contact() {
 
   const contactMethods = [
     {
-      icon: BsEnvelope,
-      title: "Email",
-      subtitle: myEmail,
-      description: "Send me an email directly",
-      action: () => (window.location.href = `mailto:${myEmail}`),
-      color: "from-blue-500 to-blue-600",
-    },
-    {
       icon: BsLinkedin,
       title: "LinkedIn",
       subtitle: "Connect with me",
       description: "Let's connect professionally",
       action: () => window.open(linkedInUrl, "_blank"),
-      color: "from-blue-600 to-blue-700",
+      color: "blue",
     },
     {
       icon: BsFileText,
@@ -89,170 +80,208 @@ function Contact() {
       subtitle: "Download PDF",
       description: "View my complete experience",
       action: () => window.open(resumeUrl, "_blank"),
-      color: "from-gray-600 to-gray-700",
+      color: "gray",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Hero Section - Apple style minimal */}
+      <div className="relative bg-white">
+        <div className="max-w-4xl mx-auto px-6 py-32">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Get In{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Touch
-              </span>
+            <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
+              Get in touch.
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              I'm always interested in hearing about new opportunities and
-              connecting with fellow professionals.
+            <p className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
+              Ready to bring your ideas to life? Let's start a conversation.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Contact Methods */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {/* Contact Methods - Apple card style */}
+      <div className="max-w-5xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-24">
           {contactMethods.map((method, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200 cursor-pointer transform hover:-translate-y-2"
+              className={`group relative bg-white rounded-2xl p-8 border transition-all duration-500 cursor-pointer ${
+                hoveredCard === index
+                  ? "border-blue-200 shadow-2xl transform -translate-y-2"
+                  : "border-gray-100 shadow-sm hover:shadow-lg"
+              }`}
               onClick={method.action}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <div
-                className={`w-16 h-16 rounded-full bg-gradient-to-r ${method.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <method.icon className="text-2xl text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {method.title}
-              </h3>
-              <p className="text-gray-600 mb-1">{method.subtitle}</p>
-              <p className="text-sm text-gray-500 mb-4">{method.description}</p>
-              <div className="flex items-center text-blue-600 group-hover:text-blue-700 transition-colors">
-                <span className="text-sm font-medium">
-                  {method.title === "Email"
-                    ? "Send Email"
-                    : method.title === "LinkedIn"
-                    ? "Connect"
-                    : "Download"}
-                </span>
-                <BsArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+              <div className="flex flex-col items-center text-center">
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
+                    hoveredCard === index
+                      ? "bg-blue-50 scale-110"
+                      : "bg-gray-50"
+                  }`}
+                >
+                  <method.icon
+                    className={`text-2xl transition-colors duration-300 ${
+                      hoveredCard === index ? "text-blue-600" : "text-gray-600"
+                    }`}
+                  />
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  {method.title}
+                </h3>
+                <p className="text-gray-600 mb-1 text-sm">{method.subtitle}</p>
+                <p className="text-xs text-gray-500 mb-6">
+                  {method.description}
+                </p>
+                <div
+                  className={`flex items-center transition-all duration-300 ${
+                    hoveredCard === index
+                      ? "text-blue-600 transform translate-x-1"
+                      : "text-gray-400"
+                  }`}
+                >
+                  <span className="text-sm font-medium mr-2">
+                    {method.title === "LinkedIn" ? "Connect" : "Download"}
+                  </span>
+                  <BsArrowRight className="text-xs" />
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Contact Form */}
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-            <div className="px-8 py-6 bg-gradient-to-r from-gray-50 to-white border-b border-gray-200">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-                Send a Message
+        {/* Contact Form - Apple style */}
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
+            <div className="px-8 py-8 text-center">
+              <h2 className="text-3xl font-light text-gray-900 mb-3">
+                Send a message
               </h2>
-              <p className="text-gray-600">
-                Fill out the form below and I'll get back to you as soon as
-                possible.
+              <p className="text-gray-600 font-light">
+                I'll get back to you within 24 hours.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-8 space-y-6">
+            <div className="px-8 pb-8 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Name *
-                  </label>
+                <div className="relative">
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
+                    onFocus={() => setFocusedField("name")}
+                    onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="Your name"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                    placeholder="Name"
                   />
+                  <label
+                    htmlFor="name"
+                    className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                      focusedField === "name" || formData.name
+                        ? "-top-2 text-sm text-blue-600"
+                        : "top-4 text-gray-500"
+                    }`}
+                  >
+                    Name
+                  </label>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
-                    Email *
-                  </label>
+                <div className="relative">
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    onFocus={() => setFocusedField("email")}
+                    onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="your@email.com"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                    placeholder="Email"
                   />
+                  <label
+                    htmlFor="email"
+                    className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                      focusedField === "email" || formData.email
+                        ? "-top-2 text-sm text-blue-600"
+                        : "top-4 text-gray-500"
+                    }`}
+                  >
+                    Email
+                  </label>
                 </div>
               </div>
 
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Subject
-                </label>
+              <div className="relative">
                 <input
                   type="text"
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  placeholder="What's this about?"
+                  onFocus={() => setFocusedField("subject")}
+                  onBlur={() => setFocusedField(null)}
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                  placeholder="Subject"
                 />
+                <label
+                  htmlFor="subject"
+                  className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                    focusedField === "subject" || formData.subject
+                      ? "-top-2 text-sm text-blue-600"
+                      : "top-4 text-gray-500"
+                  }`}
+                >
+                  Subject
+                </label>
               </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Message *
-                </label>
+              <div className="relative">
                 <textarea
                   id="message"
                   name="message"
-                  rows={6}
+                  rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
+                  onFocus={() => setFocusedField("message")}
+                  onBlur={() => setFocusedField(null)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
-                  placeholder="Tell me about your project, questions, or just say hello!"
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent resize-none transition-all duration-300"
+                  placeholder="Message"
                 />
+                <label
+                  htmlFor="message"
+                  className={`absolute left-0 transition-all duration-300 pointer-events-none ${
+                    focusedField === "message" || formData.message
+                      ? "-top-2 text-sm text-blue-600"
+                      : "top-4 text-gray-500"
+                  }`}
+                >
+                  Message
+                </label>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-8">
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  className="flex items-center text-gray-500 hover:text-gray-900 transition-colors duration-300 group"
                 >
                   {copiedEmail ? (
                     <>
-                      <BsCheck className="mr-2" />
-                      Email copied!
+                      <BsCheck className="mr-2 text-green-500" />
+                      <span className="text-sm">Copied!</span>
                     </>
                   ) : (
                     <>
-                      <BsCopy className="mr-2" />
-                      Copy email: {myEmail}
+                      <BsCopy className="mr-2 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm">{myEmail}</span>
                     </>
                   )}
                 </button>
@@ -260,49 +289,46 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center ${
+                  className={`px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                     isSubmitting
-                      ? "bg-gray-400 cursor-not-allowed"
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                       : submitStatus === "success"
-                      ? "bg-green-500 hover:bg-green-600"
-                      : "bg-blue-600 hover:bg-blue-700 transform hover:scale-105"
-                  } text-white`}
+                      ? "bg-green-500 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105 hover:shadow-lg"
+                  }`}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent mr-2"></div>
-                      Sending...
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-400 border-t-transparent mr-2"></div>
+                      <span>Sending...</span>
                     </>
                   ) : submitStatus === "success" ? (
                     <>
                       <BsCheck className="mr-2" />
-                      Message Sent!
+                      <span>Sent!</span>
                     </>
                   ) : (
                     <>
-                      Send Message
-                      <BsArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+                      <span>Send Message</span>
+                      <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
 
-        {/* Additional Info */}
+        {/* Status indicators - Apple style */}
         <div className="text-center mt-16">
-          <p className="text-gray-600 mb-4">
-            Currently available for freelance work and new opportunities
-          </p>
-          <div className="flex items-center justify-center space-x-8">
-            <div className="flex items-center text-gray-500">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              Available for work
+          <div className="flex items-center justify-center space-x-12">
+            <div className="flex items-center text-gray-600">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+              <span className="text-sm font-light">Available for work</span>
             </div>
-            <div className="flex items-center text-gray-500">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-              Response within 24h
+            <div className="flex items-center text-gray-600">
+              <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+              <span className="text-sm font-light">Quick response</span>
             </div>
           </div>
         </div>
