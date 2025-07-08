@@ -181,6 +181,7 @@ function Landing() {
         <div onClick={handleGetStarted} className="cursor-pointer">
           <span className="text-white font-bold text-lg">Bryan Tiamzon</span>
         </div>
+<<<<<<< HEAD
         <span className="text-white/50 text-xs font-medium">
 =======
         <span className="text-white/90 text-s font-light select-none">
