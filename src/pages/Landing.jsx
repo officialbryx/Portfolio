@@ -143,7 +143,7 @@ function Landing() {
         <div onClick={handleGetStarted} className="cursor-pointer">
           <span className="text-white font-bold text-lg">Bryan Tiamzon</span>
         </div>
-        <span className="text-white/90 text-s font-light">
+        <span className="text-white/50 text-xs font-medium">
           Press ENTER to Get Started
         </span>
       </div>
