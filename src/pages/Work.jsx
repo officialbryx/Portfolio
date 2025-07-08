@@ -105,33 +105,38 @@ function Work() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div
-            className="mb-8"
-            style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
-              opacity: Math.max(0, 1 - scrollY / 800),
-            }}
-          >
-            <h1 className="text-6xl md:text-8xl font-thin mb-6 tracking-tight text-black">
-              Innovation
+      <section className="min-h-screen flex flex-col bg-white">
+        {/* Text Content Above Video */}
+        <div className="flex items-center justify-between px-8 md:px-16 lg:px-24 pt-15 pb-25">
+          <div className="flex-1">
+            <h1 className="text-black leading-none text-7xl font-medium tracking-tight">
+              Projects
             </h1>
-            <p className="text-2xl md:text-3xl font-light text-gray-600 mb-4">
-              Projects that showcase my skills
-            </p>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Thoughtfully crafted applications that demonstrate my expertise in
-              artificial intelligence and modern software development.
-            </p>
           </div>
+
+          <div className="flex-1 flex justify-end">
+            <div className="max-w-md">
+              <p className="text-black text-2xl leading-tight font-semibold tracking-wide">
+                Building practical tools,
+              </p>
+              <p className="text-black text-2xl leading-tight font-semibold tracking-wide">
+                one line of code at a time.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Video Below Text - Takes remaining space */}
+        <div className="h-[680px]">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/sf24.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
