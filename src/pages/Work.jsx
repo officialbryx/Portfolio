@@ -141,11 +141,11 @@ function Work() {
       </section>
 
       {/* Projects Overview */}
-      <section className="py-20 px-4">
+      <section className="py-30 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
-              Explore the projects.
+              Get to know Projects.
             </h2>
             <a
               href="https://github.com/officialbryx"
