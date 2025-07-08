@@ -333,8 +333,8 @@ function Contact() {
               <span className="text-sm font-light">Available for work</span>
             </div>
             <div className="flex items-center text-gray-600">
-              <div className="w-2 h-2 bg-[#1d1d1f] rounded-full mr-3"></div>
-              <span className="text-sm font-light">Quick response</span>
+              <div className="w-2 h-2 bg-[#FFA500] rounded-full mr-3"></div>
+              <span className="text-sm font-light">Response time</span>
             </div>
           </div>
         </div>
