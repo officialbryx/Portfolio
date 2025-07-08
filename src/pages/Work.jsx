@@ -144,10 +144,10 @@ function Work() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-thin mb-6 tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
               Projects
             </h2>
-            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 font-semibold max-w-3xl mx-auto tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
               A carefully crafted collection of applications showcasing my
               expertise in AI development and modern software engineering.
             </p>
@@ -160,7 +160,7 @@ function Work() {
                 <button
                   key={index}
                   onClick={() => setSelectedProject(index)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif] ${
                     selectedProject === index
                       ? "bg-white text-black shadow-sm"
                       : "text-gray-500 hover:text-black"
@@ -178,17 +178,17 @@ function Work() {
               <div className="grid lg:grid-cols-2">
                 <div className="p-12 lg:p-16">
                   <div className="mb-8">
-                    <div className="text-sm font-medium text-gray-500 mb-2">
+                    <div className="text-sm font-semibold text-gray-500 mb-2 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {projects[selectedProject].category} •{" "}
                       {projects[selectedProject].year}
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-thin mb-4 tracking-tight">
+                    <h3 className="text-4xl md:text-5xl font-semibold mb-4 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {projects[selectedProject].title}
                     </h3>
-                    <p className="text-xl text-gray-600 font-light mb-6">
+                    <p className="text-xl text-gray-600 font-semibold mb-6 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {projects[selectedProject].tagline}
                     </p>
-                    <p className="text-gray-700 leading-relaxed mb-8">
+                    <p className="text-gray-700 leading-[1.42] mb-8 font-normal tracking-[.012em] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {projects[selectedProject].description}
                     </p>
                   </div>
@@ -197,10 +197,10 @@ function Work() {
                     {Object.entries(projects[selectedProject].metrics).map(
                       ([key, value]) => (
                         <div key={key} className="text-center">
-                          <div className="text-2xl font-light text-black mb-1">
+                          <div className="text-2xl font-semibold text-black mb-1 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                             {value}
                           </div>
-                          <div className="text-xs text-gray-500 uppercase tracking-wide">
+                          <div className="text-xs text-gray-500 uppercase tracking-[.012em] font-semibold font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                             {key}
                           </div>
                         </div>
@@ -217,11 +217,11 @@ function Work() {
                             : "bg-yellow-500"
                         }`}
                       ></div>
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-gray-600 font-normal tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {projects[selectedProject].status}
                       </span>
                     </div>
-                    <button className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                    <button className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       View Code
                     </button>
                   </div>
@@ -235,7 +235,7 @@ function Work() {
                       <div className="text-6xl font-thin mb-2">
                         {projects[selectedProject].title.charAt(0)}
                       </div>
-                      <div className="text-sm font-light opacity-90">
+                      <div className="text-sm font-semibold opacity-90 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {projects[selectedProject].category}
                       </div>
                     </div>
@@ -251,10 +251,10 @@ function Work() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-thin mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
               Portfolio Overview
             </h2>
-            <p className="text-xl text-gray-600 font-light">
+            <p className="text-xl text-gray-600 font-semibold tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
               Explore my complete collection of coding projects
             </p>
           </div>
@@ -277,22 +277,22 @@ function Work() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-500 font-normal tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {project.category}
                       </div>
-                      <div className="text-xs text-gray-400">
+                      <div className="text-xs text-gray-400 font-normal tracking-[.012em] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {project.year}
                       </div>
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-light mb-2 tracking-tight">
+                  <h3 className="text-2xl font-semibold mb-2 tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 font-light">
+                  <p className="text-gray-600 mb-4 font-semibold tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                     {project.tagline}
                   </p>
-                  <p className="text-gray-700 text-sm leading-relaxed mb-6">
+                  <p className="text-gray-700 text-sm leading-[1.42] mb-6 font-normal tracking-[.012em] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                     {project.description}
                   </p>
 
@@ -300,7 +300,9 @@ function Work() {
                     {project.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                        <span className="text-sm text-gray-600">{feature}</span>
+                        <span className="text-sm text-gray-600 font-normal tracking-[.012em] leading-[1.42] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
+                          {feature}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -310,13 +312,13 @@ function Work() {
                       {project.tech.slice(0, 3).map((tech, idx) => (
                         <span
                           key={idx}
-                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-normal tracking-[.012em] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.tech.length > 3 && (
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-normal tracking-[.012em] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                           +{project.tech.length - 3}
                         </span>
                       )}
