@@ -76,7 +76,7 @@ function App() {
         </nav>
       )}
       {/* Main Content */}
-      <main className={`relative ${showNav ? "pt-32" : ""}`}>
+      <main className={`relative ${showNav ? "" : ""}`}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/info" element={<Info />} />

@@ -21,9 +21,69 @@ function Contact() {
   const [focusedField, setFocusedField] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
 
+  // Interactive hero states
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [floatingElements, setFloatingElements] = useState([]);
+  const [textAnimationIndex, setTextAnimationIndex] = useState(0);
+
   const myEmail = "bryxph@gmail.com";
   const linkedInUrl = "https://www.linkedin.com/in/bryantiamzonph";
   const resumeUrl = "/TIAMZON_Resume-1.pdf";
+
+  const heroTexts = [
+    "Get in touch.",
+    "Let's connect.",
+    "Say hello.",
+    "Start a conversation.",
+  ];
+
+  // Initialize floating elements
+  useEffect(() => {
+    const elements = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 60 + 20,
+      speed: Math.random() * 2 + 1,
+      direction: Math.random() * 360,
+      opacity: Math.random() * 0.1 + 0.05,
+    }));
+    setFloatingElements(elements);
+  }, []);
+
+  // Animate floating elements
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFloatingElements((prev) =>
+        prev.map((el) => ({
+          ...el,
+          x: (el.x + Math.cos(el.direction) * el.speed * 0.1) % 100,
+          y: (el.y + Math.sin(el.direction) * el.speed * 0.1) % 100,
+          direction: el.direction + (Math.random() - 0.5) * 0.02,
+        }))
+      );
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Text rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextAnimationIndex((prev) => (prev + 1) % heroTexts.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Mouse tracking for parallax effect
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setMousePosition({ x, y });
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -92,16 +152,169 @@ function Contact() {
           "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
       }}
     >
-      {/* Hero Section - Apple style minimal */}
-      <div className="relative bg-white">
-        <div className="max-w-4xl mx-auto px-6 py-32">
+      {/* Interactive Hero Section */}
+      <div
+        className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHeroHovered(true)}
+        onMouseLeave={() => setIsHeroHovered(false)}
+      >
+        {/* Floating geometric elements */}
+        {floatingElements.map((element) => (
+          <div
+            key={element.id}
+            className="absolute rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 backdrop-blur-sm"
+            style={{
+              left: `${element.x}%`,
+              top: `${element.y}%`,
+              width: `${element.size}px`,
+              height: `${element.size}px`,
+              opacity: element.opacity,
+              transform: `translate(-50%, -50%) scale(${
+                isHeroHovered ? 1.2 : 1
+              })`,
+              transition: "transform 0.3s ease-out",
+            }}
+          />
+        ))}
+
+        {/* Animated gradient overlay */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: `radial-gradient(600px circle at ${
+              mousePosition.x * 100
+            }% ${mousePosition.y * 100}%, 
+              rgba(59, 130, 246, 0.1) 0%, 
+              rgba(147, 51, 234, 0.05) 30%, 
+              transparent 70%)`,
+            transition: "background 0.3s ease-out",
+          }}
+        />
+
+        {/* Interactive grid pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                               linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+              transform: `translate(${mousePosition.x * 10}px, ${
+                mousePosition.y * 10
+              }px)`,
+              transition: "transform 0.2s ease-out",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-4xl mx-auto px-6 py-32">
           <div className="text-center">
-            <h1 className="text-[80px] leading-[1.05] font-semibold tracking-[-0.015em] text-[#1d1d1f] mb-8">
-              Get in touch.
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
-              Ready to bring your ideas to life? Let's start a conversation.
-            </p>
+            {/* Animated main heading */}
+            <div className="relative h-[100px] mb-8 overflow-hidden">
+              {heroTexts.map((text, index) => (
+                <h1
+                  key={index}
+                  className={`absolute w-full text-[80px] leading-[1.05] font-semibold tracking-[-0.015em] text-[#1d1d1f] transition-all duration-700 ease-out ${
+                    index === textAnimationIndex
+                      ? "opacity-100 transform translate-y-0"
+                      : index < textAnimationIndex
+                      ? "opacity-0 transform -translate-y-full"
+                      : "opacity-0 transform translate-y-full"
+                  }`}
+                  style={{
+                    transform: `translateY(${
+                      index === textAnimationIndex
+                        ? 0
+                        : index < textAnimationIndex
+                        ? -100
+                        : 100
+                    }%) 
+                               translateX(${(mousePosition.x - 0.5) * 20}px)`,
+                  }}
+                >
+                  {text}
+                </h1>
+              ))}
+            </div>
+
+            {/* Animated subtitle */}
+            <div className="relative overflow-hidden">
+              <p
+                className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto transition-all duration-300"
+                style={{
+                  transform: `translateY(${(mousePosition.y - 0.5) * 10}px)`,
+                }}
+              >
+                Looking to build something{" "}
+                <span className="relative">
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
+                    great
+                  </span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </span>{" "}
+                together? Let's connect!
+              </p>
+            </div>
+
+            {/* Interactive call-to-action buttons */}
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                className="group relative px-8 py-4 bg-[#1d1d1f] text-white rounded-full font-medium transition-all duration-300 hover:bg-gray-800 hover:scale-105 hover:shadow-2xl overflow-hidden"
+                onClick={() =>
+                  document
+                    .getElementById("contact-form")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                <span className="relative z-10 flex items-center">
+                  <BsEnvelope className="mr-2" />
+                  Send Message
+                  <BsArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+
+              <button
+                className="group px-8 py-4 bg-white/80 backdrop-blur-sm text-[#1d1d1f] rounded-full font-medium border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                onClick={copyEmail}
+              >
+                <span className="flex items-center">
+                  {copiedEmail ? (
+                    <>
+                      <BsCheck className="mr-2 text-green-500" />
+                      Email Copied!
+                    </>
+                  ) : (
+                    <>
+                      <BsCopy className="mr-2 group-hover:scale-110 transition-transform" />
+                      Copy Email
+                    </>
+                  )}
+                </span>
+              </button>
+            </div>
+
+            {/* Floating contact preview */}
+            <div
+              className={`mt-16 transition-all duration-500 ${
+                isHeroHovered
+                  ? "opacity-100 transform translate-y-0"
+                  : "opacity-70 transform translate-y-2"
+              }`}
+            >
+              <div className="inline-flex items-center space-x-6 bg-white/60 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200/50 shadow-lg">
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                  Available for work
+                </div>
+                <div className="w-px h-4 bg-gray-300"></div>
+                <div className="flex items-center text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-[#FFA500] rounded-full mr-2"></div>
+                  Response Time
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -160,7 +373,7 @@ function Contact() {
         </div>
 
         {/* Contact Form - Apple style */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto mb-16" id="contact-form">
           <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
             <div className="px-8 py-8 text-center">
               <h2 className="text-3xl font-semibold text-[#1d1d1f] mb-3 tracking-[-0.015em]">
@@ -293,7 +506,8 @@ function Contact() {
                 </button>
 
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={handleSubmit}
                   disabled={isSubmitting}
                   className={`px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                     isSubmitting
@@ -321,20 +535,6 @@ function Contact() {
                   )}
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Status indicators - Apple style */}
-        <div className="text-center mt-16">
-          <div className="flex items-center justify-center space-x-12">
-            <div className="flex items-center text-gray-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-              <span className="text-sm font-light">Available for work</span>
-            </div>
-            <div className="flex items-center text-gray-600">
-              <div className="w-2 h-2 bg-[#FFA500] rounded-full mr-3"></div>
-              <span className="text-sm font-light">Response time</span>
             </div>
           </div>
         </div>
