@@ -31,12 +31,7 @@ function Contact() {
   const linkedInUrl = "https://www.linkedin.com/in/bryantiamzonph";
   const resumeUrl = "/TIAMZON_Resume-1.pdf";
 
-  const heroTexts = [
-    "Get in touch.",
-    "Let's connect.",
-    "Say hello.",
-    "Start a conversation.",
-  ];
+  const heroTexts = ["Get in touch", "Let's connect", "Say hello"];
 
   // Initialize floating elements
   useEffect(() => {
@@ -154,7 +149,7 @@ function Contact() {
     >
       {/* Interactive Hero Section */}
       <div
-        className="relative bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden pt-20"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHeroHovered(true)}
         onMouseLeave={() => setIsHeroHovered(false)}
@@ -208,7 +203,7 @@ function Contact() {
           />
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-6 py-32">
+        <div className="relative max-w-4xl mx-auto px-6">
           <div className="text-center">
             {/* Animated main heading */}
             <div className="relative h-[100px] mb-8 overflow-hidden">
