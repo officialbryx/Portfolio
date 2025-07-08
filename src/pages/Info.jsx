@@ -130,14 +130,20 @@ function Info() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className="min-h-screen bg-white"
+      style={{
+        fontFamily:
+          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      }}
+    >
       {/* Hero Section */}
       <section
         className="min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 pt-20"
         ref={heroRef}
       >
         <div className="text-center max-w-4xl mx-auto px-6 fade-in">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-black mb-6 tracking-tight leading-none">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-semibold text-[#1d1d1f] mb-6 tracking-[-0.015em] leading-none">
             <span
               className="block"
               style={{ transform: `translateY(${scrollY * 0.2}px)` }}
@@ -181,7 +187,7 @@ function Info() {
                 <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">
                   {link.icon}
                 </div>
-                <span className="text-sm text-gray-600 group-hover:text-black transition-colors">
+                <span className="text-sm text-gray-600 group-hover:text-[#1d1d1f] transition-colors">
                   {link.name}
                 </span>
               </a>
@@ -194,7 +200,7 @@ function Info() {
       <section id="skills" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h2 className="text-4xl md:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-[-0.015em]">
               Technical Skills
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -215,7 +221,7 @@ function Info() {
                   {skill.icon}
                 </div>
 
-                <h3 className="text-xl font-semibold text-black mb-2">
+                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">
                   {skill.name}
                 </h3>
 
@@ -254,7 +260,7 @@ function Info() {
       <section id="experience" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h2 className="text-4xl md:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-[-0.015em]">
               Experience
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -271,7 +277,7 @@ function Info() {
               >
                 <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6">
                   <div className="mb-4 lg:mb-0">
-                    <h3 className="text-2xl font-semibold text-black mb-2">
+                    <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-2">
                       {exp.role}
                     </h3>
                     <p className="text-xl text-gray-600 mb-2">{exp.company}</p>

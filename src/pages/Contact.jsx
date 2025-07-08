@@ -85,12 +85,18 @@ function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className="min-h-screen bg-white"
+      style={{
+        fontFamily:
+          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      }}
+    >
       {/* Hero Section - Apple style minimal */}
       <div className="relative bg-white">
         <div className="max-w-4xl mx-auto px-6 py-32">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight">
+            <h1 className="text-[80px] leading-[1.05] font-semibold tracking-[-0.015em] text-[#1d1d1f] mb-8">
               Get in touch.
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
@@ -129,7 +135,7 @@ function Contact() {
                     }`}
                   />
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                <h3 className="text-lg font-medium text-[#1d1d1f] mb-2">
                   {method.title}
                 </h3>
                 <p className="text-gray-600 mb-1 text-sm">{method.subtitle}</p>
@@ -157,7 +163,7 @@ function Contact() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
             <div className="px-8 py-8 text-center">
-              <h2 className="text-3xl font-light text-gray-900 mb-3">
+              <h2 className="text-3xl font-semibold text-[#1d1d1f] mb-3 tracking-[-0.015em]">
                 Send a message
               </h2>
               <p className="text-gray-600 font-light">
@@ -177,7 +183,7 @@ function Contact() {
                     onFocus={() => setFocusedField("name")}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                     placeholder="Name"
                   />
                   <label
@@ -202,7 +208,7 @@ function Contact() {
                     onFocus={() => setFocusedField("email")}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                     placeholder="Email"
                   />
                   <label
@@ -227,7 +233,7 @@ function Contact() {
                   onChange={handleInputChange}
                   onFocus={() => setFocusedField("subject")}
                   onBlur={() => setFocusedField(null)}
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent transition-all duration-300"
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                   placeholder="Subject"
                 />
                 <label
@@ -252,7 +258,7 @@ function Contact() {
                   onFocus={() => setFocusedField("message")}
                   onBlur={() => setFocusedField(null)}
                   required
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-gray-900 placeholder-transparent resize-none transition-all duration-300"
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent resize-none transition-all duration-300"
                   placeholder="Message"
                 />
                 <label
@@ -271,7 +277,7 @@ function Contact() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="flex items-center text-gray-500 hover:text-gray-900 transition-colors duration-300 group"
+                  className="flex items-center text-gray-500 hover:text-[#1d1d1f] transition-colors duration-300 group"
                 >
                   {copiedEmail ? (
                     <>

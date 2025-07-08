@@ -22,7 +22,13 @@ function App() {
     location.pathname === "/contact";
 
   return (
-    <div className="min-h-screen bg-white text-black overflow-x-hidden relative">
+    <div
+      className="min-h-screen bg-white text-[#1d1d1f] overflow-x-hidden relative"
+      style={{
+        fontFamily:
+          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+      }}
+    >
       {/* Navigation */}
       {showNav && (
         <nav className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-40 py-6">
