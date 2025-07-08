@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Landing() {
   const [key, setKey] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showUI, setShowUI] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -11,9 +12,15 @@ function Landing() {
       setKey((prev) => prev + 1);
     }, 7500);
 
+    // Show UI elements after 2 seconds
+    const uiTimer = setTimeout(() => {
+      setShowUI(true);
+    }, 2000);
+
     window.addEventListener("keypress", handleKeyPress);
     return () => {
       clearInterval(resetInterval);
+      clearTimeout(uiTimer);
       window.removeEventListener("keypress", handleKeyPress);
     };
   }, [navigate]);
@@ -63,7 +70,11 @@ function Landing() {
       />
 
       {/* Apple-style menu bar */}
-      <div className="absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10">
+      <div
+        className={`absolute top-0 left-0 right-0 h-8 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 text-white text-sm font-medium z-10 transition-all duration-700 ease-out ${
+          showUI ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+        }`}
+      >
         <div className="flex items-center space-x-4">
           {/* Empty left side */}
         </div>
@@ -149,7 +160,11 @@ function Landing() {
       </div>
 
       {/* Get Started button positioned at bottom */}
-      <div className="absolute bottom-8 flex flex-col items-center space-y-3">
+      <div
+        className={`absolute bottom-8 flex flex-col items-center space-y-3 transition-all duration-700 ease-out ${
+          showUI ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
         {/* Profile image */}
         <div className="w-15 h-15 rounded-full overflow-hidden">
           <img
