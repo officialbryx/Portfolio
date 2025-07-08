@@ -114,7 +114,7 @@ function Contact() {
               key={index}
               className={`group relative bg-white rounded-2xl p-8 border transition-all duration-500 cursor-pointer ${
                 hoveredCard === index
-                  ? "border-blue-200 shadow-2xl transform -translate-y-2"
+                  ? "border-gray-200 shadow-2xl transform -translate-y-2"
                   : "border-gray-100 shadow-sm hover:shadow-lg"
               }`}
               onClick={method.action}
@@ -125,13 +125,13 @@ function Contact() {
                 <div
                   className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
                     hoveredCard === index
-                      ? "bg-blue-50 scale-110"
+                      ? "bg-gray-50 scale-110"
                       : "bg-gray-50"
                   }`}
                 >
                   <method.icon
                     className={`text-2xl transition-colors duration-300 ${
-                      hoveredCard === index ? "text-blue-600" : "text-gray-600"
+                      hoveredCard === index ? "text-[#1d1d1f]" : "text-gray-600"
                     }`}
                   />
                 </div>
@@ -145,7 +145,7 @@ function Contact() {
                 <div
                   className={`flex items-center transition-all duration-300 ${
                     hoveredCard === index
-                      ? "text-blue-600 transform translate-x-1"
+                      ? "text-[#1d1d1f] transform translate-x-1"
                       : "text-gray-400"
                   }`}
                 >
@@ -183,14 +183,14 @@ function Contact() {
                     onFocus={() => setFocusedField("name")}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-[#1d1d1f] focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                     placeholder="Name"
                   />
                   <label
                     htmlFor="name"
                     className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                       focusedField === "name" || formData.name
-                        ? "-top-2 text-sm text-blue-600"
+                        ? "-top-2 text-sm text-[#1d1d1f]"
                         : "top-4 text-gray-500"
                     }`}
                   >
@@ -208,14 +208,14 @@ function Contact() {
                     onFocus={() => setFocusedField("email")}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
+                    className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-[#1d1d1f] focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                     placeholder="Email"
                   />
                   <label
                     htmlFor="email"
                     className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                       focusedField === "email" || formData.email
-                        ? "-top-2 text-sm text-blue-600"
+                        ? "-top-2 text-sm text-[#1d1d1f]"
                         : "top-4 text-gray-500"
                     }`}
                   >
@@ -233,14 +233,14 @@ function Contact() {
                   onChange={handleInputChange}
                   onFocus={() => setFocusedField("subject")}
                   onBlur={() => setFocusedField(null)}
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-[#1d1d1f] focus:outline-none text-[#1d1d1f] placeholder-transparent transition-all duration-300"
                   placeholder="Subject"
                 />
                 <label
                   htmlFor="subject"
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     focusedField === "subject" || formData.subject
-                      ? "-top-2 text-sm text-blue-600"
+                      ? "-top-2 text-sm text-[#1d1d1f]"
                       : "top-4 text-gray-500"
                   }`}
                 >
@@ -258,14 +258,14 @@ function Contact() {
                   onFocus={() => setFocusedField("message")}
                   onBlur={() => setFocusedField(null)}
                   required
-                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-blue-500 focus:outline-none text-[#1d1d1f] placeholder-transparent resize-none transition-all duration-300"
+                  className="w-full px-0 py-4 bg-transparent border-0 border-b-2 border-gray-200 focus:border-[#1d1d1f] focus:outline-none text-[#1d1d1f] placeholder-transparent resize-none transition-all duration-300"
                   placeholder="Message"
                 />
                 <label
                   htmlFor="message"
                   className={`absolute left-0 transition-all duration-300 pointer-events-none ${
                     focusedField === "message" || formData.message
-                      ? "-top-2 text-sm text-blue-600"
+                      ? "-top-2 text-sm text-[#1d1d1f]"
                       : "top-4 text-gray-500"
                   }`}
                 >
@@ -300,7 +300,7 @@ function Contact() {
                       ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                       : submitStatus === "success"
                       ? "bg-green-500 text-white"
-                      : "bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105 hover:shadow-lg"
+                      : "bg-[#1d1d1f] hover:bg-gray-800 text-white transform hover:scale-105 hover:shadow-lg"
                   }`}
                 >
                   {isSubmitting ? (
@@ -333,7 +333,7 @@ function Contact() {
               <span className="text-sm font-light">Available for work</span>
             </div>
             <div className="flex items-center text-gray-600">
-              <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+              <div className="w-2 h-2 bg-[#1d1d1f] rounded-full mr-3"></div>
               <span className="text-sm font-light">Quick response</span>
             </div>
           </div>

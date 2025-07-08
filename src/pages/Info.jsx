@@ -106,17 +106,6 @@ function Info() {
     },
   ];
 
-  const socialLinks = [
-    { name: "GitHub", href: "https://github.com/bryantiamzon", icon: "👨‍💻" },
-    {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/bryantiamzon",
-      icon: "💼",
-    },
-    { name: "Portfolio", href: "https://bryantiamzon.dev", icon: "🌐" },
-    { name: "Resume", href: "/resume.pdf", icon: "📄" },
-  ];
-
   const experiences = [
     {
       role: "Software Engineer Intern",
@@ -171,27 +160,6 @@ function Info() {
             <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300">
               Get In Touch
             </button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex justify-center space-x-8">
-            {socialLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center p-4 hover:bg-gray-50 rounded-xl transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {link.icon}
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-[#1d1d1f] transition-colors">
-                  {link.name}
-                </span>
-              </a>
-            ))}
           </div>
         </div>
       </section>
