@@ -15,6 +15,11 @@ function App() {
     setTimeout(() => setIsLoaded(true), 1000);
   }, []);
 
+  useEffect(() => {
+    // Scroll to top when route changes
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   // Only show navigation and header on info, work, and contact pages
   const showNav =
     location.pathname === "/info" ||
