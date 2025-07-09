@@ -286,12 +286,13 @@ function Work() {
 
       {/* Modal */}
       {modalProject && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative flex flex-col items-center" style={{ fontFamily: 'SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif' }}>
             {/* Close button */}
             <button
               onClick={() => setModalProject(null)}
-              className="absolute top-6 right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10"
+              className="absolute top-6 right-6 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10 shadow"
+              aria-label="Close modal"
             >
               <svg
                 className="w-6 h-6 text-gray-600"
@@ -308,93 +309,98 @@ function Work() {
               </svg>
             </button>
 
-            <div className="grid lg:grid-cols-2">
-              {/* Left side - Image */}
-              <div
-                className={`h-96 lg:h-full bg-gradient-to-br ${modalProject.color} flex items-center justify-center`}
-              >
-                <div className="text-8xl">{modalProject.image}</div>
+            <div className="w-full flex flex-col items-center px-8 pt-16 pb-12">
+              {/* Title and subtitle */}
+              <div className="w-full max-w-2xl mx-auto mb-8 text-center">
+                <div className="text-base font-semibold text-gray-500 mb-2 tracking-wide">
+                  {modalProject.category} • {modalProject.year}
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight leading-tight text-black">
+                  {modalProject.title}
+                </h2>
+                <p className="text-xl md:text-2xl text-gray-700 font-semibold mb-6">
+                  {modalProject.tagline}
+                </p>
+                <p className="text-gray-700 leading-relaxed mb-8 text-lg">
+                  {modalProject.description}
+                </p>
               </div>
 
-              {/* Right side - Content */}
-              <div className="p-8 lg:p-12">
-                <div className="mb-6">
-                  <div className="text-sm font-semibold text-gray-500 mb-2 tracking-wide">
-                    {modalProject.category} • {modalProject.year}
-                  </div>
-                  <h2 className="text-4xl font-semibold mb-4 tracking-tight">
-                    {modalProject.title}
-                  </h2>
-                  <p className="text-xl text-gray-600 font-semibold mb-6">
-                    {modalProject.tagline}
-                  </p>
-                  <p className="text-gray-700 leading-relaxed mb-8">
-                    {modalProject.description}
-                  </p>
+              {/* Image section */}
+              <div className="w-full flex justify-center mb-10">
+                <div className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: '220px', minWidth: '320px', maxHeight: '320px', maxWidth: '100%' }}>
+                  {/* If you have an image, show it here */}
+                  {modalProject.imageUrl && (
+                    <img
+                      src={modalProject.imageUrl}
+                      alt={modalProject.title}
+                      className="object-contain w-full h-full max-h-[320px] max-w-[480px]"
+                    />
+                  )}
                 </div>
+              </div>
 
-                {/* Features */}
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold mb-4">Key Features</h3>
-                  <div className="space-y-3">
-                    {modalProject.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  {Object.entries(modalProject.metrics).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className="text-2xl font-semibold text-black mb-1">
-                        {value}
-                      </div>
-                      <div className="text-xs text-gray-500 uppercase font-semibold">
-                        {key}
-                      </div>
+              {/* Features */}
+              <div className="w-full max-w-2xl mx-auto mb-8">
+                <h3 className="text-lg font-semibold mb-4">Key Features</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {modalProject.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                      <span className="text-gray-700 text-base">{feature}</span>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* Tech Stack */}
-                <div className="mb-8">
-                  <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
-                    Technology Stack
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {modalProject.tech.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              {/* Metrics */}
+              <div className="w-full max-w-2xl mx-auto grid grid-cols-3 gap-4 mb-8">
+                {Object.entries(modalProject.metrics).map(([key, value]) => (
+                  <div key={key} className="text-center">
+                    <div className="text-2xl font-semibold text-black mb-1">
+                      {value}
+                    </div>
+                    <div className="text-xs text-gray-500 uppercase font-semibold">
+                      {key}
+                    </div>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                {/* Status and Action */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <div
-                      className={`w-3 h-3 rounded-full ${
-                        modalProject.status === "Available Now"
-                          ? "bg-green-500"
-                          : "bg-yellow-500"
-                      }`}
-                    ></div>
-                    <span className="text-sm text-gray-600 font-medium">
-                      {modalProject.status}
+              {/* Tech Stack */}
+              <div className="w-full max-w-2xl mx-auto mb-8">
+                <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+                  Technology Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {modalProject.tech.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-medium"
+                    >
+                      {tech}
                     </span>
-                  </div>
-                  <button className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors">
-                    View Code
-                  </button>
+                  ))}
                 </div>
+              </div>
+
+              {/* Status and Action */}
+              <div className="w-full max-w-2xl mx-auto flex items-center justify-between mt-4">
+                <div className="flex items-center space-x-2">
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      modalProject.status === "Available Now"
+                        ? "bg-green-500"
+                        : "bg-yellow-500"
+                    }`}
+                  ></div>
+                  <span className="text-sm text-gray-600 font-medium">
+                    {modalProject.status}
+                  </span>
+                </div>
+                <button className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors">
+                  View Code
+                </button>
               </div>
             </div>
           </div>
