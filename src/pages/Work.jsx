@@ -58,7 +58,7 @@ function Work() {
         security: "Military-grade",
       },
       status: "Available Now",
-      imageUrl: "/Screenshot 2025-07-10 at 1.52.49 AM.png",
+      imageUrl: "/Screenshot 2025-07-10 at 1.52.49 AM.png",
       textColor: "text-white",
     },
     {
@@ -108,6 +108,9 @@ function Work() {
       textColor: "text-white",
     },
   ];
+
+  // Create extended projects array for infinite scroll
+  const extendedProjects = [...projects, ...projects, ...projects];
 
   return (
     <div className="min-h-screen bg-white text-black">
@@ -181,7 +184,7 @@ function Work() {
             ref={gridRef}
           >
             <div className="flex flex-nowrap gap-10">
-              {projects.map((project, index) => (
+              {extendedProjects.map((project, index) => (
                 <div
                   key={index}
                   className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[700px] w-[420px] flex-shrink-0"
@@ -233,7 +236,7 @@ function Work() {
             <button
               className="w-12 h-12 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center shadow transition-colors"
               onClick={() => {
-                if (gridRef.current) gridRef.current.scrollBy({ left: -540, behavior: "smooth" });
+                if (gridRef.current) gridRef.current.scrollBy({ left: -460, behavior: "smooth" });
               }}
               aria-label="Scroll Left"
             >
@@ -244,7 +247,7 @@ function Work() {
             <button
               className="w-12 h-12 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center shadow transition-colors"
               onClick={() => {
-                if (gridRef.current) gridRef.current.scrollBy({ left: 540, behavior: "smooth" });
+                if (gridRef.current) gridRef.current.scrollBy({ left: 460, behavior: "smooth" });
               }}
               aria-label="Scroll Right"
             >
