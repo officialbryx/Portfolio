@@ -177,48 +177,54 @@ function Work() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-50 mb-20">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer relative h-[500px]"
+                className="group bg-[#f5f5f7] rounded-[28px] overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[650px] w-[350px]"
                 onClick={() => setModalProject(project)}
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 {/* Full Card Background Image */}
                 <div
-                  className={`h-full bg-gradient-to-br ${project.color} flex items-center justify-center relative`}
+                  className={`h-full bg-gradient-to-br ${project.color} flex items-center justify-center relative rounded-[28px]`}
                 >
-                  <div className="text-8xl opacity-20">{project.image}</div>
+                  {project.title === "HireFlow" && (
+                    <>
+                      {/* Background Image for HireFlow */}
+                      <div
+                        className="absolute inset-0 bg-cover bg-center opacity-30 rounded-[28px]"
+                        style={{
+                          backgroundImage: `url('data:image/jpeg;base64,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')`,
+                        }}
+                      ></div>
+                    </>
+                  )}
 
                   {/* Text Overlay */}
-                  <div className="absolute top-6 left-6 right-6">
-                    <h3 className="text-2xl font-bold mb-2 text-white tracking-tight leading-tight">
+                  <div className="absolute top-7 left-7 right-7">
+                    <h3 className="text-[21px] font-semibold mb-2 text-white tracking-tight leading-[1.19] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {project.title}
                     </h3>
-                    <p className="text-white/90 text-sm font-medium leading-relaxed">
+                    <p className="text-white/90 text-[14px] font-normal leading-[1.43] tracking-tight font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                       {project.tagline}
                     </p>
                   </div>
 
-                  {/* Hover overlay with + button */}
-                  <div
-                    className={`absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity duration-300 ${
-                      hoveredProject === index ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  {/* Bottom right + button - always visible */}
+                  <div className="absolute bottom-7 right-7">
+                    <div className="w-11 h-11 bg-[#333336] hover:bg-[#37373a] active:bg-[#2f2f32] rounded-full flex items-center justify-center transition-colors duration-200">
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="w-5 h-5 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        strokeWidth="2.5"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                       </svg>
