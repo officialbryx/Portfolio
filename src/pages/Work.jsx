@@ -151,7 +151,7 @@ function Work() {
       <section className="py-20 bg-white">
         {/* Title and GitHub Button Row */}
         <div className="flex items-center justify-between pl-8 pr-8 md:pl-16 md:pr-16 lg:pl-24 lg:pr-24 mb-12">
-          <h2 className="text-black leading-none text-7xl font-medium tracking-tight whitespace-nowrap">
+          <h2 className="text-black leading-none text-5xl font-bold tracking-tight whitespace-nowrap">
             Get to know Projects.
           </h2>
           <a
@@ -176,55 +176,57 @@ function Work() {
         {/* Cards Row */}
         <div className="relative">
           <div
-            ref={gridRef}
-            className="flex flex-nowrap gap-10 overflow-x-auto scrollbar-hide pl-8 md:pl-16 lg:pl-24"
+            className="overflow-x-auto overflow-y-hidden scrollbar-hide pl-8 md:pl-16 lg:pl-24"
             style={{ scrollBehavior: 'smooth' }}
+            ref={gridRef}
           >
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[600px] w-[500px] flex-shrink-0"
-                onClick={() => setModalProject(project)}
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
-              >
-                {/* Full Card Background Image */}
-                <div className="h-full relative rounded-[28px] overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Text Overlay */}
-                  <div className="absolute top-7 left-7 right-7">
-                    <h3 className="text-[21px] font-semibold mb-2 text-white tracking-tight leading-[1.19] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
-                      {project.title}
-                    </h3>
-                    <p className={`${project.textColor} text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}>
-                      {project.tagline}
-                    </p>
-                  </div>
-                  {/* Bottom right + button - always visible */}
-                  <div className="absolute bottom-7 right-7">
-                    <div className="w-10 h-10 bg-[#333336] hover:bg-[#37373a] active:bg-[#2f2f32] rounded-full flex items-center justify-center transition-colors duration-200">
-                      <svg
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        strokeWidth="2.5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                        />
-                      </svg>
+            <div className="flex flex-nowrap gap-10">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[700px] w-[420px] flex-shrink-0"
+                  onClick={() => setModalProject(project)}
+                  onMouseEnter={() => setHoveredProject(index)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                >
+                  {/* Full Card Background Image */}
+                  <div className="h-full relative rounded-[28px] overflow-hidden">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Text Overlay */}
+                    <div className="absolute top-7 left-7 right-7">
+                      <h3 className="text-[21px] font-semibold mb-2 text-white tracking-tight leading-[1.19] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
+                        {project.title}
+                      </h3>
+                      <p className={`${project.textColor} text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}>
+                        {project.tagline}
+                      </p>
+                    </div>
+                    {/* Bottom right + button - always visible */}
+                    <div className="absolute bottom-7 right-7">
+                      <div className="w-10 h-10 bg-[#333336] hover:bg-[#37373a] active:bg-[#2f2f32] rounded-full flex items-center justify-center transition-colors duration-200">
+                        <svg
+                          className="w-6 h-6 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2.5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           {/* Arrow Buttons BELOW the cards */}
           <div className="flex justify-end gap-4 pt-8 pr-8 md:pr-16 lg:pr-24">
