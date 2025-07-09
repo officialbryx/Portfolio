@@ -35,7 +35,7 @@ function Work() {
         satisfaction: "4.8/5",
       },
       status: "Available Now",
-      imageUrl: "/pexels-kampus-8441790.jpg",
+      imageUrl: "/pexels-goumbik-590016.jpg",
       textColor: "text-white",
     },
     {
@@ -58,7 +58,7 @@ function Work() {
         security: "Military-grade",
       },
       status: "Available Now",
-      imageUrl: "/Screenshot 2025-07-10 at 1.52.49 AM.png",
+      imageUrl: "/pexels-cottonbro-8090298.jpg",
       textColor: "text-white",
     },
     {
@@ -81,7 +81,7 @@ function Work() {
         alerts: "Instant",
       },
       status: "Coming Soon",
-      imageUrl: "/thumb_sdunet.png",
+      imageUrl: "/face-detection-output.png",
       textColor: "text-white",
     },
     {
@@ -184,7 +184,7 @@ function Work() {
             ref={gridRef}
           >
             <div className="flex flex-nowrap gap-10">
-              {extendedProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <div
                   key={index}
                   className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[700px] w-[420px] flex-shrink-0"
@@ -236,7 +236,19 @@ function Work() {
             <button
               className="w-12 h-12 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center shadow transition-colors"
               onClick={() => {
-                if (gridRef.current) gridRef.current.scrollBy({ left: -460, behavior: "smooth" });
+                if (gridRef.current) {
+                  const currentScroll = gridRef.current.scrollLeft;
+                  const cardWidth = 420;
+                  const gap = 40;
+                  const cardSpacing = cardWidth + gap;
+                  
+                  // Find the current card position
+                  const currentCardIndex = Math.round(currentScroll / cardSpacing);
+                  const targetCardIndex = Math.max(0, currentCardIndex - 1);
+                  const targetScroll = targetCardIndex * cardSpacing;
+                  
+                  gridRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
+                }
               }}
               aria-label="Scroll Left"
             >
@@ -247,7 +259,20 @@ function Work() {
             <button
               className="w-12 h-12 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center shadow transition-colors"
               onClick={() => {
-                if (gridRef.current) gridRef.current.scrollBy({ left: 460, behavior: "smooth" });
+                if (gridRef.current) {
+                  const currentScroll = gridRef.current.scrollLeft;
+                  const cardWidth = 420;
+                  const gap = 40;
+                  const cardSpacing = cardWidth + gap;
+                  const maxScroll = gridRef.current.scrollWidth - gridRef.current.clientWidth;
+                  
+                  // Find the current card position
+                  const currentCardIndex = Math.round(currentScroll / cardSpacing);
+                  const targetCardIndex = Math.min(3, currentCardIndex + 1); // 3 is the last card index (0-3 for 4 cards)
+                  const targetScroll = Math.min(targetCardIndex * cardSpacing, maxScroll);
+                  
+                  gridRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
+                }
               }}
               aria-label="Scroll Right"
             >
@@ -279,23 +304,6 @@ function Work() {
                   strokeLinejoin="round"
                   strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            {/* Expand button */}
-            <button className="absolute top-6 right-20 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors z-10">
-              <svg
-                className="w-6 h-6 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                 />
               </svg>
             </button>
