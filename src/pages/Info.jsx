@@ -35,6 +35,61 @@ function Info() {
           </div>
         </div>
       </div>
+      {/* Divider */}
+      <div className="w-full flex justify-center my-12">
+        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+      </div>
+      {/* Education Section */}
+      <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        {/* Left: Text */}
+        <div>
+          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Education</div>
+          <p className="text-gray-700 mb-4">Bachelor of Science in Computer Science, Example University, 2021-2025</p>
+          <p className="text-gray-700 mb-4">Relevant coursework: Data Structures, Web Development, Machine Learning, Cloud Computing</p>
+        </div>
+        {/* Right: Image */}
+        <div className="flex justify-center">
+          <img src="https://placehold.co/250x180?text=Education" alt="Education" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+        </div>
+      </div>
+      {/* Divider for Motivation */}
+      <div className="w-full flex justify-center my-12">
+        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+      </div>
+      {/* Motivation Section */}
+      <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        {/* Left: Text */}
+        <div>
+          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Motivation</div>
+          <p className="text-gray-700 mb-4">I'm passionate about building technology that makes a difference. I love collaborating with creative people, learning new frameworks, and exploring the intersection of design and code.</p>
+        </div>
+        {/* Right: Image */}
+        <div className="flex justify-center">
+          <img src="https://placehold.co/250x180?text=Motivation" alt="Motivation" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+        </div>
+      </div>
+      {/* Divider for Things I Love to Do */}
+      <div className="w-full flex justify-center my-12">
+        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+      </div>
+      {/* Things I Love to Do Section */}
+      <div className="max-w-6xl mx-auto px-6 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        {/* Left: Text */}
+        <div>
+          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Things I Love to Do</div>
+          <ul className="list-disc list-inside">
+            <li className="text-gray-700 mb-2">Exploring new programming languages</li>
+            <li className="text-gray-700 mb-2">Designing user interfaces</li>
+            <li className="text-gray-700 mb-2">Hiking and nature photography</li>
+            <li className="text-gray-700 mb-2">Reading about AI and future tech</li>
+            <li className="text-gray-700 mb-2">Volunteering for tech education</li>
+          </ul>
+        </div>
+        {/* Right: Image */}
+        <div className="flex justify-center">
+          <img src="https://placehold.co/250x180?text=Hobbies" alt="Things I Love to Do" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+        </div>
+      </div>
     </div>
   );
 }
