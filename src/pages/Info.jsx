@@ -47,8 +47,9 @@ function Info() {
         {/* Left: Text */}
         <div>
           <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Education</div>
-          <p className="text-gray-700 mb-4">Bachelor of Science in Computer Science, Example University, 2021-2025</p>
-          <p className="text-gray-700 mb-4">Relevant coursework: Data Structures, Web Development, Machine Learning, Cloud Computing</p>
+          <p className="text-gray-700 mb-4">Technological Institute of the Philippines - Quezon City</p>
+          <p className="text-gray-700 mb-4">2021-2025</p>
+          <p className="text-gray-700 mb-4">Bachelor of Science in Computer Science (BSCS) | Cum Laude</p>
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
