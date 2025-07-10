@@ -6,10 +6,10 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-20 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col items-start mb-12 md:mb-0">
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-700 leading-none mb-4">
+          <h1 className="text-7xl md:text-8xl font-bold text-gray-700 text-justify leading-none mb-4">
             Bryan<br />Tiamzon
           </h1>
-          <div className="text-3xl font-semibold text-gray-600 mb-1">ᜊ᜔ᜍ᜔ᜌᜈ᜔</div>
+          <div className="text-6xl font-semibold text-gray-600 mb-1">ᜊ᜔ᜍ᜔ᜌᜈ᜔</div>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start w-full">
