@@ -17,95 +17,35 @@ function Work() {
   const projects = [
     {
       title: "HireFlow",
-      tagline: "Intelligence meets recruitment",
-      category: "AI Platform",
-      year: "2025",
+      tagline: "Smart screening. Smarter hiring.",
       description:
         "Revolutionary ATS platform that transforms hiring with advanced AI. JobBERT and XGBoost algorithms automatically screen and rank candidates, making recruitment effortless and precise.",
-      features: [
-        "AI-powered resume screening",
-        "Intelligent candidate ranking",
-        "Automated pipeline management",
-        "Real-time analytics dashboard",
-      ],
       tech: ["Python", "TensorFlow", "React", "XGBoost", "BERT"],
-      metrics: {
-        accuracy: "94%",
-        speed: "10x faster",
-        satisfaction: "4.8/5",
-      },
-      status: "Available Now",
       imageUrl: "/pexels-goumbik-590016.jpg",
-      textColor: "text-white",
     },
     {
       title: "UnlockX",
-      tagline: "Security redefined",
-      category: "Security System",
-      year: "2025",
+      tagline: "Find faces. Reunite families.",
       description:
         "Advanced facial recognition system designed for family reunification and secure access control. Powered by InsightFace technology for unparalleled accuracy and speed.",
-      features: [
-        "Real-time face detection",
-        "Secure authentication",
-        "Family reunification tools",
-        "Advanced privacy protection",
-      ],
       tech: ["Python", "OpenCV", "InsightFace", "PyQt5", "NumPy"],
-      metrics: {
-        accuracy: "99.7%",
-        speed: "< 100ms",
-        security: "Military-grade",
-      },
-      status: "Available Now",
-      imageUrl: "/pexels-cottonbro-8090298.jpg",
-      textColor: "text-white",
+      imageUrl: "/face-detection-output.png",
     },
     {
       title: "Ward",
-      tagline: "Vision that never sleeps",
-      category: "Surveillance AI",
-      year: "2025",
+      tagline: "Watch closely. Act instantly.",
       description:
         "Intelligent surveillance system with real-time face detection and recognition. Features advanced video analysis, automatic highlight recording, and smart alerts.",
-      features: [
-        "24/7 monitoring",
-        "Smart highlight recording",
-        "Visibility change detection",
-        "Instant notifications",
-      ],
       tech: ["Python", "OpenCV", "InsightFace", "PIL", "Threading"],
-      metrics: {
-        uptime: "99.9%",
-        detection: "Real-time",
-        alerts: "Instant",
-      },
-      status: "Coming Soon",
-      imageUrl: "/face-detection-output.png",
-      textColor: "text-white",
+      imageUrl: "/pexels-cottonbro-8090298.jpg",
     },
     {
       title: "Moon Hey Hotpot POS",
-      tagline: "Restaurant management perfected",
-      category: "Business Solution",
-      year: "2024",
+      tagline: "Serve fast. Manage smarter.",
       description:
         "Complete point-of-sale system designed for modern restaurants. Streamlines operations with inventory management, order processing, and comprehensive analytics.",
-      features: [
-        "Intuitive order management",
-        "Real-time inventory tracking",
-        "Customer analytics",
-        "Staff performance insights",
-      ],
       tech: ["Python", "PyQt5", "MySQL", "pandas", "matplotlib"],
-      metrics: {
-        efficiency: "40% faster",
-        accuracy: "99.9%",
-        satisfaction: "4.9/5",
-      },
-      status: "Available Now",
       imageUrl: "/pexels-mibernaa-31777068.jpg",
-      textColor: "text-white",
     },
   ];
 
@@ -204,7 +144,7 @@ function Work() {
                       <h3 className="text-[21px] font-semibold mb-2 text-white tracking-tight leading-[1.19] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {project.title}
                       </h3>
-                      <p className={`${project.textColor} text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}>
+                      <p className={`text-white text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}>
                         {project.tagline}
                       </p>
                     </div>
@@ -312,9 +252,6 @@ function Work() {
             <div className="w-full flex flex-col items-center px-8 pt-16 pb-12">
               {/* Title and subtitle */}
               <div className="w-full max-w-2xl mx-auto mb-8 text-center">
-                <div className="text-base font-semibold text-gray-500 mb-2 tracking-wide">
-                  {modalProject.category} • {modalProject.year}
-                </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight leading-tight text-black">
                   {modalProject.title}
                 </h2>
@@ -340,33 +277,6 @@ function Work() {
                 </div>
               </div>
 
-              {/* Features */}
-              <div className="w-full max-w-2xl mx-auto mb-8">
-                <h3 className="text-lg font-semibold mb-4">Key Features</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {modalProject.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                      <span className="text-gray-700 text-base">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Metrics */}
-              <div className="w-full max-w-2xl mx-auto grid grid-cols-3 gap-4 mb-8">
-                {Object.entries(modalProject.metrics).map(([key, value]) => (
-                  <div key={key} className="text-center">
-                    <div className="text-2xl font-semibold text-black mb-1">
-                      {value}
-                    </div>
-                    <div className="text-xs text-gray-500 uppercase font-semibold">
-                      {key}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
               {/* Tech Stack */}
               <div className="w-full max-w-2xl mx-auto mb-8">
                 <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
@@ -382,25 +292,6 @@ function Work() {
                     </span>
                   ))}
                 </div>
-              </div>
-
-              {/* Status and Action */}
-              <div className="w-full max-w-2xl mx-auto flex items-center justify-between mt-4">
-                <div className="flex items-center space-x-2">
-                  <div
-                    className={`w-3 h-3 rounded-full ${
-                      modalProject.status === "Available Now"
-                        ? "bg-green-500"
-                        : "bg-yellow-500"
-                    }`}
-                  ></div>
-                  <span className="text-sm text-gray-600 font-medium">
-                    {modalProject.status}
-                  </span>
-                </div>
-                <button className="bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors">
-                  View Code
-                </button>
               </div>
             </div>
           </div>
