@@ -164,66 +164,6 @@ function Info() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl md:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-[-0.015em]">
-              Technical Skills
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Technologies I use to bring ideas to life
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.name}
-                className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200 hover:-translate-y-2 fade-in"
-                onMouseEnter={() => setActiveSkill(skill.name)}
-                onMouseLeave={() => setActiveSkill(null)}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {skill.icon}
-                </div>
-
-                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">
-                  {skill.name}
-                </h3>
-
-                <span className="inline-block text-sm text-gray-500 mb-4 px-3 py-1 bg-gray-100 rounded-full">
-                  {skill.category}
-                </span>
-
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {skill.description}
-                </p>
-
-                {/* Progress Bar */}
-                <div className="relative">
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full bg-gradient-to-r ${skill.color} transition-all duration-1000 ease-out`}
-                      style={{
-                        width:
-                          activeSkill === skill.name ? `${skill.level}%` : "0%",
-                      }}
-                    />
-                  </div>
-                  <div className="text-right mt-2">
-                    <span className="text-sm font-medium text-gray-500">
-                      {activeSkill === skill.name ? `${skill.level}%` : ""}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Experience Section */}
       <section id="experience" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
