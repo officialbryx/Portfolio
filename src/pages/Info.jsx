@@ -24,13 +24,16 @@ function Info() {
           <div className="w-full">
             <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Info</div>
             <p className="text-gray-700 mb-4">
-              I’m an undergraduate student at the University of California, Berkeley studying Architecture and graduating in May 2024.
+              I’m an undergraduate computer science student at the Technological Institute of the Philippines, graduating in August 2025.
             </p>
             <p className="text-gray-700 mb-4">
-              For a long time, I’ve been designing spaces that people can enjoy strolling around, always striving to curate an engaging human experience as they navigate the built environment. Throughout this journey, I’ve been curious about understanding human interaction to build more intuitive things — there are many complexities in human relationships with nature and architecture with so much still to explore.
+              Ever since I discovered programming, I’ve been fascinated not just by what code can build, but by how it can help people in everyday life. For me, writing software isn’t only about solving technical problems—it’s about understanding human needs and designing tools that genuinely make a difference.
+            </p>
+            <p className="text-gray-700 mb-4">
+              I’ve always enjoyed exploring how technology can bridge gaps, simplify tasks, and bring people closer together. Whether I’m learning a new framework, experimenting with AI models, or sketching out ideas for an interface, what drives me is the thought that someone, somewhere, might benefit from what I create.
             </p>
             <p className="text-gray-700">
-              During my sophomore year, I decided to shift my career towards designing for people in computing spaces because of a desire to work at larger and faster scales. While computing and architecture slowly evolve, still, at the heart of these disciplines are what makes design valuable – it improves people’s lives holistically through emotion, functionality, and aesthetics.
+              At the heart of it all, I see computer science as more than just logic and algorithms—it’s a creative field where empathy matters just as much as technical skill. As I keep learning and growing, I hope to craft solutions that feel intuitive, human-centered, and meaningful.
             </p>
           </div>
         </div>
@@ -49,7 +52,7 @@ function Info() {
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
-          <img src="https://placehold.co/250x180?text=Education" alt="Education" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+          <img src="/tipqccampus.jpg" alt="Education" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
         </div>
       </div>
       {/* Divider for Motivation */}
@@ -87,7 +90,7 @@ function Info() {
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
-          <img src="https://placehold.co/250x180?text=Hobbies" alt="Things I Love to Do" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+          <img src="/IMG_5046 2.png" alt="Things I Love to Do" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
         </div>
       </div>
     </div>
