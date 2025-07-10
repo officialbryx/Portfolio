@@ -13,12 +13,28 @@ function Info() {
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start w-full">
-          {/* Image Grid */}
-          <div className="grid grid-cols-2 gap-4 mb-8 w-full">
-            <img src="https://placehold.co/200x200?text=Img+1" alt="Placeholder 1" className="rounded-xl opacity-70 shadow-lg object-cover w-full h-32 md:h-40" />
-            <img src="https://placehold.co/200x200?text=Img+2" alt="Placeholder 2" className="rounded-xl opacity-70 shadow-lg object-cover w-full h-32 md:h-40" />
-            <img src="https://placehold.co/200x200?text=Img+3" alt="Placeholder 3" className="rounded-xl opacity-70 shadow-lg object-cover w-full h-32 md:h-40" />
-            <img src="https://placehold.co/200x200?text=Img+4" alt="Placeholder 4" className="rounded-xl opacity-70 shadow-lg object-cover w-full h-32 md:h-40" />
+          {/* Custom Staggered Images - User will adjust positions manually */}
+          <div className="relative w-full h-72 md:h-96 mb-8">
+            <img
+              src="/unnamed.jpg"
+              alt="Placeholder 1"
+              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-80 md:w-55 md:h-80 absolute top-4"
+            />
+            <img
+              src="/IMG_7719 Medium.png"
+              alt="Placeholder 2"
+              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-120 md:w-70 md:h-120 absolute right-8 bottom-20"
+            />
+            <img
+              src="/IMG_5793.jpg"
+              alt="Placeholder 3"
+              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-80 md:w-120 md:h-50 absolute left-135 bottom-70"
+            />
+            <img
+              src="/IMG_5760.jpg"
+              alt="Placeholder 4"
+              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-70 md:w-50 md:h-60 absolute left-135 top-30"
+            />
           </div>
           {/* Info Section */}
           <div className="w-full">
