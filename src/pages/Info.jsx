@@ -126,23 +126,24 @@ function Info() {
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
           <div className="-ml-25">
-            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
-              Motivation
-            </div>
-            <p className="text-gray-700 mb-4">
-              I'm passionate about building technology that makes a difference. I
-              love collaborating with creative people, learning new frameworks,
-              and exploring the intersection of design and code.
-            </p>
+            <img
+            src="motivation.jpg"
+            alt="Motivation"
+            className="rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
+           />
+
           </div>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
-          <img
-            src="motivation.jpg"
-            alt="Motivation"
-            className="rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
-          />
+         <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+              Motivation
+          </div>
+          <p className="text-gray-700 mb-4">
+            I'm passionate about building technology that makes a difference. I
+            love collaborating with creative people, learning new frameworks,
+            and exploring the intersection of design and code.
+          </p>
         </div>
       </div>
       {/* Divider for Things I Love to Do */}
@@ -154,7 +155,7 @@ function Info() {
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
           <div className="-ml-70">
-            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-40">
               Things I Love to Do
             </div>
             <p className="text-black text-2xl font-extrabold">Listening to Music</p>
@@ -168,16 +169,17 @@ function Info() {
             <img
               src="/IMG_3471.jpeg"
               alt="Things I Love to Do"
-              className="absolute top-0 left-0 rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
+              className="absolute top-50 left-70 rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
             />
             <img
               src="/N_-MfI-4.jpg"
               alt="Things I Love to Do 2"
-              className="absolute top-20 left-40 rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
+              className="absolute top-0 left-0 rounded-xl shadow-lg object-cover w-[250px] h-[420px]"
             />
           </div>
         </div>
       </div>
+      <div className="h-70"></div>
     </div>
   );
 }
