@@ -258,7 +258,7 @@ function Contact() {
               >
                 Looking to build something{" "}
                 <span className="relative">
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent font-medium">
+                  <span className="bg-gradient-to-b from-red-500 via-pink-600 to-purple-900 bg-clip-text text-transparent font-medium">
                     great
                   </span>
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
