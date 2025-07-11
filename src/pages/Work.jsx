@@ -49,9 +49,6 @@ function Work() {
     },
   ];
 
-  // Create extended projects array for infinite scroll
-  const extendedProjects = [...projects, ...projects, ...projects];
-
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
@@ -120,7 +117,7 @@ function Work() {
         <div className="relative">
           <div
             className="overflow-x-auto overflow-y-hidden scrollbar-hide pl-8 md:pl-16 lg:pl-24"
-            style={{ scrollBehavior: 'smooth' }}
+            style={{ scrollBehavior: "smooth" }}
             ref={gridRef}
           >
             <div className="flex flex-nowrap gap-10">
@@ -144,7 +141,9 @@ function Work() {
                       <h3 className="text-[21px] font-semibold mb-2 text-white tracking-tight leading-[1.19] font-['SF_Pro_Display','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]">
                         {project.title}
                       </h3>
-                      <p className={`text-white text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}>
+                      <p
+                        className={`text-white text-[17px] leading-[1.235] font-semibold tracking-[-.022em] font-['SF_Pro_Text','SF_Pro_Icons','Helvetica_Neue',Helvetica,Arial,sans-serif]`}
+                      >
                         {project.tagline}
                       </p>
                     </div>
@@ -181,19 +180,34 @@ function Work() {
                   const cardWidth = 420;
                   const gap = 40;
                   const cardSpacing = cardWidth + gap;
-                  
+
                   // Find the current card position
-                  const currentCardIndex = Math.round(currentScroll / cardSpacing);
+                  const currentCardIndex = Math.round(
+                    currentScroll / cardSpacing
+                  );
                   const targetCardIndex = Math.max(0, currentCardIndex - 1);
                   const targetScroll = targetCardIndex * cardSpacing;
-                  
-                  gridRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
+
+                  gridRef.current.scrollTo({
+                    left: targetScroll,
+                    behavior: "smooth",
+                  });
                 }
               }}
               aria-label="Scroll Left"
             >
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              <svg
+                className="w-6 h-6 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
             <button
@@ -204,20 +218,39 @@ function Work() {
                   const cardWidth = 420;
                   const gap = 40;
                   const cardSpacing = cardWidth + gap;
-                  const maxScroll = gridRef.current.scrollWidth - gridRef.current.clientWidth;
-                  
+                  const maxScroll =
+                    gridRef.current.scrollWidth - gridRef.current.clientWidth;
+
                   // Find the current card position
-                  const currentCardIndex = Math.round(currentScroll / cardSpacing);
+                  const currentCardIndex = Math.round(
+                    currentScroll / cardSpacing
+                  );
                   const targetCardIndex = Math.min(3, currentCardIndex + 1); // 3 is the last card index (0-3 for 4 cards)
-                  const targetScroll = Math.min(targetCardIndex * cardSpacing, maxScroll);
-                  
-                  gridRef.current.scrollTo({ left: targetScroll, behavior: "smooth" });
+                  const targetScroll = Math.min(
+                    targetCardIndex * cardSpacing,
+                    maxScroll
+                  );
+
+                  gridRef.current.scrollTo({
+                    left: targetScroll,
+                    behavior: "smooth",
+                  });
                 }
               }}
               aria-label="Scroll Right"
             >
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <svg
+                className="w-6 h-6 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>
@@ -227,7 +260,13 @@ function Work() {
       {/* Modal */}
       {modalProject && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative flex flex-col items-center" style={{ fontFamily: 'SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif' }}>
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative flex flex-col items-center"
+            style={{
+              fontFamily:
+                "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
+            }}
+          >
             {/* Close button */}
             <button
               onClick={() => setModalProject(null)}
@@ -265,7 +304,15 @@ function Work() {
 
               {/* Image section */}
               <div className="w-full flex justify-center mb-10">
-                <div className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center" style={{ minHeight: '220px', minWidth: '320px', maxHeight: '320px', maxWidth: '100%' }}>
+                <div
+                  className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center"
+                  style={{
+                    minHeight: "220px",
+                    minWidth: "320px",
+                    maxHeight: "320px",
+                    maxWidth: "100%",
+                  }}
+                >
                   {/* If you have an image, show it here */}
                   {modalProject.imageUrl && (
                     <img
