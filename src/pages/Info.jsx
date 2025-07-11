@@ -6,14 +6,12 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-20 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col items-start mb-12 md:mb-0">
-          <h1 className="text-8xl md:text-8xl font-bold text-gray-700 text-justify leading-none mb-4">
+          <h1 className="text-8xl md:text-8xl font-bold text-black text-justify leading-none mb-4">
             Bryan
             <br />
             Tiamzon
           </h1>
-          <div className="text-7xl font-semibold text-gray-600 mb-1">
-            ᜊ᜔ᜍ᜔ᜌᜈ᜔
-          </div>
+          <div className="text-7xl font-semibold text-black mb-1">ᜊ᜔ᜍ᜔ᜌᜈ᜔</div>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start w-full">
@@ -42,7 +40,7 @@ function Info() {
           </div>
           {/* Info Section */}
           <div className="w-full">
-            <div className="uppercase text-s text-gray-400 tracking-widest mb-5">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
               Info
             </div>
             <p className="text-gray-700 mb-4">
@@ -75,13 +73,13 @@ function Info() {
       </div>
       {/* Divider */}
       <div className="w-full flex justify-center my-12">
-        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+        <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Education Section */}
       <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
             Education
           </div>
           <p className="text-gray-700 mb-4">
@@ -103,13 +101,13 @@ function Info() {
       </div>
       {/* Divider for Motivation */}
       <div className="w-full flex justify-center my-12">
-        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+        <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Motivation Section */}
       <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
             Motivation
           </div>
           <p className="text-gray-700 mb-4">
@@ -129,13 +127,13 @@ function Info() {
       </div>
       {/* Divider for Things I Love to Do */}
       <div className="w-full flex justify-center my-12">
-        <div className="w-full max-w-4xl border-t border-gray-300"></div>
+        <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Things I Love to Do Section */}
       <div className="max-w-6xl mx-auto px-6 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
             Things I Love to Do
           </div>
           <ul className="list-disc list-inside">
