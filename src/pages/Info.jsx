@@ -76,10 +76,10 @@ function Info() {
         <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Education Section */}
-      <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left: Text */}
-        <div>
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start">
+        {/* Left Column */}
+        <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
             Education
           </div>
           <p className="text-gray-700 mb-4">
@@ -90,12 +90,12 @@ function Info() {
             Bachelor of Science in Computer Science (BSCS) | Cum Laude
           </p>
         </div>
-        {/* Right: Image */}
-        <div className="flex justify-center">
+        {/* Right Column */}
+        <div className="md:w-1/2 flex flex-col items-start">
           <img
-            src="/tipqccampus.jpg"
+            src="/bryantiamzon.JPG"
             alt="Education"
-            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+            className="rounded-xl opacity-100 shadow-lg object-cover w-[300px] h-[400px]"
           />
         </div>
       </div>
@@ -104,10 +104,10 @@ function Info() {
         <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Motivation Section */}
-      <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left: Text */}
-        <div>
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start">
+        {/* Left Column */}
+        <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
             Motivation
           </div>
           <p className="text-gray-700 mb-4">
@@ -116,12 +116,12 @@ function Info() {
             and exploring the intersection of design and code.
           </p>
         </div>
-        {/* Right: Image */}
-        <div className="flex justify-center">
+        {/* Right Column */}
+        <div className="md:w-1/2 flex flex-col items-start">
           <img
-            src="https://placehold.co/250x180?text=Motivation"
+            src="motivation.jpg"
             alt="Motivation"
-            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+            className="rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
           />
         </div>
       </div>
@@ -130,34 +130,22 @@ function Info() {
         <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Things I Love to Do Section */}
-      <div className="max-w-6xl mx-auto px-6 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left: Text */}
-        <div>
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-2">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start mb-20">
+        {/* Left Column */}
+        <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
             Things I Love to Do
           </div>
           <ul className="list-disc list-inside">
-            <li className="text-gray-700 mb-2">
-              Exploring new programming languages
-            </li>
-            <li className="text-gray-700 mb-2">Designing user interfaces</li>
-            <li className="text-gray-700 mb-2">
-              Hiking and nature photography
-            </li>
-            <li className="text-gray-700 mb-2">
-              Reading about AI and future tech
-            </li>
-            <li className="text-gray-700 mb-2">
-              Volunteering for tech education
-            </li>
+            <li className="text-gray-700 mb-2">Hanging out with friends</li>
           </ul>
         </div>
-        {/* Right: Image */}
-        <div className="flex justify-center">
+        {/* Right Column */}
+        <div className="md:w-1/2 flex flex-col items-start">
           <img
-            src="/IMG_5046 2.png"
+            src="/IMG_3471.jpeg"
             alt="Things I Love to Do"
-            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+            className="rounded-xl shadow-lg object-cover w-full max-w-xs"
           />
         </div>
       </div>
