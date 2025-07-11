@@ -6,10 +6,14 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-20 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col items-start mb-12 md:mb-0">
-          <h1 className="text-7xl md:text-8xl font-bold text-gray-700 text-justify leading-none mb-4">
-            Bryan<br />Tiamzon
+          <h1 className="text-8xl md:text-8xl font-bold text-gray-700 text-justify leading-none mb-4">
+            Bryan
+            <br />
+            Tiamzon
           </h1>
-          <div className="text-6xl font-semibold text-gray-600 mb-1">ᜊ᜔ᜍ᜔ᜌᜈ᜔</div>
+          <div className="text-7xl font-semibold text-gray-600 mb-1">
+            ᜊ᜔ᜍ᜔ᜌᜈ᜔
+          </div>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start w-full">
@@ -38,18 +42,33 @@ function Info() {
           </div>
           {/* Info Section */}
           <div className="w-full">
-            <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Info</div>
+            <div className="uppercase text-s text-gray-400 tracking-widest mb-5">
+              Info
+            </div>
             <p className="text-gray-700 mb-4">
-              I’m an undergraduate computer science student at the Technological Institute of the Philippines, graduating in August 2025.
+              I’m an undergraduate computer science student at the Technological
+              Institute of the Philippines, graduating in August 2025.
             </p>
             <p className="text-gray-700 mb-4">
-              Ever since I discovered programming, I’ve been fascinated not just by what code can build, but by how it can help people in everyday life. For me, writing software isn’t only about solving technical problems—it’s about understanding human needs and designing tools that genuinely make a difference.
+              Ever since I discovered programming, I’ve been fascinated not just
+              by what code can build, but by how it can help people in everyday
+              life. For me, writing software isn’t only about solving technical
+              problems—it’s about understanding human needs and designing tools
+              that genuinely make a difference.
             </p>
             <p className="text-gray-700 mb-4">
-              I’ve always enjoyed exploring how technology can bridge gaps, simplify tasks, and bring people closer together. Whether I’m learning a new framework, experimenting with AI models, or sketching out ideas for an interface, what drives me is the thought that someone, somewhere, might benefit from what I create.
+              I’ve always enjoyed exploring how technology can bridge gaps,
+              simplify tasks, and bring people closer together. Whether I’m
+              learning a new framework, experimenting with AI models, or
+              sketching out ideas for an interface, what drives me is the
+              thought that someone, somewhere, might benefit from what I create.
             </p>
             <p className="text-gray-700">
-              At the heart of it all, I see computer science as more than just logic and algorithms—it’s a creative field where empathy matters just as much as technical skill. As I keep learning and growing, I hope to craft solutions that feel intuitive, human-centered, and meaningful.
+              At the heart of it all, I see computer science as more than just
+              logic and algorithms—it’s a creative field where empathy matters
+              just as much as technical skill. As I keep learning and growing, I
+              hope to craft solutions that feel intuitive, human-centered, and
+              meaningful.
             </p>
           </div>
         </div>
@@ -62,14 +81,24 @@ function Info() {
       <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Education</div>
-          <p className="text-gray-700 mb-4">Technological Institute of the Philippines - Quezon City</p>
+          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+            Education
+          </div>
+          <p className="text-gray-700 mb-4">
+            Technological Institute of the Philippines - Quezon City
+          </p>
           <p className="text-gray-700 mb-4">2021-2025</p>
-          <p className="text-gray-700 mb-4">Bachelor of Science in Computer Science (BSCS) | Cum Laude</p>
+          <p className="text-gray-700 mb-4">
+            Bachelor of Science in Computer Science (BSCS) | Cum Laude
+          </p>
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
-          <img src="/tipqccampus.jpg" alt="Education" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+          <img
+            src="/tipqccampus.jpg"
+            alt="Education"
+            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+          />
         </div>
       </div>
       {/* Divider for Motivation */}
@@ -80,12 +109,22 @@ function Info() {
       <div className="max-w-6xl mx-auto px-6 mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Motivation</div>
-          <p className="text-gray-700 mb-4">I'm passionate about building technology that makes a difference. I love collaborating with creative people, learning new frameworks, and exploring the intersection of design and code.</p>
+          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+            Motivation
+          </div>
+          <p className="text-gray-700 mb-4">
+            I'm passionate about building technology that makes a difference. I
+            love collaborating with creative people, learning new frameworks,
+            and exploring the intersection of design and code.
+          </p>
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
-          <img src="https://placehold.co/250x180?text=Motivation" alt="Motivation" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+          <img
+            src="https://placehold.co/250x180?text=Motivation"
+            alt="Motivation"
+            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+          />
         </div>
       </div>
       {/* Divider for Things I Love to Do */}
@@ -96,18 +135,32 @@ function Info() {
       <div className="max-w-6xl mx-auto px-6 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
-          <div className="uppercase text-xs text-gray-400 tracking-widest mb-2">Things I Love to Do</div>
+          <div className="uppercase text-s text-gray-400 tracking-widest mb-2">
+            Things I Love to Do
+          </div>
           <ul className="list-disc list-inside">
-            <li className="text-gray-700 mb-2">Exploring new programming languages</li>
+            <li className="text-gray-700 mb-2">
+              Exploring new programming languages
+            </li>
             <li className="text-gray-700 mb-2">Designing user interfaces</li>
-            <li className="text-gray-700 mb-2">Hiking and nature photography</li>
-            <li className="text-gray-700 mb-2">Reading about AI and future tech</li>
-            <li className="text-gray-700 mb-2">Volunteering for tech education</li>
+            <li className="text-gray-700 mb-2">
+              Hiking and nature photography
+            </li>
+            <li className="text-gray-700 mb-2">
+              Reading about AI and future tech
+            </li>
+            <li className="text-gray-700 mb-2">
+              Volunteering for tech education
+            </li>
           </ul>
         </div>
         {/* Right: Image */}
         <div className="flex justify-center">
-          <img src="/IMG_5046 2.png" alt="Things I Love to Do" className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs" />
+          <img
+            src="/IMG_5046 2.png"
+            alt="Things I Love to Do"
+            className="rounded-xl opacity-70 shadow-lg object-cover w-full max-w-xs"
+          />
         </div>
       </div>
     </div>
