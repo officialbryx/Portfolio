@@ -153,13 +153,13 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start mb-20">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
-          <div className="-ml-105">
+          <div className="-ml-70">
             <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
               Things I Love to Do
             </div>
-            <p className="text-black">Hanging out with friends</p>
-            <p className="text-black">etc</p>
-            <p className="text-black">etc</p>
+            <p className="text-black text-2xl font-extrabold">Listening to Music</p>
+            <p className="text-black text-2xl font-extrabold">Hanging out with friends</p>
+            <p className="text-black text-2xl font-extrabold">Play Video Games</p>
           </div>
         </div>
         {/* Right Column */}
@@ -167,6 +167,11 @@ function Info() {
           <img
             src="/IMG_3471.jpeg"
             alt="Things I Love to Do"
+            className="rounded-xl shadow-lg object-cover w-[600px] h-[200px]"
+          />
+          <img
+            src="/N_-MfI-4.jpg"
+            alt="Things I Love to Do 2"
             className="rounded-xl shadow-lg object-cover w-[600px] h-[200px]"
           />
         </div>
