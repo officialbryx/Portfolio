@@ -90,23 +90,30 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
-            Education
+          <div className="-ml-70">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+              Education
+            </div>
+            <p className="text-black text-2xl font-extrabold">
+              Technological Institute of the Philippines
+            </p>
+            <p className="text-gray-700 text-2xl font-extrabold mb-2">
+              College of Computer Studies
+            </p>
+            <p className="text-gray-700 mb-4">2021 - 2025</p>
+            <p className="text-gray-700">
+              Bachelor of Science in Computer Science (BSCS)
+            </p>
+            <p className="text-gray-700 mb-4">Cum Laude</p>
           </div>
-          <p className="text-gray-700 mb-4">
-            Technological Institute of the Philippines - Quezon City
-          </p>
-          <p className="text-gray-700 mb-4">2021-2025</p>
-          <p className="text-gray-700 mb-4">
-            Bachelor of Science in Computer Science (BSCS) | Cum Laude
-          </p>
         </div>
+
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
           <img
             src="/bryantiamzon.JPG"
             alt="Education"
-            className="rounded-xl opacity-100 shadow-lg object-cover w-[300px] h-[400px]"
+            className="rounded-xl opacity-100 shadow-lg object-cover w-[400px] h-[400px]"
           />
         </div>
       </div>
@@ -118,14 +125,16 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
-            Motivation
+          <div className="-ml-25">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+              Motivation
+            </div>
+            <p className="text-gray-700 mb-4">
+              I'm passionate about building technology that makes a difference. I
+              love collaborating with creative people, learning new frameworks,
+              and exploring the intersection of design and code.
+            </p>
           </div>
-          <p className="text-gray-700 mb-4">
-            I'm passionate about building technology that makes a difference. I
-            love collaborating with creative people, learning new frameworks,
-            and exploring the intersection of design and code.
-          </p>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
@@ -144,19 +153,21 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start mb-20">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
-          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
-            Things I Love to Do
+          <div className="-ml-105">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+              Things I Love to Do
+            </div>
+            <p className="text-black">Hanging out with friends</p>
+            <p className="text-black">etc</p>
+            <p className="text-black">etc</p>
           </div>
-          <ul className="list-disc list-inside">
-            <li className="text-gray-700 mb-2">Hanging out with friends</li>
-          </ul>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
           <img
             src="/IMG_3471.jpeg"
             alt="Things I Love to Do"
-            className="rounded-xl shadow-lg object-cover w-full max-w-xs"
+            className="rounded-xl shadow-lg object-cover w-[600px] h-[200px]"
           />
         </div>
       </div>
