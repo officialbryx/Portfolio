@@ -164,16 +164,18 @@ function Info() {
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
-          <img
-            src="/IMG_3471.jpeg"
-            alt="Things I Love to Do"
-            className="rounded-xl shadow-lg object-cover w-[600px] h-[200px]"
-          />
-          <img
-            src="/N_-MfI-4.jpg"
-            alt="Things I Love to Do 2"
-            className="rounded-xl shadow-lg object-cover w-[600px] h-[200px]"
-          />
+          <div className="relative w-[600px] h-[300px]">
+            <img
+              src="/IMG_3471.jpeg"
+              alt="Things I Love to Do"
+              className="absolute top-0 left-0 rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
+            />
+            <img
+              src="/N_-MfI-4.jpg"
+              alt="Things I Love to Do 2"
+              className="absolute top-20 left-40 rounded-xl shadow-lg object-cover w-[300px] h-[200px]"
+            />
+          </div>
         </div>
       </div>
     </div>
