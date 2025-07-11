@@ -39,7 +39,18 @@ function Info() {
             />
           </div>
           {/* Info Section */}
-          <div className="w-full">
+          <div className="w-full relative">
+            {/* Left side images for manual positioning */}
+            <img
+              src="/IMG_4117 Medium.png"
+              alt="Info Image 1"
+              className="rounded-xl shadow-lg object-cover w-70 h-80 md:w-70 md:h-80 absolute top-13 right-225"
+            />
+            <img
+              src="/IMG_5046 3 Medium.png"
+              alt="Info Image 2"
+              className="rounded-xl shadow-lg object-cover w-70 h-110 md:w-70 md:h-110 absolute top-23 right-150"
+            />
             <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
               Info
             </div>
