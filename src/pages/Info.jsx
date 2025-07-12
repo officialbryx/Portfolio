@@ -180,44 +180,6 @@ function Info() {
               />
             </div>
           </div>
-
-          {/* Right: Experience Details */}
-          <div className="md:w-2/3 p-12 flex flex-col justify-center">
-            <div className="uppercase text-xs font-medium text-gray-400 tracking-wider mb-3">
-              Experience
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-black-600 transition-colors duration-300">
-              Software Engineer Intern
-            </h2>
-            <div className="text-xl text-gray-600 font-medium mb-2">
-              Ateneo Innovation Center
-            </div>
-            <div className="text-gray-500 text-sm mb-8">
-              February 2025 – May 2025
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={openModal}
-                className="inline-flex items-center px-6 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200 group/button"
-              >
-                View More
-                <svg
-                  className="w-4 h-4 ml-2 group-hover/button:translate-x-1 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
