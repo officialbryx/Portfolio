@@ -67,25 +67,25 @@ function Info() {
               Institute of the Philippines, graduating in August 2025.
             </p>
             <p className="text-gray-700 mb-4">
-              Ever since I discovered programming, I've been fascinated not just
-              by what code can build, but by how it can help people in everyday
-              life. For me, writing software isn't only about solving technical
-              problems—it's about understanding human needs and designing tools
-              that genuinely make a difference.
+              Ever since I discovered programming, I've been captivated by both
+              the things that code can create and the ways that it can benefit
+              people in their daily lives. I believe that producing software
+              involves more than just addressing technical problems, but it also
+              involves understanding human needs and creating solutions that
+              really have an impact.
             </p>
             <p className="text-gray-700 mb-4">
-              I've always enjoyed exploring how technology can bridge gaps,
-              simplify tasks, and bring people closer together. Whether I'm
-              learning a new framework, experimenting with AI models, or
-              sketching out ideas for an interface, what drives me is the
-              thought that someone, somewhere, might benefit from what I create.
+              I've always liked examining the ways in which technology can bring
+              to people, improve tasks, and overcome obstacles. The idea that my
+              work may help someone, somewhere, motivates me whether I'm
+              learning a new framework, tinkering with models based on machine
+              learning or AI, or developing interface ideas.
             </p>
             <p className="text-gray-700">
-              At the heart of it all, I see computer science as more than just
-              logic and algorithms—it's a creative field where empathy matters
-              just as much as technical skill. As I keep learning and growing, I
-              hope to craft solutions that feel intuitive, human-centered, and
-              meaningful.
+              Fundamentally, I believe that computer science is a creative field
+              where empathy is equally as important as technical competence, and
+              it goes beyond logic and algorithms. I want to develop solutions
+              that is meaningful as I continue to learn and develop.
             </p>
           </div>
         </div>
@@ -132,18 +132,55 @@ function Info() {
       </div>
 
       {/* Experience Section - Apple Aesthetic */}
-      <div className="max-w-6xl mx-auto px-6 my-20">
-        <div className="flex flex-col md:flex-row items-center bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 ease-out group">
-          {/* Left: Company Logo */}
-          <div className="md:w-1/3 p-12 flex justify-center items-center bg-gradient-to-br from-gray-50 to-white">
-            <div className="w-32 h-32 bg-white rounded-2xl shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-24 items-start">
+        {/* Left Column - Title and Role */}
+        <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
+          <div className="-ml-70">
+            <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+              Experience
+            </div>
+            <h2 className="text-4xl font-bold text-black mb-3">
+              Software Engineer Intern
+            </h2>
+            <p className="text-2xl text-gray-600 mb-2">
+              Ateneo Innovation Center
+            </p>
+            <p className="text-gray-500 mb-6">February 2025 – May 2025</p>
+            <button
+              onClick={openModal}
+              className="inline-flex items-center px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-900 transition-all duration-300 ease-out transform hover:scale-105"
+            >
+              Learn More
+              <svg
+                className="w-5 h-5 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Right Column - Visual */}
+        <div className="md:w-1/2 flex justify-end items-center">
+          <div className="relative w-[400px] h-[400px] bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-lg flex items-center justify-center group transition-all duration-500">
+            <div className="absolute inset-0 bg-black/5 rounded-3xl transform group-hover:scale-95 transition-transform duration-500"></div>
+            <div className="w-48 h-48 bg-white rounded-2xl shadow-sm flex items-center justify-center z-10 transform group-hover:scale-110 transition-all duration-500">
               <img
                 src="/aic.jpg"
                 alt="Ateneo Innovation Center"
-                className="w-24 h-24 object-contain rounded-xl"
+                className="w-36 h-36 object-contain rounded-xl"
               />
             </div>
           </div>
+<<<<<<< HEAD
 
           {/* Right: Experience Details */}
           <div className="md:w-2/3 p-12 flex flex-col justify-center">
@@ -182,17 +219,20 @@ function Info() {
               </button>
             </div>
           </div>
+=======
+>>>>>>> 5bbc413ae9ce301c930e50bd34f027347a75f998
         </div>
       </div>
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div className="fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white/95 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             {/* Modal Header */}
-            <div className="sticky top-0 bg-white border-b border-gray-100 px-8 py-6 rounded-t-3xl flex items-center justify-between">
+            <div className="sticky top-0 bg-white/95 border-b border-gray-100 px-8 py-6 rounded-t-3xl flex items-center justify-between">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">
+<<<<<<< HEAD
                   Software Engineering Intern
                 </h3>
                 <p className="text-gray-600">Ateneo Innovation Center</p>
@@ -215,6 +255,39 @@ function Info() {
                   />
                 </svg>
               </button>
+=======
+                  Software Engineer Intern
+                </h3>
+                <p className="text-gray-600">Ateneo Innovation Center</p>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center">
+                  <img
+                    src="/aic.jpg"
+                    alt="Ateneo Innovation Center"
+                    className="w-12 h-12 object-contain rounded-xl"
+                  />
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+>>>>>>> 5bbc413ae9ce301c930e50bd34f027347a75f998
             </div>
 
             {/* Modal Content */}
