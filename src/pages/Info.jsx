@@ -28,22 +28,22 @@ function Info() {
             <img
               src="/unnamed.jpg"
               alt="Placeholder 1"
-              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-80 md:w-55 md:h-80 absolute top-4"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-80 md:w-55 md:h-80 absolute top-4"
             />
             <img
               src="/IMG_7719 Medium.png"
               alt="Placeholder 2"
-              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-120 md:w-70 md:h-120 absolute right-8 bottom-20"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-120 md:w-70 md:h-120 absolute right-8 bottom-20"
             />
             <img
               src="/IMG_5793.jpg"
               alt="Placeholder 3"
-              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-80 md:w-120 md:h-50 absolute left-135 bottom-70"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-80 md:w-120 md:h-50 absolute left-135 bottom-70"
             />
             <img
               src="/IMG_5760.jpg"
               alt="Placeholder 4"
-              className="rounded-xl opacity-70 shadow-lg object-cover w-70 h-70 md:w-50 md:h-60 absolute left-135 top-30"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-70 md:w-50 md:h-60 absolute left-135 top-30"
             />
           </div>
           {/* Info Section */}
@@ -52,19 +52,20 @@ function Info() {
             <img
               src="/IMG_4117 Medium.png"
               alt="Info Image 1"
-              className="rounded-xl shadow-lg object-cover w-70 h-80 md:w-70 md:h-80 absolute top-13 right-225"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-80 md:w-70 md:h-80 absolute top-13 right-225"
             />
             <img
               src="/IMG_5046 3 Medium.png"
               alt="Info Image 2"
-              className="rounded-xl shadow-lg object-cover w-70 h-110 md:w-70 md:h-110 absolute top-23 right-150"
+              className="rounded opacity-70 shadow-lg object-cover w-70 h-110 md:w-70 md:h-110 absolute top-23 right-150"
             />
             <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
               Info
             </div>
             <p className="text-gray-700 mb-4">
               I'm an undergraduate computer science student at the Technological
-              Institute of the Philippines, graduating in August 2025.
+              Institute of the Philippines, graduating in August 2025. I
+              currently reside in Taguig.
             </p>
             <p className="text-gray-700 mb-4">
               Ever since I discovered programming, I've been captivated by both
@@ -121,7 +122,7 @@ function Info() {
           <img
             src="/bryantiamzon.JPG"
             alt="Education"
-            className="rounded-xl opacity-100 shadow-lg object-cover w-[400px] h-[400px]"
+            className="rounded opacity-70 shadow-lg object-cover w-[400px] h-[400px]"
           />
         </div>
       </div>
@@ -176,7 +177,7 @@ function Info() {
               <img
                 src="/aic.jpg"
                 alt="Ateneo Innovation Center"
-                className="w-36 h-36 object-contain rounded-xl"
+                className="w-36 h-36 object-contain rounded opacity-70"
               />
             </div>
           </div>
@@ -238,7 +239,7 @@ function Info() {
                 </h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-blue-50 p-6 rounded-2xl">
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded flex items-center justify-center mb-4">
                       <svg
                         className="w-6 h-6 text-blue-600"
                         fill="none"
@@ -263,7 +264,7 @@ function Info() {
                   </div>
 
                   <div className="bg-green-50 p-6 rounded-2xl">
-                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded flex items-center justify-center mb-4">
                       <svg
                         className="w-6 h-6 text-green-600"
                         fill="none"
@@ -289,7 +290,7 @@ function Info() {
                   </div>
 
                   <div className="bg-purple-50 p-6 rounded-2xl">
-                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-purple-100 rounded flex items-center justify-center mb-4">
                       <svg
                         className="w-6 h-6 text-purple-600"
                         fill="none"
@@ -314,7 +315,7 @@ function Info() {
                   </div>
 
                   <div className="bg-orange-50 p-6 rounded-2xl">
-                    <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-orange-100 rounded flex items-center justify-center mb-4">
                       <svg
                         className="w-6 h-6 text-orange-600"
                         fill="none"
@@ -381,7 +382,7 @@ function Info() {
             <img
               src="motivation.jpg"
               alt="Motivation"
-              className="rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
+              className="rounded opacity-70 shadow-lg object-cover w-[500px] h-[300px]"
             />
           </div>
         </div>
@@ -427,12 +428,12 @@ function Info() {
             <img
               src="/IMG_3471.jpeg"
               alt="Things I Love to Do"
-              className="absolute top-50 left-70 rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
+              className="absolute top-50 left-70 rounded opacity-70 shadow-lg object-cover w-[500px] h-[300px]"
             />
             <img
               src="/N_-MfI-4.jpg"
               alt="Things I Love to Do 2"
-              className="absolute top-0 left-0 rounded-xl shadow-lg object-cover w-[250px] h-[420px]"
+              className="absolute top-0 left-0 rounded opacity-70 shadow-lg object-cover w-[250px] h-[420px]"
             />
           </div>
         </div>
