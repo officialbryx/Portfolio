@@ -11,6 +11,9 @@ function Info() {
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-20 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col items-start mb-12 md:mb-0">
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest -top-30">
+            Let that fog settle ...
+          </div>
           <h1 className="text-8xl md:text-8xl font-bold text-black text-justify leading-none mb-4">
             Bryan
             <br />
@@ -141,7 +144,7 @@ function Info() {
               />
             </div>
           </div>
-          
+
           {/* Right: Experience Details */}
           <div className="md:w-2/3 p-12 flex flex-col justify-center">
             <div className="uppercase text-xs font-medium text-gray-400 tracking-wider mb-3">
@@ -156,15 +159,25 @@ function Info() {
             <div className="text-gray-500 text-sm mb-8">
               February 2025 – May 2025
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <button
                 onClick={openModal}
                 className="inline-flex items-center px-6 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-colors duration-200 group/button"
               >
                 View More
-                <svg className="w-4 h-4 ml-2 group-hover/button:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-4 h-4 ml-2 group-hover/button:translate-x-1 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             </div>
@@ -179,81 +192,175 @@ function Info() {
             {/* Modal Header */}
             <div className="sticky top-0 bg-white border-b border-gray-100 px-8 py-6 rounded-t-3xl flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">Software Engineering Intern</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Software Engineering Intern
+                </h3>
                 <p className="text-gray-600">Ateneo Innovation Center</p>
               </div>
               <button
                 onClick={closeModal}
                 className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
               >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
-            
+
             {/* Modal Content */}
             <div className="p-8 space-y-8">
               {/* Overview */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Overview</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Overview
+                </h4>
                 <p className="text-gray-700 leading-relaxed">
-                  During my internship at Ateneo Innovation Center, I contributed to cutting-edge projects that focused on creating impactful digital solutions. I worked closely with a multidisciplinary team to develop user-centered applications that addressed real-world challenges.
+                  During my internship at Ateneo Innovation Center, I
+                  contributed to cutting-edge projects that focused on creating
+                  impactful digital solutions. I worked closely with a
+                  multidisciplinary team to develop user-centered applications
+                  that addressed real-world challenges.
                 </p>
               </div>
-              
+
               {/* Key Achievements */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Achievements</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Key Achievements
+                </h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-blue-50 p-6 rounded-2xl">
                     <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      <svg
+                        className="w-6 h-6 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                        />
                       </svg>
                     </div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Frontend Development</h5>
-                    <p className="text-gray-700 text-sm">Built responsive user interfaces using React and Tailwind CSS, focusing on accessibility and user experience.</p>
+                    <h5 className="font-semibold text-gray-900 mb-2">
+                      Frontend Development
+                    </h5>
+                    <p className="text-gray-700 text-sm">
+                      Built responsive user interfaces using React and Tailwind
+                      CSS, focusing on accessibility and user experience.
+                    </p>
                   </div>
-                  
+
                   <div className="bg-green-50 p-6 rounded-2xl">
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      <svg
+                        className="w-6 h-6 text-green-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
                       </svg>
                     </div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Team Collaboration</h5>
-                    <p className="text-gray-700 text-sm">Collaborated with engineers, designers, and product managers in an agile environment to deliver high-quality solutions.</p>
+                    <h5 className="font-semibold text-gray-900 mb-2">
+                      Team Collaboration
+                    </h5>
+                    <p className="text-gray-700 text-sm">
+                      Collaborated with engineers, designers, and product
+                      managers in an agile environment to deliver high-quality
+                      solutions.
+                    </p>
                   </div>
-                  
+
                   <div className="bg-purple-50 p-6 rounded-2xl">
                     <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <svg
+                        className="w-6 h-6 text-purple-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
                       </svg>
                     </div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Performance Optimization</h5>
-                    <p className="text-gray-700 text-sm">Improved application performance by optimizing component rendering and implementing efficient state management.</p>
+                    <h5 className="font-semibold text-gray-900 mb-2">
+                      Performance Optimization
+                    </h5>
+                    <p className="text-gray-700 text-sm">
+                      Improved application performance by optimizing component
+                      rendering and implementing efficient state management.
+                    </p>
                   </div>
-                  
+
                   <div className="bg-orange-50 p-6 rounded-2xl">
                     <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-                      <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      <svg
+                        className="w-6 h-6 text-orange-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
                       </svg>
                     </div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Accessibility Focus</h5>
-                    <p className="text-gray-700 text-sm">Enhanced application accessibility by implementing ARIA labels, keyboard navigation, and screen reader compatibility.</p>
+                    <h5 className="font-semibold text-gray-900 mb-2">
+                      Accessibility Focus
+                    </h5>
+                    <p className="text-gray-700 text-sm">
+                      Enhanced application accessibility by implementing ARIA
+                      labels, keyboard navigation, and screen reader
+                      compatibility.
+                    </p>
                   </div>
                 </div>
               </div>
-              
+
               {/* Technologies Used */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Technologies Used</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  Technologies Used
+                </h4>
                 <div className="flex flex-wrap gap-2">
-                  {['React', 'Tailwind CSS', 'JavaScript', 'Git', 'Figma', 'Agile'].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                  {[
+                    "React",
+                    "Tailwind CSS",
+                    "JavaScript",
+                    "Git",
+                    "Figma",
+                    "Agile",
+                  ].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -264,8 +371,8 @@ function Info() {
         </div>
       )}
 
-            {/* Divider for Motivation */}
-            <div className="w-full flex justify-center my-12">
+      {/* Divider for Motivation */}
+      <div className="w-full flex justify-center my-12">
         <div className="w-full max-w-6xl border-t border-gray-300"></div>
       </div>
       {/* Motivation Section */}
@@ -274,17 +381,16 @@ function Info() {
         <div className="md:w-1/2 flex flex-col mb-12 md:mb-0">
           <div className="-ml-25">
             <img
-            src="motivation.jpg"
-            alt="Motivation"
-            className="rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
-           />
-
+              src="motivation.jpg"
+              alt="Motivation"
+              className="rounded-xl shadow-lg object-cover w-[500px] h-[300px]"
+            />
           </div>
         </div>
         {/* Right Column */}
         <div className="md:w-1/2 flex flex-col items-start">
-         <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
-              Motivation
+          <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
+            Motivation
           </div>
           <p className="text-gray-700 mb-4">
             I'm passionate about building technology that makes a difference. I
@@ -306,9 +412,15 @@ function Info() {
             <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-40">
               Things I Love to Do
             </div>
-            <p className="text-black text-3xl font-extrabold">Listening to Music</p>
-            <p className="text-black text-3xl font-extrabold">Hanging out with friends</p>
-            <p className="text-black text-3xl font-extrabold">Play Video Games</p>
+            <p className="text-black text-3xl font-extrabold">
+              Listening to Music
+            </p>
+            <p className="text-black text-3xl font-extrabold">
+              Hanging out with friends
+            </p>
+            <p className="text-black text-3xl font-extrabold">
+              Play Video Games
+            </p>
           </div>
         </div>
         {/* Right Column */}

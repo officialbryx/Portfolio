@@ -124,7 +124,7 @@ function Work() {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-500 cursor-pointer relative h-[700px] w-[420px] flex-shrink-0"
+                  className="bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer relative h-[700px] w-[420px] flex-shrink-0"
                   onClick={() => setModalProject(project)}
                   onMouseEnter={() => setHoveredProject(index)}
                   onMouseLeave={() => setHoveredProject(null)}

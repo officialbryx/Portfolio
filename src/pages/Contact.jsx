@@ -155,13 +155,7 @@ function Contact() {
   ];
 
   return (
-    <div
-      className="min-h-screen bg-white"
-      style={{
-        fontFamily:
-          "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
-      }}
-    >
+    <div className="min-h-screen bg-white">
       {/* Interactive Hero Section */}
       <div
         className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden pt-20"
