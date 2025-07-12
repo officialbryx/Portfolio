@@ -182,7 +182,7 @@ function Info() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-white bg-opacity-30 backdrop-blur-md flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white/95 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             {/* Modal Header */}
             <div className="sticky top-0 bg-white/95 border-b border-gray-100 px-8 py-6 rounded-t-3xl flex items-center justify-between">
