@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import emailjs from '@emailjs/browser';
 import {
   BsEnvelope,
   BsLinkedin,
@@ -90,24 +91,53 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus(null), 3000);
+      return;
+    }
+
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent(
-      formData.subject || "Contact from Portfolio"
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
+    try {
+      // EmailJS configuration from environment variables
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+      if (!serviceID || !templateID || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+      }
 
-    setIsSubmitting(false);
-    setSubmitStatus("success");
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Contact from Portfolio',
+        message: formData.message,
+        to_email: myEmail,
+      };
 
-    setTimeout(() => {
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      
+      setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setSubmitStatus(null);
-    }, 3000);
+      
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus("error");
+      
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyEmail = async () => {
@@ -516,7 +546,7 @@ function Contact() {
                 </button>
 
                 <button
-                  type="button"
+                  type="submit"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
                   className={`px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
@@ -524,6 +554,8 @@ function Contact() {
                       ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                       : submitStatus === "success"
                       ? "bg-green-500 text-white"
+                      : submitStatus === "error"
+                      ? "bg-red-500 text-white"
                       : "bg-[#1d1d1f] hover:bg-gray-800 text-white transform hover:scale-105 hover:shadow-lg"
                   }`}
                 >
@@ -535,7 +567,11 @@ function Contact() {
                   ) : submitStatus === "success" ? (
                     <>
                       <BsCheck className="mr-2" />
-                      <span>Sent!</span>
+                      <span>Message Sent!</span>
+                    </>
+                  ) : submitStatus === "error" ? (
+                    <>
+                      <span>❌ Failed to Send</span>
                     </>
                   ) : (
                     <>
