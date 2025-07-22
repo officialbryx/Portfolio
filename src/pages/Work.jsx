@@ -19,7 +19,7 @@ function Work() {
       title: "HireFlow",
       tagline: "Smart screening. Smarter hiring.",
       description:
-        "Revolutionary ATS platform that transforms hiring with advanced AI. JobBERT and XGBoost algorithms automatically screen and rank candidates, making recruitment effortless and precise.",
+        "An ATS platform that transforms hiring with advanced AI. JobBERT and XGBoost algorithms automatically screen and rank candidates, making recruitment effortless and precise.",
       tech: ["Python", "TensorFlow", "React", "XGBoost", "BERT"],
       imageUrl: "/pexels-goumbik-590016.jpg",
     },
@@ -261,7 +261,7 @@ function Work() {
       {modalProject && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-[4px] z-50 flex items-center justify-center p-4">
           <div
-            className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative flex flex-col items-center"
+            className="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative flex flex-col items-center"
             style={{
               fontFamily:
                 "SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif",
@@ -300,36 +300,177 @@ function Work() {
                 <p className="text-gray-700 leading-relaxed mb-8 text-lg">
                   {modalProject.description}
                 </p>
+                {/* View Website Button for HireFlow */}
+                {modalProject.title === "HireFlow" && (
+                  <a
+                    href="https://hireflow-web.onrender.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-3 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg"
+                  >
+                    <span className="font-semibold">View Website</span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                )}
               </div>
 
-              {/* Image section */}
-              <div className="w-full flex justify-center mb-10">
-                <div
-                  className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center"
-                  style={{
-                    minHeight: "220px",
-                    minWidth: "320px",
-                    maxHeight: "320px",
-                    maxWidth: "100%",
-                  }}
-                >
-                  {/* If you have an image, show it here */}
-                  {modalProject.imageUrl && (
-                    <img
-                      src={modalProject.imageUrl}
-                      alt={modalProject.title}
-                      className="object-contain w-full h-full max-h-[320px] max-w-[480px]"
-                    />
-                  )}
+              {/* Image section - Special layout for HireFlow */}
+              {modalProject.title === "HireFlow" ? (
+                <div className="w-full mb-10 max-w-5xl mx-auto">
+                  <div className="flex flex-col space-y-8">
+                    {/* Image 1 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow1.png"
+                          alt="AI-Powered Screening"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Landing Page
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          The landing page of a job portal serves as the main
+                          entry point where jobseekers can search for
+                          opportunities and employers can access hiring tools,
+                          all presented in a user-friendly interface.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Image 2 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow2.png"
+                          alt="Smart Ranking System"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          View/Edit Job Posts
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          This view displays all jobs created by the employer,
+                          allowing them to edit, archive, or view applicants for
+                          each job.
+                        </p>
+                      </div>
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow4.png"
+                          alt="Applicant Review"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Applicants Review
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          This tab shows applicant information and enables
+                          employers to evaluate individual candidates through
+                          resume review and screening questions.
+                        </p>
+                      </div>
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow5.png"
+                          alt="Evaluate"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Resume-Job Match Evaluator
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          Employers can trigger an automated match evaluation to
+                          assess how well a candidate's resume aligns with the
+                          job posting.
+                        </p>
+                      </div>
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow6.png"
+                          alt="Jobbertmatch"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Applicant's Analysis Result
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          This displays match scores and a qualification verdict
+                          from JobBert and XGBoost to show how fit a candidate
+                          is for the role.
+                        </p>
+                      </div>
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/hireflow7.png"
+                          alt="Jobbert"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          JobBERT Insights
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          A detailed analysis that provides insights into
+                          skills, qualifications, and hiring recommendations to
+                          help assess applicant suitability.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="w-full flex justify-center mb-10">
+                  <div
+                    className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center"
+                    style={{
+                      minHeight: "220px",
+                      minWidth: "320px",
+                      maxHeight: "320px",
+                      maxWidth: "100%",
+                    }}
+                  >
+                    {/* If you have an image, show it here */}
+                    {modalProject.imageUrl && (
+                      <img
+                        src={modalProject.imageUrl}
+                        alt={modalProject.title}
+                        className="object-contain w-full h-full max-h-[320px] max-w-[480px]"
+                      />
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Tech Stack */}
-              <div className="w-full max-w-2xl mx-auto mb-8">
-                <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+              <div className="w-full max-w-5xl mx-auto mb-8">
+                <h3 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider text-center">
                   Technology Stack
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {modalProject.tech.map((tech, idx) => (
                     <span
                       key={idx}
