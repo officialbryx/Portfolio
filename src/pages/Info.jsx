@@ -173,11 +173,11 @@ function Info() {
 
         {/* Right Column - Visual */}
         <div className="md:w-1/2 flex justify-center items-center">
-          <div className="w-100 h-90 bg-white rounded-2xl flex items-center justify-center">
+          <div className="w-full md:w-[400px] h-90 bg-white rounded-2xl flex items-center justify-center">
             <img
               src="/aic.jpg"
               alt="Ateneo Innovation Center"
-              className="object-contain rounded max-w-full max-h-full p-4"
+              className="rounded w-full max-h-full object-contain p-4"
             />
           </div>
         </div>
@@ -304,11 +304,12 @@ function Info() {
                       </svg>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-2">
-                      Frontend Development
+                      Face Recognition Development
                     </h5>
                     <p className="text-gray-700 text-sm">
-                      Built responsive user interfaces using React and Tailwind
-                      CSS, focusing on accessibility and user experience.
+                      Developed a lightweight desktop face recognition system in
+                      Python using PyQt5, OpenCV, and DeepFace, enabling secure
+                      user login and registration.
                     </p>
                   </div>
 
@@ -332,9 +333,8 @@ function Info() {
                       Team Collaboration
                     </h5>
                     <p className="text-gray-700 text-sm">
-                      Collaborated with engineers, designers, and product
-                      managers in an agile environment to deliver high-quality
-                      solutions.
+                      Collaborated with field experts and fellow Ateneans to
+                      design, test, and refine the face recognition system.
                     </p>
                   </div>
 
@@ -355,11 +355,11 @@ function Info() {
                       </svg>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-2">
-                      Performance Optimization
+                      Performance optimization
                     </h5>
                     <p className="text-gray-700 text-sm">
-                      Improved application performance by optimizing component
-                      rendering and implementing efficient state management.
+                      Applied multithreading to keep real‑time face verification
+                      fast and responsive without freezing the interface.
                     </p>
                   </div>
 
@@ -380,12 +380,11 @@ function Info() {
                       </svg>
                     </div>
                     <h5 className="font-semibold text-gray-900 mb-2">
-                      Accessibility Focus
+                      Managed and organized user data securely
                     </h5>
                     <p className="text-gray-700 text-sm">
-                      Enhanced application accessibility by implementing ARIA
-                      labels, keyboard navigation, and screen reader
-                      compatibility.
+                      Implemented automated capture, naming, and storage of face
+                      data to support accurate verification.
                     </p>
                   </div>
                 </div>
