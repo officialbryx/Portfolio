@@ -172,16 +172,13 @@ function Info() {
         </div>
 
         {/* Right Column - Visual */}
-        <div className="md:w-1/2 flex justify-end items-center">
-          <div className="relative w-[400px] h-[400px] bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-lg flex items-center justify-center group transition-all duration-500">
-            <div className="absolute inset-0 bg-black/5 rounded-3xl transform group-hover:scale-95 transition-transform duration-500"></div>
-            <div className="w-48 h-48 bg-white rounded-2xl shadow-sm flex items-center justify-center z-10 transform group-hover:scale-110 transition-all duration-500">
-              <img
-                src="/aic.jpg"
-                alt="Ateneo Innovation Center"
-                className="w-36 h-36 object-contain rounded "
-              />
-            </div>
+        <div className="md:w-1/2 flex justify-center items-center">
+          <div className="w-100 h-90 bg-white rounded-2xl flex items-center justify-center">
+            <img
+              src="/aic.jpg"
+              alt="Ateneo Innovation Center"
+              className="object-contain rounded max-w-full max-h-full p-4"
+            />
           </div>
         </div>
       </div>
@@ -249,8 +246,8 @@ function Info() {
                       className="w-full object-contain rounded-xl"
                     />
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    [Add your first image context explanation here]
+                  <p className="text-gray-700 text-center">
+                    My Internship Team
                   </p>
                 </div>
 
@@ -263,8 +260,8 @@ function Info() {
                       className="w-full object-contain rounded-xl"
                     />
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    [Add your second image context explanation here]
+                  <p className="text-gray-700 text-center">
+                    Explaining the "UnlockX" project to the operations manager.
                   </p>
                 </div>
 
@@ -277,8 +274,9 @@ function Info() {
                       className="w-full object-contain rounded-xl"
                     />
                   </div>
-                  <p className="text-gray-700 leading-relaxed">
-                    [Add your third image context explanation here]
+                  <p className="text-gray-700 text-center">
+                    Showcasing the functionality of the "Ward" project that can
+                    recognize and detect registered faces.
                   </p>
                 </div>
               </div>
@@ -400,12 +398,12 @@ function Info() {
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "React",
-                    "Tailwind CSS",
-                    "JavaScript",
-                    "Git",
+                    "Python",
+                    "PyQT",
+                    "PyTorch",
+                    "GitHub",
                     "Figma",
-                    "Agile",
+                    "Raspberry Pi 5",
                   ].map((tech) => (
                     <span
                       key={tech}
