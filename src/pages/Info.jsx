@@ -109,7 +109,9 @@ function Info() {
             <p className="text-gray-700 text-2xl font-extrabold mb-2">
               College of Computer Studies
             </p>
-            <p className="text-gray-700 mb-4">2021 - 2025</p>
+            <p className="text-gray-700 mb-4">
+              August 2021 - August 2025 (Expected)
+            </p>
             <p className="text-gray-700">
               Bachelor of Science in Computer Science (BSCS)
             </p>
@@ -230,6 +232,55 @@ function Info() {
                   multidisciplinary team to develop user-centered applications
                   that addressed real-world challenges.
                 </p>
+              </div>
+
+              {/* Experience Gallery */}
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-6">
+                  Experience Gallery
+                </h4>
+
+                {/* First Image and Context */}
+                <div className="mb-8">
+                  <div className="mb-4 bg-gray-50 rounded-2xl p-4">
+                    <img
+                      src="/interns.jpg"
+                      alt="Experience Image 1"
+                      className="w-full object-contain rounded-xl"
+                    />
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    [Add your first image context explanation here]
+                  </p>
+                </div>
+
+                {/* Second Image and Context */}
+                <div className="mb-8">
+                  <div className="mb-4 bg-gray-50 rounded-2xl p-4">
+                    <img
+                      src="/present1.jpg"
+                      alt="Experience Image 2"
+                      className="w-full object-contain rounded-xl"
+                    />
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    [Add your second image context explanation here]
+                  </p>
+                </div>
+
+                {/* Third Image and Context */}
+                <div className="mb-8">
+                  <div className="mb-4 bg-gray-50 rounded-2xl p-4">
+                    <img
+                      src="/present2.jpg"
+                      alt="Experience Image 3"
+                      className="w-full object-contain rounded-xl"
+                    />
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    [Add your third image context explanation here]
+                  </p>
+                </div>
               </div>
 
               {/* Key Achievements */}
