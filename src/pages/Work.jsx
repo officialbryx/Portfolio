@@ -43,7 +43,7 @@ function Work() {
       title: "Moon Hey Hotpot POS",
       tagline: "Serve fast. Manage smarter.",
       description:
-        "Complete point-of-sale system designed for modern restaurants. Streamlines operations with inventory management, order processing, and comprehensive analytics.",
+        "Complete point-of-sale system designed for modern restaurants. Efficient operations with inventory management, order processing, and comprehensive analytics.",
       tech: ["Python", "PyQt5", "MySQL", "pandas", "matplotlib"],
       imageUrl: "/pexels-mibernaa-31777068.jpg",
     },
@@ -332,6 +332,49 @@ function Work() {
                     </span>
                   </a>
                 )}
+                {/* Buttons for Moon Hey Hotpot POS */}
+                {modalProject.title === "Moon Hey Hotpot POS" && (
+                  <div className="flex flex-col gap-4 justify-center items-center">
+                    <a
+                      href="https://github.com/sehae/POS-with-Inventory-System"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                      </svg>
+                      <span className="font-semibold">
+                        View Program on GitHub
+                      </span>
+                    </a>
+                    <a
+                      href="/User Manual.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="font-semibold">View Manual (PDF)</span>
+                    </a>
+                  </div>
+                )}
               </div>
 
               {/* Image section - Special layout for HireFlow */}
@@ -445,6 +488,114 @@ function Work() {
                           A detailed analysis that provides insights into
                           skills, qualifications, and hiring recommendations to
                           help assess applicant suitability.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : modalProject.title === "Moon Hey Hotpot POS" ? (
+                <div className="w-full mb-10 max-w-5xl mx-auto">
+                  <div className="flex flex-col space-y-8">
+                    {/* Image 1 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/pos1.png"
+                          alt="POS Dashboard"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Login Page
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          A secure authentication interface where employees
+                          enter their credentials to access the POS system.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Image 2 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/pos2.png"
+                          alt="Order Management"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Employee Dashboard
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          The main navigation hub displaying different system
+                          modules including orders, inventory, and analytics for
+                          staff access.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Image 3 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/pos3.png"
+                          alt="Inventory Management"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Order Management
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          An intuitive interface for selecting menu items,
+                          customizing orders, and processing customer
+                          transactions efficiently.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Image 4 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/pos4.png"
+                          alt="Sales Analytics"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Payment Processing
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          A comprehensive checkout system displaying order
+                          totals, tax calculations, and payment options for
+                          completing transactions.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Image 5 */}
+                    <div className="flex flex-col items-center">
+                      <div className="rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center mb-4 w-full">
+                        <img
+                          src="/pos5.png"
+                          alt="Payment Processing"
+                          className="object-contain w-full"
+                        />
+                      </div>
+                      <div className="text-center px-4 py-6">
+                        <h4 className="text-xl font-semibold text-black mb-3">
+                          Inventory Management
+                        </h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          A detailed inventory tracking system that monitors
+                          stock levels, ingredient usage, and supply management
+                          for restaurant operations.
                         </p>
                       </div>
                     </div>
