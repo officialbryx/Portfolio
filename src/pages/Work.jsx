@@ -119,6 +119,7 @@ function Work() {
                       src={project.imageUrl}
                       alt={project.title}
                       className="w-full h-full object-cover select-none"
+                      loading="lazy"
                       draggable={false}
                       onContextMenu={(e) => e.preventDefault()}
                       onDragStart={(e) => e.preventDefault()}
