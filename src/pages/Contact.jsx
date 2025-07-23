@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import {
   BsEnvelope,
   BsLinkedin,
@@ -91,7 +91,7 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Validate form
     if (!formData.name || !formData.email || !formData.message) {
       setSubmitStatus("error");
@@ -108,30 +108,31 @@ function Contact() {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceID || !templateID || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+        throw new Error(
+          "EmailJS configuration is missing. Please check your environment variables."
+        );
       }
 
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        subject: formData.subject || 'Contact from Portfolio',
+        subject: formData.subject || "Contact from Portfolio",
         message: formData.message,
         to_email: myEmail,
       };
 
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
-      
+
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
+
       setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
-
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error("EmailJS Error:", error);
       setSubmitStatus("error");
-      
+
       setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
@@ -185,7 +186,11 @@ function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className="min-h-screen bg-white select-none"
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+    >
       {/* Interactive Hero Section */}
       <div
         className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden pt-20"

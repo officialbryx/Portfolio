@@ -14,6 +14,23 @@ function Work() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Disable right-click context menu and dragging
+  useEffect(() => {
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleDragStart = (e) => e.preventDefault();
+    const handleSelectStart = (e) => e.preventDefault();
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("dragstart", handleDragStart);
+    document.addEventListener("selectstart", handleSelectStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("dragstart", handleDragStart);
+      document.removeEventListener("selectstart", handleSelectStart);
+    };
+  }, []);
+
   const projects = [
     {
       title: "HireFlow",
@@ -50,8 +67,11 @@ function Work() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Projects Overview */}
+    <div
+      className="min-h-screen bg-white text-black select-none"
+      onContextMenu={(e) => e.preventDefault()}
+    >
+      {/* Hero section */}
       <section className="py-20 bg-white">
         {/* Title and GitHub Button Row */}
         <div className="flex items-center justify-between pl-8 pr-8 md:pl-16 md:pr-16 lg:pl-24 lg:pr-24 mb-12">
@@ -98,7 +118,10 @@ function Work() {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover select-none"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                     />
                     {/* Text Overlay */}
                     <div className="absolute top-7 left-7 right-7">
@@ -387,7 +410,10 @@ function Work() {
                         <img
                           src="/hireflow1.png"
                           alt="AI-Powered Screening"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -409,7 +435,10 @@ function Work() {
                         <img
                           src="/hireflow2.png"
                           alt="Smart Ranking System"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -426,7 +455,10 @@ function Work() {
                         <img
                           src="/hireflow4.png"
                           alt="Applicant Review"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -443,7 +475,10 @@ function Work() {
                         <img
                           src="/hireflow5.png"
                           alt="Evaluate"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -460,7 +495,10 @@ function Work() {
                         <img
                           src="/hireflow6.png"
                           alt="Jobbertmatch"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -477,7 +515,10 @@ function Work() {
                         <img
                           src="/hireflow7.png"
                           alt="Jobbert"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">
@@ -502,7 +543,10 @@ function Work() {
                         <img
                           src="/pos1.png"
                           alt="POS Dashboard"
-                          className="object-contain w-full"
+                          className="object-contain w-full select-none"
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
                         />
                       </div>
                       <div className="text-center px-4 py-6">

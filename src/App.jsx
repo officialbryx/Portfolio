@@ -5,10 +5,18 @@ import Work from "./pages/Work";
 import Info from "./pages/Info";
 import Landing from "./pages/Landing";
 import Contact from "./pages/Contact";
+import MobileLockScreen from "./components/MobileLockScreen";
+import useDeviceDetection from "./hooks/useDeviceDetection";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const location = useLocation();
+  const { isMobile } = useDeviceDetection();
+
+  // If mobile device detected, show lock screen
+  if (isMobile) {
+    return <MobileLockScreen />;
+  }
 
   useEffect(() => {
     // Simulate loading
@@ -19,6 +27,43 @@ function App() {
     // Scroll to top when route changes
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  useEffect(() => {
+    // Global protection against copying, dragging, and context menu
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleDragStart = (e) => e.preventDefault();
+    const handleSelectStart = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      // Prevent common copy shortcuts
+      if (e.ctrlKey && (e.key === "a" || e.key === "c" || e.key === "s")) {
+        e.preventDefault();
+      }
+      // Prevent F12 (Developer Tools)
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+      // Prevent Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.key === "I") {
+        e.preventDefault();
+      }
+      // Prevent Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === "u") {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("dragstart", handleDragStart);
+    document.addEventListener("selectstart", handleSelectStart);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("dragstart", handleDragStart);
+      document.removeEventListener("selectstart", handleSelectStart);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   // Only show navigation and header on info, work, and contact pages
   const showNav =

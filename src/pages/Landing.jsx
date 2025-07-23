@@ -43,7 +43,7 @@ function Landing() {
 
   return (
     <div
-      className={`min-h-screen w-full flex flex-col items-center justify-center relative transition-all duration-700 ease-out ${
+      className={`min-h-screen w-full flex flex-col items-center justify-center relative transition-all duration-700 ease-out select-none ${
         isTransitioning ? "scale-110 opacity-0" : "scale-100 opacity-100"
       }`}
       style={{
@@ -57,6 +57,8 @@ function Landing() {
           rgb(71, 0, 147) 100%
         )`,
       }}
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
     >
       {/* Overlay for transition effect */}
       <div
@@ -173,8 +175,11 @@ function Landing() {
           <img
             src="/tiamzondp.JPG"
             alt="Bryan Tiamzon"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover select-none"
             style={{ objectPosition: "50% 5%" }}
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
         </div>
 

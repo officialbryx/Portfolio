@@ -7,7 +7,11 @@ function Info() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-center">
+    <div
+      className="min-h-screen bg-white flex flex-col justify-center select-none"
+      onContextMenu={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+    >
       <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-6 py-20 items-start">
         {/* Left Column */}
         <div className="md:w-1/2 flex flex-col items-start mb-12 md:mb-0">
@@ -28,22 +32,34 @@ function Info() {
             <img
               src="/unnamed.jpg"
               alt="Placeholder 1"
-              className="rounded opacity shadow-lg object-cover w-70 h-80 md:w-55 md:h-80 absolute top-4"
+              className="rounded opacity shadow-lg object-cover w-70 h-80 md:w-55 md:h-80 absolute top-4 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <img
               src="/IMG_7719 Medium.png"
               alt="Placeholder 2"
-              className="rounded  shadow-lg object-cover w-70 h-120 md:w-70 md:h-120 absolute right-8 bottom-20"
+              className="rounded  shadow-lg object-cover w-70 h-120 md:w-70 md:h-120 absolute right-8 bottom-20 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <img
               src="/IMG_5793.jpg"
               alt="Placeholder 3"
-              className="rounded  shadow-lg object-cover w-70 h-80 md:w-120 md:h-50 absolute left-135 bottom-70"
+              className="rounded  shadow-lg object-cover w-70 h-80 md:w-120 md:h-50 absolute left-135 bottom-70 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <img
               src="/IMG_5760.jpg"
               alt="Placeholder 4"
-              className="rounded  shadow-lg object-cover w-70 h-70 md:w-50 md:h-60 absolute left-135 top-30"
+              className="rounded  shadow-lg object-cover w-70 h-70 md:w-50 md:h-60 absolute left-135 top-30 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
           </div>
           {/* Info Section */}
@@ -52,12 +68,18 @@ function Info() {
             <img
               src="/IMG_4117 Medium.png"
               alt="Info Image 1"
-              className="rounded  shadow-lg object-cover w-70 h-80 md:w-70 md:h-80 absolute top-13 right-225"
+              className="rounded  shadow-lg object-cover w-70 h-80 md:w-70 md:h-80 absolute top-13 right-225 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <img
               src="/IMG_5046 3 Medium.png"
               alt="Info Image 2"
-              className="rounded  shadow-lg object-cover w-70 h-110 md:w-70 md:h-110 absolute top-23 right-150"
+              className="rounded  shadow-lg object-cover w-70 h-110 md:w-70 md:h-110 absolute top-23 right-150 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <div className="uppercase text-s font-bold text-gray-400 tracking-widest mb-5 mt-10">
               Info
@@ -124,7 +146,10 @@ function Info() {
           <img
             src="/bryantiamzon.JPG"
             alt="Education"
-            className="rounded  shadow-lg object-cover w-[400px] h-[400px]"
+            className="rounded  shadow-lg object-cover w-[400px] h-[400px] select-none"
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
         </div>
       </div>
@@ -177,7 +202,10 @@ function Info() {
             <img
               src="/aic.jpg"
               alt="Ateneo Innovation Center"
-              className="rounded w-full max-h-full object-contain p-4"
+              className="rounded w-full max-h-full object-contain p-4 select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
           </div>
         </div>
@@ -243,7 +271,10 @@ function Info() {
                     <img
                       src="/interns.jpg"
                       alt="Experience Image 1"
-                      className="w-full object-contain rounded-xl"
+                      className="w-full object-contain rounded-xl select-none"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                     />
                   </div>
                   <p className="text-gray-700 text-center">
@@ -257,7 +288,10 @@ function Info() {
                     <img
                       src="/present1.jpg"
                       alt="Experience Image 2"
-                      className="w-full object-contain rounded-xl"
+                      className="w-full object-contain rounded-xl select-none"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                     />
                   </div>
                   <p className="text-gray-700 text-center">
@@ -271,7 +305,10 @@ function Info() {
                     <img
                       src="/present2.jpg"
                       alt="Experience Image 3"
-                      className="w-full object-contain rounded-xl"
+                      className="w-full object-contain rounded-xl select-none"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                     />
                   </div>
                   <p className="text-gray-700 text-center">
@@ -430,7 +467,10 @@ function Info() {
             <img
               src="motivation.jpg"
               alt="Motivation"
-              className="rounded  shadow-lg object-cover w-[500px] h-[300px]"
+              className="rounded  shadow-lg object-cover w-[500px] h-[300px] select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
           </div>
         </div>
@@ -476,12 +516,18 @@ function Info() {
             <img
               src="/IMG_3471.jpeg"
               alt="Things I Love to Do"
-              className="absolute top-50 left-70 rounded  shadow-lg object-cover w-[500px] h-[300px]"
+              className="absolute top-50 left-70 rounded  shadow-lg object-cover w-[500px] h-[300px] select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
             <img
               src="/N_-MfI-4.jpg"
               alt="Things I Love to Do 2"
-              className="absolute top-0 left-0 rounded  shadow-lg object-cover w-[250px] h-[420px]"
+              className="absolute top-0 left-0 rounded  shadow-lg object-cover w-[250px] h-[420px] select-none"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
           </div>
         </div>
