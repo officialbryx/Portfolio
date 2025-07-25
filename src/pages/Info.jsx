@@ -137,7 +137,7 @@ function Info() {
             <p className="text-gray-700">
               Bachelor of Science in Computer Science (BSCS)
             </p>
-            <p className="text-gray-700 mb-4">Cum Laude</p>
+            <p className="text-gray-700 mb-4">Candidate for Cum Laude</p>
           </div>
         </div>
 
